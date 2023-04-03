@@ -7,9 +7,6 @@ public class Employee extends People{
     private int HoursPerMonth;
     private int AccountNumber;
     private int EmployeeNumber;
-    public Employee(int id, String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel) {
-        super(id, firstName, name, birthDate, street, housenumber, postalCode, tel);
-    }
 
     public Employee(int id, String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, double hourlyWage, int hoursPerMonth, int accountNumber, int employeeNumber) {
         super(id, firstName, name, birthDate, street, housenumber, postalCode, tel);
