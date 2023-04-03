@@ -18,6 +18,7 @@ public class HelloApplication extends Application {
         System.out.println("Hello");
         System.out.println("Test2");
         System.out.println("Fuck");
+        System.out.println("Fuck you");
     }
 
     public static void main(String[] args) {
