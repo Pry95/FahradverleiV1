@@ -7,6 +7,44 @@
    <children>
       <TabPane layoutX="1.0" layoutY="3.0" prefHeight="801.0" prefWidth="1250.0" stylesheets="@tabPane.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
+            <Tab text="Fahrrad">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <TabPane prefHeight="772.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+
+                                    <Tab fx:id="tabViewBike" text="Fahrrad verwalten">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                <children>
+                                                    <TabPane layoutX="653.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
+                                                    <TableView fx:id="TableViewBike" layoutX="14.0" layoutY="14.0" prefHeight="431.0" prefWidth="1226.0">
+                                                        <columns>
+                                                            <TableColumn fx:id="ColumnBikeId" prefWidth="75.0" text="BikeId" />
+                                                            <TableColumn fx:id="ColumnBikeName" prefWidth="114.20001220703125" text="Name" />
+                                                            <TableColumn fx:id="ColumnBikeFrameSize" prefWidth="114.20001220703125" text="Rahmengröße" />
+                                                            <TableColumn fx:id="ColumnBikeDisign" prefWidth="114.20001220703125" text="Fahrradtyp" />
+                                                            <TableColumn fx:id="ColumnBikePricePerDay" prefWidth="114.20001220703125" text="Tagessatz" />
+                                                            <TableColumn fx:id="ColumnBikeCondition" prefWidth="114.20001220703125" text="Zustand" />
+                                                            <TableColumn fx:id="ColumnBikeContitionComment" prefWidth="347.60015869140625" text="Kommentar" />
+                                                            <TableColumn fx:id="ColumnBikeBatteryCapacity" minWidth="0.0" prefWidth="99.0" text="Reichweite" />
+                                                            <TableColumn fx:id="ColumnBikePerformence" minWidth="8.39990234375" prefWidth="130.60009765625" text="Leistung \ Kw" />
+                                                        </columns>
+                                                    </TableView>
+                                                </children></AnchorPane>
+                                        </content>
+                                    </Tab>
+                                    <Tab text="Fahrrad anlegen">
+                                        <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
+                                        </content>
+                                    </Tab>
+                                </tabs>
+                            </TabPane>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
           <Tab text="Kunde">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -84,44 +122,6 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-           <Tab text="Fahrrad">
-              <content>
-                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TabPane prefHeight="772.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-
-                              <Tab fx:id="tabViewBike" text="Fahrrad verwalten">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TabPane layoutX="653.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
-                                          <TableView fx:id="TableViewBike" layoutX="14.0" layoutY="14.0" prefHeight="431.0" prefWidth="1226.0">
-                                            <columns>
-                                              <TableColumn fx:id="ColumnBikeId" prefWidth="75.0" text="BikeId" />
-                                              <TableColumn fx:id="ColumnBikeName" prefWidth="114.20001220703125" text="Name" />
-                                                <TableColumn fx:id="ColumnBikeFrameSize" prefWidth="114.20001220703125" text="Rahmengröße" />
-                                                <TableColumn fx:id="ColumnBikeDisign" prefWidth="114.20001220703125" text="Fahrradtyp" />
-                                                <TableColumn fx:id="ColumnBikePricePerDay" prefWidth="114.20001220703125" text="Tagessatz" />
-                                                <TableColumn fx:id="ColumnBikeCondition" prefWidth="114.20001220703125" text="Zustand" />
-                                                <TableColumn fx:id="ColumnBikeContitionComment" prefWidth="347.60015869140625" text="Kommentar" />
-                                                <TableColumn fx:id="ColumnBikeBatteryCapacity" minWidth="0.0" prefWidth="99.0" text="Reichweite" />
-                                                <TableColumn fx:id="ColumnBikePerformence" minWidth="8.39990234375" prefWidth="130.60009765625" text="Leistung \ Kw" />
-                                            </columns>
-                                          </TableView>
-                                       </children></AnchorPane>
-                                 </content>
-                              </Tab>
-                               <Tab text="Fahrrad anlegen">
-                                   <content>
-                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
-                                   </content>
-                               </Tab>
-                           </tabs>
-                        </TabPane>
-                     </children></AnchorPane>
-              </content>
-           </Tab>
             <Tab text="Verleih">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
