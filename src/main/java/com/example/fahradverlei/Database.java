@@ -8,14 +8,20 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Database {
+
+    // Zugangsdaten für die Datenbank
     public static String url = "jdbc:mysql://localhost:3306/fahradverlei";
     public static  String user = "root";
     public static String pass = "";
+
+    // Listen für die TableViews, werden aus der Datenbank eingelesen
     public static ObservableList<Employee> employeeList = FXCollections.observableArrayList();
     public static ObservableList<Customer> customerList = FXCollections.observableArrayList();
     public static ObservableList<Bike> bikeList = FXCollections.observableArrayList();
     public static ObservableList<Rental> rentalList = FXCollections.observableArrayList();
     public static ObservableList<WorkingHours> workingHoursList = FXCollections.observableArrayList();
+
+
 
 
 
