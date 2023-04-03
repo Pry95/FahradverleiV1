@@ -64,7 +64,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TableView fx:id="tableViewEmployee" layoutX="14.0" layoutY="14.0" prefHeight="697.0" prefWidth="1220.0">
+                                          <TableView fx:id="tableViewEmployee" layoutX="14.0" layoutY="14.0" prefHeight="431.0" prefWidth="1220.0">
                                             <columns>
                                               <TableColumn fx:id="ColumnEmployeeID" prefWidth="65.42856121063232" text="ID" />
                                               <TableColumn fx:id="ColumnEmployeeName" prefWidth="122.7142562866211" text="Nachname" />
@@ -108,7 +108,7 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TabPane layoutX="653.0" layoutY="131.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
-                                          <TableView fx:id="TableViewBike" layoutX="14.0" layoutY="14.0" prefHeight="504.0" prefWidth="1226.0">
+                                          <TableView fx:id="TableViewBike" layoutX="14.0" layoutY="14.0" prefHeight="431.0" prefWidth="1226.0">
                                             <columns>
                                               <TableColumn fx:id="ColumnBikeId" prefWidth="75.0" text="BikeId" />
                                               <TableColumn fx:id="ColumnBikeName" prefWidth="114.20001220703125" text="Name" />

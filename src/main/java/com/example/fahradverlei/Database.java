@@ -94,7 +94,7 @@ public class Database {
                     "SELECT * FROM bike");
             while(rs.next()){
 
-                if (Objects.equals(rs.getString("Design"), "EBike")){
+                if (Objects.equals(rs.getString("Design").toLowerCase(), "ebike")){
                     Database.bikeList.add(new EBike(
                             rs.getInt("Id"),
                             rs.getString("Name"),
