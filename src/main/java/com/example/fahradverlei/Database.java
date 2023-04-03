@@ -17,6 +17,8 @@ public class Database {
     public static ObservableList<Rental> rentalList = FXCollections.observableArrayList();
     public static ObservableList<WorkingHours> workingHoursList = FXCollections.observableArrayList();
 
+
+
     /**Liest die Mitarbeiterinformationen von der Datenbank und speichert sie in die Liste Database.employeeList
      */
     public static void readEmployeeFromDatabase(){
