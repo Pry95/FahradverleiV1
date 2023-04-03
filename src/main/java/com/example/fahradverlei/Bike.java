@@ -1,7 +1,6 @@
 package com.example.fahradverlei;
 
 public class Bike {
-
     private int ID;
     private String Name;
     private String FrameSize;

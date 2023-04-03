@@ -1,16 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.fahradverlei.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane prefHeight="587.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TabPane layoutY="7.0" prefHeight="549.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Kunde">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Kunde anlegen">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
+                              </content>
+                            </Tab>
+                            <Tab text="Kunden verwalten">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="329.0" prefWidth="796.0" />
+                              </content>
+                            </Tab>
+                             <Tab text="Kunden löschen">
+                                <content>
+                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                </content>
+                             </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Mitarbeiter">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane layoutX="-51.0" layoutY="102.0" minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
+                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Mitarbeiter anlegen">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="818.0" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Mitarbeiter verwalten">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Mitarbeiter löschen">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+           <Tab text="Fahrrad">
+              <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Fahrrad anlegen">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Fahrrad verwalten">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Fahrrad löschen">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
+              </content>
+           </Tab>
+            <Tab text="Verleih">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                           <tabs>
+                              <Tab text="Fahrrad verleihen">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
+                                 </content>
+                              </Tab>
+                              <Tab text="Fahrrad warten">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
+                                 </content>
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
