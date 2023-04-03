@@ -15,7 +15,10 @@ public class Database {
     public static ObservableList<Customer> customerList = FXCollections.observableArrayList();
     public static ObservableList<Bike> bikeList = FXCollections.observableArrayList();
     public static ObservableList<Rental> rentalList = FXCollections.observableArrayList();
+    public static ObservableList<WorkingHours> workingHoursList = FXCollections.observableArrayList();
 
+    /**Liest die Mitarbeiterinformationen von der Datenbank und speichert sie in die Liste Database.employeeList
+     */
     public static void readEmployeeFromDatabase(){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
@@ -43,6 +46,9 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    /**Liest die Kundeninformationen von der Datenbank und speichert sie in die Liste Database.customerList
+     */
     public static void readCustomerFromDatabase(){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
@@ -69,6 +75,9 @@ public class Database {
         }
 
     }
+
+    /**Liest die Fahrradinformationen von der Datenbank und speichert sie in die Liste Database.bikeList
+     */
     public static void readBikesFromDatabase(){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
@@ -110,6 +119,10 @@ public class Database {
         }
 
     }
+
+    /**Liest die Verleihinformationen je Fahrrad von der Datenbank und speichert sie in die Liste Database.rentalList
+     * @param bikeID FahrradID nach der die Datenbank gefiltert werden soll
+     */
     public static void readRentalFromDatabase(Integer bikeID){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
@@ -132,5 +145,33 @@ public class Database {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    /**Liest die Arbeitszeiten je Mitarbeiter / Jahr / Monat von der Datenbank und speichert sie in die Liste Database.workingHoursList
+     * @param employeeID MitarbeiterID nach der die Datenbank gefiltert werden soll
+     * @param year Jahr nach dem die Datenbank gefiltert werden soll
+     * @param month Monat nach dem die Datenbank gefiltert werden soll
+     */
+    public static void readWorkingHoursFromDatabase(Integer employeeID,Integer year, Integer month ){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(
+                    "SELECT * FROM workinghours where EmployeeId='" + employeeID+ "' AND Year='" + year + "' AND Month='" + month +"'");
+            while(rs.next()){
+                Database.workingHoursList.add(new WorkingHours(
+                        LocalDate.parse(rs.getString("WorkDate")),
+                        rs.getTimestamp("StartOfWork"),
+                        rs.getTimestamp("StartOfBreak"),
+                        rs.getTimestamp("EndOfBreak"),
+                        rs.getTimestamp("EndOfWork"),
+                        rs.getDouble("TotalHours")
+                ));
+            }
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -14,7 +14,6 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         MainWin mainWin = new MainWin();
-        Database.readBikesFromDatabase();
     }
 
     public static void main(String[] args) {
