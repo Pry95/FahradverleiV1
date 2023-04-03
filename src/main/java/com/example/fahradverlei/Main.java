@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.util.Date;
 
 public class Main extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
+
         MainWin mainWin = new MainWin();
+        Database.readBikesFromDatabase();
     }
 
     public static void main(String[] args) {
