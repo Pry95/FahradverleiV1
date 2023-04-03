@@ -62,11 +62,25 @@ public class MainWin {
         public TableColumn<Employee,Integer> ColumnEmployeeHoursPerMonth;
         public TableColumn<Employee,Integer>ColumnEmployeeAccountNumber;
 
+        //Bike tablewidget
+        public TableView<Bike>TableViewBike;
+
+        public TableColumn<Bike,Integer> ColumnBikeId;
+        public TableColumn<Bike,String> ColumnBikeName;
+        public TableColumn<Bike,Integer> ColumnBikeFrameSize;
+        public TableColumn<Bike, String> ColumnBikeDisign;
+        public TableColumn<Employee,Double> ColumnBikePricePerDay;
+        public TableColumn<Employee,String> ColumnBikeCondition;
+        public TableColumn<Employee,String > ColumnBikeContitionComment;
+        public TableColumn<Employee,Integer> ColumnBikeBatteryCapacity;
+        public TableColumn<Employee,Double> ColumnBikePerformence;
+
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillCustomerTableView();
             fillEmployeeTableView();
+            fillBikeTableView();
         }
 
         public void fillEmployeeTableView(){
@@ -98,6 +112,19 @@ public class MainWin {
             columnCustomerTel.setCellValueFactory(new PropertyValueFactory<>("Tel"));
             columnCustomerAccount.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
             tabViewCustomer.setItems(Database.customerList);
+        }
+        public void fillBikeTableView(){
+            Database.readBikesFromDatabase();
+            ColumnBikeId.setCellValueFactory(new PropertyValueFactory<>("ID"));
+            ColumnBikeName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+            ColumnBikeFrameSize.setCellValueFactory(new PropertyValueFactory<>("FrameSize"));
+            ColumnBikeDisign.setCellValueFactory(new PropertyValueFactory<>("DesignType"));
+            ColumnBikePricePerDay.setCellValueFactory(new PropertyValueFactory<>("PricePerDay"));
+            ColumnBikeCondition.setCellValueFactory(new PropertyValueFactory<>("Condition"));
+            ColumnBikeContitionComment.setCellValueFactory(new PropertyValueFactory<>("ConditionComment"));
+            ColumnBikeBatteryCapacity.setCellValueFactory(new PropertyValueFactory<>("BatteryCapacity"));
+            ColumnBikePerformence.setCellValueFactory(new PropertyValueFactory<>("Performance"));
+            TableViewBike.setItems(Database.bikeList);
         }
     }
 }
