@@ -62,7 +62,24 @@
                               </Tab>
                               <Tab text="Mitarbeiter verwalten">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="tableViewEmployee" layoutX="14.0" layoutY="14.0" prefHeight="697.0" prefWidth="1220.0">
+                                            <columns>
+                                              <TableColumn fx:id="ColumnEmployeeID" prefWidth="65.42856121063232" text="ID" />
+                                              <TableColumn fx:id="ColumnEmployeeName" prefWidth="122.7142562866211" text="Nachname" />
+                                                <TableColumn fx:id="ColumnEmployeeFirstName" prefWidth="122.7142562866211" text="Vorname" />
+                                                <TableColumn fx:id="ColumnEmployeeBirth" prefWidth="122.7142562866211" text="Geb.Dat." />
+                                                <TableColumn fx:id="ColumnEmployeeStreets" prefWidth="122.7142562866211" text="Straße" />
+                                                <TableColumn fx:id="ColumnEmployeeHouseNumber" prefWidth="56.85711669921875" text="Nr." />
+                                                <TableColumn fx:id="ColumnEmployeePLZ" prefWidth="75.14288330078125" text="PLZ" />
+                                                <TableColumn fx:id="ColumnEmployeeTel" prefWidth="139.14288330078125" text="Tel" />
+                                                <TableColumn fx:id="ColumnEmployeeHourlyWage" prefWidth="95.1429443359375" text="Stundelohn" />
+                                                <TableColumn fx:id="ColumnEmployeeHoursPerMonth" prefWidth="102.14276123046875" text="Std/Monat" />
+                                                <TableColumn fx:id="ColumnEmployeeAccountNumber" prefWidth="192.0" text="KontoNr" />
+                                            </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                                  </content>
                               </Tab>
                               <Tab text="Mitarbeiter löschen">

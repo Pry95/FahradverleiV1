@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -47,9 +48,42 @@ public class MainWin {
         public TableColumn<Customer,Integer> columnCustomerTel;
         public TableColumn<Customer,String> columnCustomerAccount;
 
+
+        public TableView<Employee> tableViewEmployee;
+        public TableColumn<Employee,Integer> ColumnEmployeeID;
+        public TableColumn<Employee,String> ColumnEmployeeName;
+        public TableColumn<Employee,String> ColumnEmployeeFirstName;
+        public TableColumn<Employee, LocalDate> ColumnEmployeeBirth;
+        public TableColumn<Employee,String> ColumnEmployeeStreets;
+        public TableColumn<Employee,String> ColumnEmployeeHouseNumber;
+        public TableColumn<Employee,Integer> ColumnEmployeePLZ;
+        public TableColumn<Employee,Integer> ColumnEmployeeTel;
+        public TableColumn<Employee,Double> ColumnEmployeeHourlyWage;
+        public TableColumn<Employee,Integer> ColumnEmployeeHoursPerMonth;
+        public TableColumn<Employee,Integer>ColumnEmployeeAccountNumber;
+
+
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillCustomerTableView();
+            fillEmployeeTableView();
+        }
+
+        public void fillEmployeeTableView(){
+            Database.readEmployeeFromDatabase();
+            ColumnEmployeeID.setCellValueFactory(new PropertyValueFactory<>("EmployeeNumber"));
+            ColumnEmployeeName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+            ColumnEmployeeFirstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
+            ColumnEmployeeBirth.setCellValueFactory(new PropertyValueFactory<>("BirthDate"));
+            ColumnEmployeeStreets.setCellValueFactory(new PropertyValueFactory<>("Street"));
+            ColumnEmployeeHouseNumber.setCellValueFactory(new PropertyValueFactory<>("Housenumber"));
+            ColumnEmployeePLZ.setCellValueFactory(new PropertyValueFactory<>("PostalCode"));
+            ColumnEmployeeTel.setCellValueFactory(new PropertyValueFactory<>("Tel"));
+            ColumnEmployeeHourlyWage.setCellValueFactory(new PropertyValueFactory<>("HourlyWage"));
+            ColumnEmployeeHoursPerMonth.setCellValueFactory(new PropertyValueFactory<>("HoursPerMonth"));
+            ColumnEmployeeAccountNumber.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
+            tableViewEmployee.setItems(Database.employeeList);
+
         }
 
         public void fillCustomerTableView(){
