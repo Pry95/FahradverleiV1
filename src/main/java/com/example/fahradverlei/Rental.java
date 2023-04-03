@@ -5,20 +5,20 @@ import java.time.LocalDate;
 public class Rental {
 
     private Integer ID;
-    private Integer bikeID;
-    private Integer customerNumber;
-    private String type;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private Integer BikeID;
+    private Integer CustomerNumber;
+    private String Type;
+    private LocalDate StartDate;
+    private LocalDate EndDate;
 
 
     public Rental(Integer ID, Integer bikeID, Integer customerNumber, String type, LocalDate startDate, LocalDate endDate) {
         this.ID = ID;
-        this.bikeID = bikeID;
-        this.customerNumber = customerNumber;
-        this.type = type;
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.BikeID = bikeID;
+        this.CustomerNumber = customerNumber;
+        this.Type = type;
+        this.StartDate = startDate;
+        this.EndDate = endDate;
     }
 
     public Integer getID() {
@@ -30,42 +30,42 @@ public class Rental {
     }
 
     public Integer getBikeID() {
-        return bikeID;
+        return BikeID;
     }
 
     public void setBikeID(Integer bikeID) {
-        this.bikeID = bikeID;
+        this.BikeID = bikeID;
     }
 
     public Integer getCustomerNumber() {
-        return customerNumber;
+        return CustomerNumber;
     }
 
     public void setCustomerNumber(Integer customerNumber) {
-        this.customerNumber = customerNumber;
+        this.CustomerNumber = customerNumber;
     }
 
     public String getType() {
-        return type;
+        return Type;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.Type = type;
     }
 
     public LocalDate getStartDate() {
-        return startDate;
+        return StartDate;
     }
 
     public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
+        this.StartDate = startDate;
     }
 
     public LocalDate getEndDate() {
-        return endDate;
+        return EndDate;
     }
 
     public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
+        this.EndDate = endDate;
     }
 }
