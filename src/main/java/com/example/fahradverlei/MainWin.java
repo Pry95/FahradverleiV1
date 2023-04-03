@@ -17,7 +17,7 @@ public class MainWin {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("MainWin.fxml"));
         this.controller = new MainWinController();
         fxmlLoader.setController(controller);
-        this.scene = new Scene(fxmlLoader.load(), 600, 400);
+        this.scene = new Scene(fxmlLoader.load(), 1250, 807);
         this.stage = new Stage();
         this.stage.setTitle("Fahrradverleih");
         this.stage.getIcons().add(new Image("file:src/Images/bike.png"));

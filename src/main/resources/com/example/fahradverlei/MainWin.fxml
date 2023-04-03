@@ -3,15 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="587.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="807.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutY="7.0" prefHeight="549.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="7.0" prefHeight="801.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE" stylesheets="@tabPane.css">
         <tabs>
           <Tab text="Kunde">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="771.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                           <tabs>
                             <Tab text="Kunde anlegen">
                               <content>
@@ -38,7 +38,7 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <AnchorPane layoutX="-51.0" layoutY="102.0" minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
-                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="772.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Mitarbeiter anlegen">
                                  <content>
@@ -64,7 +64,7 @@
               <content>
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="772.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Fahrrad anlegen">
                                  <content>
@@ -90,7 +90,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TabPane prefHeight="358.0" prefWidth="850.0" tabClosingPolicy="UNAVAILABLE">
+                        <TabPane prefHeight="770.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
                            <tabs>
                               <Tab text="Fahrrad verleihen">
                                  <content>
