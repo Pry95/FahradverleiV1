@@ -3,21 +3,21 @@ package com.example.fahradverlei;
 public class Bike {
 
     private int ID;
-    private String name;
-    private String frameSize;
-    private String designType;
-    private Double pricePerDay;
-    private String condition;
-    private String conditionComment;
+    private String Name;
+    private String FrameSize;
+    private String DesignType;
+    private Double PricePerDay;
+    private String Condition;
+    private String ConditionComment;
 
     public Bike(int ID, String name, String frameSize, String designType, Double pricePerDay, String condition, String conditionComment) {
         this.ID = ID;
-        this.name = name;
-        this.frameSize = frameSize;
-        this.designType = designType;
-        this.pricePerDay = pricePerDay;
-        this.condition = condition;
-        this.conditionComment = conditionComment;
+        this.Name = name;
+        this.FrameSize = frameSize;
+        this.DesignType = designType;
+        this.PricePerDay = pricePerDay;
+        this.Condition = condition;
+        this.ConditionComment = conditionComment;
     }
 
     public int getID() {
@@ -29,50 +29,50 @@ public class Bike {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public String getFrameSize() {
-        return frameSize;
+        return FrameSize;
     }
 
     public void setFrameSize(String frameSize) {
-        this.frameSize = frameSize;
+        this.FrameSize = frameSize;
     }
 
     public String getDesignType() {
-        return designType;
+        return DesignType;
     }
 
     public void setDesignType(String designType) {
-        this.designType = designType;
+        this.DesignType = designType;
     }
 
     public Double getPricePerDay() {
-        return pricePerDay;
+        return PricePerDay;
     }
 
     public void setPricePerDay(Double pricePerDay) {
-        this.pricePerDay = pricePerDay;
+        this.PricePerDay = pricePerDay;
     }
 
     public String getCondition() {
-        return condition;
+        return Condition;
     }
 
     public void setCondition(String condition) {
-        this.condition = condition;
+        this.Condition = condition;
     }
 
     public String getConditionComment() {
-        return conditionComment;
+        return ConditionComment;
     }
 
     public void setConditionComment(String conditionComment) {
-        this.conditionComment = conditionComment;
+        this.ConditionComment = conditionComment;
     }
 }
