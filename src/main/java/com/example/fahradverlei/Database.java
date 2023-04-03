@@ -111,5 +111,27 @@ public class Database {
         }
 
     }
+    public static void readRentalFromDatabase(Integer bikeID){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(
+                    "SELECT * FROM rental where BikeId='" + bikeID+ "'");
+            while(rs.next()){
+                Database.rentalList.add(new Rental(
+                        rs.getInt("Id"),
+                        rs.getInt("BikeId"),
+                        rs.getInt ("CustomerNumber"),
+                        rs.getString("Typ"),
+                        LocalDate.parse(rs.getString("StartDate")),
+                        LocalDate.parse(rs.getString("EndDate"))
+                ));
+            }
+            con.close();
 
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }
