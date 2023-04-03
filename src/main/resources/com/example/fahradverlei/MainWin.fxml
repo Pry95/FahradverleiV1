@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="807.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane layoutY="7.0" prefHeight="801.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE" stylesheets="@tabPane.css">
+      <TabPane layoutY="7.0" prefHeight="801.0" prefWidth="1250.0" stylesheets="@tabPane.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Kunde">
             <content>
@@ -20,7 +20,22 @@
                             </Tab>
                             <Tab text="Kunden verwalten">
                               <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="329.0" prefWidth="796.0" />
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="329.0" prefWidth="796.0">
+                                       <children>
+                                          <TableView fx:id="tabViewCustomer" layoutX="14.0" layoutY="14.0" prefHeight="431.0" prefWidth="1215.0">
+                                            <columns>
+                                              <TableColumn fx:id="columnCustomerID" prefWidth="75.0" text="ID" />
+                                              <TableColumn fx:id="columnCustomerName" prefWidth="120.5714340209961" text="Nachname" />
+                                                <TableColumn fx:id="columnCustomerFirstName" prefWidth="121.71429443359375" text="Vorname" />
+                                                <TableColumn fx:id="columnCustomerBirth" prefWidth="94.71429443359375" text="Geb.Dat." />
+                                                <TableColumn fx:id="columnCustomerStreet" prefWidth="147.57144165039062" text="Straße" />
+                                                <TableColumn fx:id="columnCustomerHouseNumber" minWidth="1.5714111328125" prefWidth="69.71429443359375" text="Nr." />
+                                                <TableColumn fx:id="columnCustomerPlz" minWidth="6.28570556640625" prefWidth="122.28570556640625" text="PLZ" />
+                                                <TableColumn fx:id="columnCustomerTel" prefWidth="146.28564453125" text="Tel" />
+                                                <TableColumn fx:id="columnCustomerAccount" minWidth="0.0" prefWidth="226.28570556640625" text="KontoNr." />
+                                            </columns>
+                                          </TableView>
+                                       </children></AnchorPane>
                               </content>
                             </Tab>
                              <Tab text="Kunden löschen">

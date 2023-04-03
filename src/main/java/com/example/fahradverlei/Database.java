@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Database {
-
     public static String url = "jdbc:mysql://localhost:3306/fahradverlei";
     public static  String user = "root";
     public static String pass = "";
@@ -60,7 +59,7 @@ public class Database {
                         rs.getInt("PostalCode"),
                         rs.getInt("Tel"),
                         rs.getString("AccountNumber"),
-                        rs.getInt("CustomerNumber ")
+                        rs.getInt("CustomerNumber")
                 ));
             }
             con.close();
