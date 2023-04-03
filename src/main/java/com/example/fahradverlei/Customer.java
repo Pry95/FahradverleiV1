@@ -6,8 +6,8 @@ public class Customer extends  People{
     private int AccountNumber;
     private int CustomerNumber;
 
-    public Customer(int id, String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, int accountNumber, int customerNumber) {
-        super(id, firstName, name, birthDate, street, housenumber, postalCode, tel);
+    public Customer(String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, int accountNumber, int customerNumber) {
+        super(firstName, name, birthDate, street, housenumber, postalCode, tel);
         AccountNumber = accountNumber;
         CustomerNumber = customerNumber;
     }

@@ -3,7 +3,6 @@ package com.example.fahradverlei;
 import java.time.LocalDate;
 
 public class People {
-    private int Id;
     private String FirstName;
     private String Name;
     private LocalDate BirthDate;
@@ -12,13 +11,6 @@ public class People {
     private int PostalCode;
     private int Tel;
 
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
-    }
 
     public String getFirstName() {
         return FirstName;
@@ -76,8 +68,7 @@ public class People {
         Tel = tel;
     }
 
-    public People(int id, String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel) {
-        Id = id;
+    public People(String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel) {
         FirstName = firstName;
         Name = name;
         BirthDate = birthDate;

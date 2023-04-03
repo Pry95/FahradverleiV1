@@ -8,8 +8,8 @@ public class Employee extends People{
     private int AccountNumber;
     private int EmployeeNumber;
 
-    public Employee(int id, String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, double hourlyWage, int hoursPerMonth, int accountNumber, int employeeNumber) {
-        super(id, firstName, name, birthDate, street, housenumber, postalCode, tel);
+    public Employee(String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, double hourlyWage, int hoursPerMonth, int accountNumber, int employeeNumber) {
+        super(firstName, name, birthDate, street, housenumber, postalCode, tel);
         HourlyWage = hourlyWage;
         HoursPerMonth = hoursPerMonth;
         AccountNumber = accountNumber;
