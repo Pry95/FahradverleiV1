@@ -1,0 +1,89 @@
+package com.example.fahradverlei;
+
+import java.time.LocalDate;
+
+public class People {
+    private int Id;
+    private String FirstName;
+    private String Name;
+    private LocalDate BirthDate;
+    private String Street;
+    private String Housenumber;
+    private int PostalCode;
+    private int Tel;
+
+    public int getId() {
+        return Id;
+    }
+
+    public void setId(int id) {
+        Id = id;
+    }
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public void setFirstName(String firstName) {
+        FirstName = firstName;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public LocalDate getBirthDate() {
+        return BirthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        BirthDate = birthDate;
+    }
+
+    public String getStreet() {
+        return Street;
+    }
+
+    public void setStreet(String street) {
+        Street = street;
+    }
+
+    public String getHousenumber() {
+        return Housenumber;
+    }
+
+    public void setHousenumber(String housenumber) {
+        Housenumber = housenumber;
+    }
+
+    public int getPostalCode() {
+        return PostalCode;
+    }
+
+    public void setPostalCode(int postalCode) {
+        PostalCode = postalCode;
+    }
+
+    public int getTel() {
+        return Tel;
+    }
+
+    public void setTel(int tel) {
+        Tel = tel;
+    }
+
+    public People(int id, String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel) {
+        Id = id;
+        FirstName = firstName;
+        Name = name;
+        BirthDate = birthDate;
+        Street = street;
+        Housenumber = housenumber;
+        PostalCode = postalCode;
+        Tel = tel;
+    }
+}
