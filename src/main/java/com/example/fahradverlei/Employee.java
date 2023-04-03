@@ -5,10 +5,10 @@ import java.time.LocalDate;
 public class Employee extends People{
     private double HourlyWage;
     private int HoursPerMonth;
-    private int AccountNumber;
+    private String AccountNumber;
     private int EmployeeNumber;
 
-    public Employee(String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, double hourlyWage, int hoursPerMonth, int accountNumber, int employeeNumber) {
+    public Employee(String firstName, String name, LocalDate birthDate, String street, String housenumber, int postalCode, int tel, double hourlyWage, int hoursPerMonth, String accountNumber, int employeeNumber) {
         super(firstName, name, birthDate, street, housenumber, postalCode, tel);
         HourlyWage = hourlyWage;
         HoursPerMonth = hoursPerMonth;
@@ -32,11 +32,11 @@ public class Employee extends People{
         HoursPerMonth = hoursPerMonth;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return AccountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         AccountNumber = accountNumber;
     }
 
