@@ -8,6 +8,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -78,6 +79,7 @@ public class MainWin {
 
 
         // Bike invest
+        public ImageView imageViewBikeInvest;
         public ComboBox<String>comboBoxInvestBikeType;
         public ComboBox<Integer>comboBoxInvestBikeFrameSize;
         public TextField textFieldBikeInvestName;
@@ -101,6 +103,7 @@ public class MainWin {
             fillEmployeeTableView();
             fillBikeTableView();
             fillBikesCombobox();
+
 
         }
 
@@ -217,5 +220,6 @@ public class MainWin {
                 ChangeBikeWin changeBikeWin = new ChangeBikeWin(mainWin,tempBike);
             }
         }
+
     }
 }
