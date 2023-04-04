@@ -169,12 +169,13 @@ public class MainWin {
             double pricePerDay = Double.parseDouble(textFieldBikeInvestPricePerDay.getText());
             int batteryCapacity = Integer.parseInt(textFieldBikeInvestBatteryCapacity.getText());
             int performance = Integer.parseInt(textFieldBikeInvestPerformance.getText());
-            String typ = comboBoxInvestBikeType.toString();
+            String typ = comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString();
             int frameSize = Integer.parseInt(comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString());
             if(!typ.equals("EBike")){
                 batteryCapacity = 0;
                 performance = 0;
             }
+
             Database.writeNewBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
         }
 
