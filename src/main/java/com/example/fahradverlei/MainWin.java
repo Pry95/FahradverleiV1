@@ -91,6 +91,7 @@ public class MainWin {
         public Button btnDelBike;
         public Button btnChangeBike;
         public Button btnDelCustomer;
+        public Button btnChangeCustomer;
 
         // Konstruktor von MainWinController
         public MainWinController(MainWin mainWin){
@@ -238,5 +239,10 @@ public class MainWin {
                 fillCustomerTableView();
             }
         }
+        @FXML
+        public void  btnChangeCustomer(){
+
+        }
+
     }
 }
