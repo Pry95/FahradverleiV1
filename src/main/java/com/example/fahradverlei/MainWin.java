@@ -235,7 +235,7 @@ public class MainWin {
             if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
                 Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
                 Database.delCustomerFromDatabase(tempCustomer);
-                fillBikeTableView();
+                fillCustomerTableView();
             }
         }
     }
