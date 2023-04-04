@@ -4,10 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -15,6 +12,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWin {
@@ -77,11 +76,22 @@ public class MainWin {
         public TableColumn<Bike,Double> ColumnBikePerformence;
 
 
+        // Bike invest
+        public ComboBox<String>comboBoxInvestBikeType;
+        public ComboBox<Integer>comboBoxInvestBikeFrameSize;
+        public TextField textFieldBikeInvestName;
+        public TextField textFieldBikeInvestPricePerDay;
+        public TextField textFieldBikeInvestBatteryCapacity;
+        public TextField textFieldBikeInvestPerformance;
+        public Button btnInvestNewBike;
+
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillCustomerTableView();
             fillEmployeeTableView();
             fillBikeTableView();
+            fillBikesCombobox();
+
         }
 
         public void fillEmployeeTableView(){
@@ -142,5 +152,15 @@ public class MainWin {
                 };
             });
         }
+        public void fillBikesCombobox(){
+            List<Integer> frameSizeList = new ArrayList<>();
+            for(int i = 14;i <= 64;i++){
+                frameSizeList.add(i);
+            }
+            comboBoxInvestBikeType.getItems().addAll("Rennrad", "Citybike", "Bmx", "EBike", "MountainBike");
+            comboBoxInvestBikeFrameSize.getItems().addAll(frameSizeList);
+
+        }
+
     }
 }

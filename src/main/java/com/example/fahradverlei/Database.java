@@ -182,4 +182,17 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+    /**Schreibt einen neuen Datenstatz in die Tabelle `Bike´
+     */
+    public static void writeNewBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            PreparedStatement ps = con.prepareStatement("INSERT INTO `bike`( `Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`" +
+                    ", `BatteryCapacity`, `Performance`) VALUES ('"+name+"','"+frameSize+"','"+design+"','"+pricePerDay+"','"+bikeCondition+"','" +
+                    ""+conditionComment+"','"+battery+"','"+performance+"')");
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
