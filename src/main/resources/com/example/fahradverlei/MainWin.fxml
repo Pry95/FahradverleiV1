@@ -55,7 +55,7 @@
                                            <Button fx:id="btnInvestNewBike" layoutX="704.0" layoutY="456.0" mnemonicParsing="false" onAction="#btnInvestNewBike" prefHeight="56.0" prefWidth="312.0" text="Einfügen" />
                                           <ImageView fx:id="imageViewBikeInvest" fitHeight="351.0" fitWidth="312.0" layoutX="704.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../../Images/bike.png" />
+                                                <Image url="@../../../Images/bike.png" />
                                              </image></ImageView>
                                        </children></AnchorPane>
                                         </content>
