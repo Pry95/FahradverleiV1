@@ -162,6 +162,9 @@ public class ChangeBikeWin {
 
         }
 
+        /**
+         * Befüllt die Comboboxen mit den Werten für DesignType, Condition und FrameSize
+         */
         public void fillBikesCombobox(){
             List<Integer> frameSizeList = new ArrayList<>();
             for(int i = 14;i <= 64;i++){

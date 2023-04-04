@@ -281,4 +281,21 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    /** Löscht den übergebenen Kunden aus der Datenbank
+     * @param tempCustomer Kunde der aus der Datenbank gelöscht werden soll
+     */
+    public static void delCustomerFromDatabase(Customer tempCustomer){
+        try {
+            Database.rentalList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            stm.execute("DELETE FROM customer where CustomerNumber ='" + tempCustomer.getCustomerNumber() + "'");
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

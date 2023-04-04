@@ -90,6 +90,7 @@ public class MainWin {
         public Button btnInvestNewBike;
         public Button btnDelBike;
         public Button btnChangeBike;
+        public Button btnDelCustomer;
 
         // Konstruktor von MainWinController
         public MainWinController(MainWin mainWin){
@@ -229,5 +230,13 @@ public class MainWin {
             textFieldBikeInvestPricePerDay.clear();
         }
 
+        @FXML
+        public void btnDelCustomer(){
+            if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
+                Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
+                Database.delCustomerFromDatabase(tempCustomer);
+                fillBikeTableView();
+            }
+        }
     }
 }
