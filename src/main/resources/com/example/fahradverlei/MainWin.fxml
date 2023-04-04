@@ -49,7 +49,7 @@
                                           <Label layoutX="57.0" layoutY="179.0" prefHeight="26.0" prefWidth="231.0" text="Batterkamazität (Nur bei EBike)" />
                                           <Label layoutX="55.0" layoutY="243.0" prefHeight="26.0" prefWidth="234.0" text="Leistung (Nur bei Ebike" />
                                           <TextField fx:id="textFieldBikeInvestPerformance" layoutX="55.0" layoutY="269.0" prefHeight="37.0" prefWidth="235.0" />
-                                           <Button fx:id="btnInvestNewBike" layoutX="56.0" layoutY="430.0" mnemonicParsing="false"  text="Einfügen" />
+                                           <Button fx:id="btnInvestNewBike" layoutX="56.0" layoutY="430.0" mnemonicParsing="false" onAction="#btnInvestNewBike" text="Einfügen" />
                                           <Button layoutX="216.0" layoutY="430.0" mnemonicParsing="false" text="Button" />
                                        </children></AnchorPane>
                                         </content>

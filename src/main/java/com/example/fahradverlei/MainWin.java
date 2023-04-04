@@ -1,5 +1,6 @@
 package com.example.fahradverlei;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -161,7 +162,8 @@ public class MainWin {
             comboBoxInvestBikeFrameSize.getItems().addAll(frameSizeList);
 
         }
-        public void writeNewBikeInDatabase(){
+        @FXML
+        public void btnInvestNewBike(){
             String name = textFieldBikeInvestName.getText();
             double pricePerDay = Double.parseDouble(textFieldBikeInvestPricePerDay.getText());
             int batteryCapacity = Integer.parseInt(textFieldBikeInvestBatteryCapacity.getText());
@@ -174,6 +176,5 @@ public class MainWin {
             }
             Database.writeNewBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
         }
-
     }
 }
