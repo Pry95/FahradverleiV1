@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -56,6 +53,8 @@ public class ChangeBikeWin {
         public TextField txtFieldPricePerDay;
         public TextField txtFieldBatteryCap;
         public TextField txtFieldPerformance;
+        public Label lblBatteryCap;
+        public Label lblPerformance;
         public TextArea txtAreaConditionComment;
         public ComboBox<Integer> comboBoxFrameSize;
         public ComboBox<String> comboBoxDesignType;
@@ -100,10 +99,44 @@ public class ChangeBikeWin {
                         0,
                         0);
             }
+            Database.readBikesFromDatabase();
+            mainWin.controller.fillBikeTableView();
+            changeBikeWin.stage.close();
+
         }
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+            if (!Objects.equals(tempBike.getDesignType(), "EBike")){
+                txtFieldBatteryCap.setVisible(false);
+                txtFieldPerformance.setVisible(false);
+                lblBatteryCap.setVisible(false);
+                lblPerformance.setVisible(false);
+
+            }
+            comboBoxDesignType.setOnAction(event -> {
+                if(!Objects.equals(comboBoxDesignType.getSelectionModel().getSelectedItem(), "EBike")){
+                    txtFieldBatteryCap.setText("");
+                    txtFieldBatteryCap.setVisible(false);
+                    txtFieldPerformance.setText("");
+                    txtFieldPerformance.setVisible(false);
+                    lblBatteryCap.setVisible(false);
+                    lblPerformance.setVisible(false);
+                }
+                else {
+                    try {
+                        txtFieldBatteryCap.setVisible(true);
+                        txtFieldPerformance.setVisible(true);
+                        lblBatteryCap.setVisible(true);
+                        lblPerformance.setVisible(true);
+                        txtFieldBatteryCap.setText(String.valueOf(((EBike) tempBike).getBatteryCapacity()));
+                        txtFieldPerformance.setText(String.valueOf(((EBike) tempBike).getPerformance()));
+
+                    } catch (Exception e) {
+                    }
+                }
+
+            });
             fillBikesCombobox();
             txtFieldID.setText(String.valueOf(tempBike.getID()));
             txtFieldName.setText(tempBike.getName());
@@ -120,6 +153,7 @@ public class ChangeBikeWin {
             catch (Exception e){
 
             }
+
         }
 
         public void fillBikesCombobox(){
