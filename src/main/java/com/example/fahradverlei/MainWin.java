@@ -25,7 +25,7 @@ public class MainWin {
 
     public MainWin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("MainWin.fxml"));
-        this.controller = new MainWinController();
+        this.controller = new MainWinController(this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 1250, 807);
         this.stage = new Stage();
@@ -84,8 +84,16 @@ public class MainWin {
         public TextField textFieldBikeInvestPricePerDay;
         public TextField textFieldBikeInvestBatteryCapacity;
         public TextField textFieldBikeInvestPerformance;
+
+        public MainWin mainWin;
         public Button btnInvestNewBike;
         public Button btnDelBike;
+        public Button btnChangeBike;
+
+        // Konstruktor von MainWinController
+        public MainWinController(MainWin mainWin){
+            this.mainWin = mainWin;
+        }
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -192,12 +200,21 @@ public class MainWin {
             Database.writeNewBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
         }
 
+        // Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
         @FXML
         public void btnDelBike(){
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
-                Bike tempBike = (Bike)TableViewBike.getSelectionModel().getSelectedItem();
+                Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
                 Database.delBikeFromDatabase(tempBike);
                 fillBikeTableView();
+            }
+        }
+        // Erstellt ein neues Fenster wo die Daten für das ausgewählte Fahrrad geändert werden können
+        @FXML
+        public void btnChangeBike() throws IOException {
+            if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
+                Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
+                ChangeBikeWin changeBikeWin = new ChangeBikeWin(mainWin,tempBike);
             }
         }
     }
