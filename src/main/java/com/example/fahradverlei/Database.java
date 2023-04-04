@@ -187,7 +187,8 @@ public class Database {
     public static void writeNewBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
-            PreparedStatement ps = con.prepareStatement("INSERT INTO `bike`( `Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`" +
+            Statement stm = con.createStatement();
+            stm.execute("INSERT INTO bike( `Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`" +
                     ", `BatteryCapacity`, `Performance`) VALUES ('"+name+"','"+frameSize+"','"+design+"','"+pricePerDay+"','"+bikeCondition+"','" +
                     ""+conditionComment+"','"+battery+"','"+performance+"')");
             con.close();
