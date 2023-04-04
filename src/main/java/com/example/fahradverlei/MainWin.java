@@ -85,6 +85,7 @@ public class MainWin {
         public TextField textFieldBikeInvestBatteryCapacity;
         public TextField textFieldBikeInvestPerformance;
         public Button btnInvestNewBike;
+        public Button btnDelBike;
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -175,6 +176,15 @@ public class MainWin {
                 performance = 0;
             }
             Database.writeNewBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
+        }
+
+        @FXML
+        public void btnDelBike(){
+            if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
+                Bike tempBike = (Bike)TableViewBike.getSelectionModel().getSelectedItem();
+                Database.delBikeFromDatabase(tempBike);
+                fillBikeTableView();
+            }
         }
     }
 }

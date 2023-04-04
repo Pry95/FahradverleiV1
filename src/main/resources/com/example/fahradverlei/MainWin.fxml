@@ -32,6 +32,7 @@
                                                             <TableColumn fx:id="ColumnBikePerformence" minWidth="8.39990234375" prefWidth="130.60009765625" text="Leistung \ Kw" />
                                                         </columns>
                                                     </TableView>
+                                          <Button fx:id="btnDelBike" layoutX="853.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnDelBike" prefHeight="53.0" prefWidth="205.0" text="Fahrrad löschen" />
                                                 </children></AnchorPane>
                                         </content>
                                     </Tab>

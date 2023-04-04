@@ -29,6 +29,7 @@ public class Database {
      */
     public static void readEmployeeFromDatabase(){
         try {
+            Database.employeeList.clear();
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
@@ -59,6 +60,7 @@ public class Database {
      */
     public static void readCustomerFromDatabase(){
         try {
+            Database.customerList.clear();
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
@@ -88,6 +90,7 @@ public class Database {
      */
     public static void readBikesFromDatabase(){
         try {
+            Database.bikeList.clear();
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
@@ -133,6 +136,7 @@ public class Database {
      */
     public static void readRentalFromDatabase(Integer bikeID){
         try {
+            Database.rentalList.clear();
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
@@ -162,6 +166,7 @@ public class Database {
      */
     public static void readWorkingHoursFromDatabase(Integer employeeID,Integer year, Integer month ){
         try {
+            Database.workingHoursList.clear();
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
@@ -194,6 +199,22 @@ public class Database {
             con.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /** Löscht das übergebene Bike aus der Datenbank
+     * @param tempBike Bike das aus der Datenbank gelöscht werden soll
+     */
+    public static void delBikeFromDatabase(Bike tempBike){
+        try {
+            Database.rentalList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            stm.execute("DELETE FROM bike where Id='" + tempBike.getID()+ "'");
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
