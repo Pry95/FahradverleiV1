@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -200,7 +199,9 @@ public class MainWin {
                 performance = 0;
             }
 
-            Database.writeNewBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
+            Database.writeNewElectroBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
+            setBikeInvestWindow();
+            fillBikeTableView();
         }
 
         // Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
@@ -219,6 +220,13 @@ public class MainWin {
                 Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
                 ChangeBikeWin changeBikeWin = new ChangeBikeWin(mainWin,tempBike);
             }
+        }
+        @FXML
+        public void setBikeInvestWindow(){
+            textFieldBikeInvestBatteryCapacity.clear();
+            textFieldBikeInvestName.clear();
+            textFieldBikeInvestPerformance.clear();
+            textFieldBikeInvestPricePerDay.clear();
         }
 
     }

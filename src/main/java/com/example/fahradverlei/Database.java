@@ -190,7 +190,26 @@ public class Database {
     }
     /**Schreibt einen neuen Datenstatz in die Tabelle `Bike´
      */
-    public static void writeNewBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){
+    public static void writeNewElectroBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            PreparedStatement stm = con.prepareStatement("INSERT INTO bike(`Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`, `BatteryCapacity`, `Performance`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            stm.setString(1, name);
+            stm.setInt(2, frameSize);
+            stm.setString(3, design);
+            stm.setDouble(4, pricePerDay);
+            stm.setString(5, bikeCondition);
+            stm.setString(6, conditionComment);
+            stm.setInt(7, battery);
+            stm.setInt(8, performance);
+            stm.executeUpdate();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+    public static void writeNewBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance) {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             PreparedStatement stm = con.prepareStatement("INSERT INTO bike(`Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`, `BatteryCapacity`, `Performance`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
