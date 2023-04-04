@@ -161,6 +161,19 @@ public class MainWin {
             comboBoxInvestBikeFrameSize.getItems().addAll(frameSizeList);
 
         }
+        public void writeNewBikeInDatabase(){
+            String name = textFieldBikeInvestName.getText();
+            double pricePerDay = Double.parseDouble(textFieldBikeInvestPricePerDay.getText());
+            int batteryCapacity = Integer.parseInt(textFieldBikeInvestBatteryCapacity.getText());
+            int performance = Integer.parseInt(textFieldBikeInvestPerformance.getText());
+            String typ = comboBoxInvestBikeType.toString();
+            int frameSize = Integer.parseInt(comboBoxInvestBikeFrameSize.toString());
+            if(!typ.equals("EBike")){
+                batteryCapacity = Integer.parseInt(null);
+                performance = Integer.parseInt(null);
+            }
+            Database.writeNewBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
+        }
 
     }
 }
