@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -69,11 +70,11 @@ public class MainWin {
         public TableColumn<Bike,String> ColumnBikeName;
         public TableColumn<Bike,Integer> ColumnBikeFrameSize;
         public TableColumn<Bike, String> ColumnBikeDisign;
-        public TableColumn<Employee,Double> ColumnBikePricePerDay;
-        public TableColumn<Employee,String> ColumnBikeCondition;
-        public TableColumn<Employee,String > ColumnBikeContitionComment;
-        public TableColumn<Employee,Integer> ColumnBikeBatteryCapacity;
-        public TableColumn<Employee,Double> ColumnBikePerformence;
+        public TableColumn<Bike,Double> ColumnBikePricePerDay;
+        public TableColumn<Bike,String> ColumnBikeCondition;
+        public TableColumn<Bike,String > ColumnBikeContitionComment;
+        public TableColumn<Bike,Integer> ColumnBikeBatteryCapacity;
+        public TableColumn<Bike,Double> ColumnBikePerformence;
 
 
         @Override
@@ -125,6 +126,21 @@ public class MainWin {
             ColumnBikeBatteryCapacity.setCellValueFactory(new PropertyValueFactory<>("BatteryCapacity"));
             ColumnBikePerformence.setCellValueFactory(new PropertyValueFactory<>("Performance"));
             TableViewBike.setItems(Database.bikeList);
+            // Fügt das € Zeichen in der BikeTableView bei PreisPerDay hinzu
+            ColumnBikePricePerDay.setCellFactory(column -> {
+                return new TableCell<Bike, Double>() {
+                    @Override
+                    protected void updateItem(Double item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                            setStyle("");
+                        } else {
+                            setText(String.format("%.2f €", item));
+                        }
+                    }
+                };
+            });
         }
     }
 }
