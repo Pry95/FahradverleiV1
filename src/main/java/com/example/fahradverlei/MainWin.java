@@ -244,7 +244,11 @@ public class MainWin {
             }
         }
         @FXML
-        public void  btnChangeCustomer(){
+        public void  btnChangeCustomer() throws IOException {
+            if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
+                Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
+                ChangeCustomerWin changeCustomerWin = new ChangeCustomerWin(mainWin,tempCustomer);
+            }
 
         }
 
