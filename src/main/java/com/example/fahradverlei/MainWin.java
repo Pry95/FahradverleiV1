@@ -165,11 +165,24 @@ public class MainWin {
         }
         @FXML
         public void btnInvestNewBike(){
+            int batteryCapacity;
+            int performance;
+
+            String tempBatteryCapacity = textFieldBikeInvestBatteryCapacity.getText() ;
+            String tempPerformance = textFieldBikeInvestPerformance.getText();
+            if(tempBatteryCapacity.equals("")){
+                batteryCapacity = 0;
+            }else {
+                batteryCapacity = Integer.parseInt(tempBatteryCapacity);
+            }
+            if(tempPerformance.equals("")){
+                performance = 0;
+            }else{
+                performance = Integer.parseInt(tempPerformance);
+            }
+            String typ = comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString();
             String name = textFieldBikeInvestName.getText();
             double pricePerDay = Double.parseDouble(textFieldBikeInvestPricePerDay.getText());
-            int batteryCapacity = Integer.parseInt(textFieldBikeInvestBatteryCapacity.getText());
-            int performance = Integer.parseInt(textFieldBikeInvestPerformance.getText());
-            String typ = comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString();
             int frameSize = Integer.parseInt(comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString());
             if(!typ.equals("EBike")){
                 batteryCapacity = 0;
