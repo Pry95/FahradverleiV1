@@ -92,7 +92,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="379.0" layoutY="137.0" text="Akku Kapa.:" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="lblBatteryCap" layoutX="379.0" layoutY="137.0" text="Akku Kapa.:" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <padding>
                   <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                </padding>
@@ -100,7 +100,7 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
             </Label>
-            <Label layoutX="379.0" layoutY="200.0" text="Leistung:" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label fx:id="lblPerformance" layoutX="379.0" layoutY="200.0" text="Leistung:" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <padding>
                   <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                </padding>
@@ -142,5 +142,6 @@
       </GridPane>
       <Button fx:id="btnSave" layoutX="129.0" layoutY="339.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="41.0" prefWidth="150.0" text="Änderungen speichern" />
       <Button fx:id="btnBack" layoutX="434.0" layoutY="339.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="41.0" prefWidth="150.0" text="Zurück" />
+      <Label fx:id="lblInfo" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="307.0" prefHeight="25.0" prefWidth="510.0" />
    </children>
 </AnchorPane>
