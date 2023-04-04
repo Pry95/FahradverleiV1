@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Database {
@@ -217,6 +218,44 @@ public class Database {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             stm.execute("DELETE FROM bike where Id='" + tempBike.getID()+ "'");
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /** Ändert die Daten des Bikes in der Datenbank
+     */
+    public static void changeBikeDataFromDataBase(Integer Id ,String name,Integer frameSize,String design,Double pricePerDay,String condition,String ConditionComment,Integer batteryCapacity, Integer performance){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            if (Objects.equals(design, "EBike")){
+                String update = "UPDATE bike SET Name ='" + name +
+                        "',FrameSize ='" + frameSize +
+                        "',Design ='" + design +
+                        "',PricePerDay ='" + pricePerDay +
+                        "',BikeCondition ='" + condition +
+                        "',ConditionComment ='" + ConditionComment +
+                        "',BatteryCapacity ='" + batteryCapacity +
+                        "',Performance ='" + performance +
+                        "' WHERE Id='" + Id + "'";
+                stm.execute(update);
+            }
+            else{
+                String update = "UPDATE bike SET Name ='" + name +
+                        "',FrameSize ='" + frameSize +
+                        "',Design ='" + design +
+                        "',PricePerDay ='" + pricePerDay +
+                        "',BikeCondition ='" + condition +
+                        "',ConditionComment ='" + ConditionComment +
+                        "',BatteryCapacity = NULL" +
+                        ",Performance = NULL" +
+                        " WHERE Id='" + Id + "'";
+                stm.execute(update);
+            }
+
             con.close();
 
         } catch (SQLException e) {

@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ChangeBikeWin {
@@ -75,18 +76,43 @@ public class ChangeBikeWin {
         @FXML
         public void btnSave(){
 
+            if (Objects.equals(comboBoxDesignType.getValue(), "EBike")){
+                Database.changeBikeDataFromDataBase(
+                        Integer.parseInt(txtFieldID.getText()),
+                        txtFieldName.getText(),
+                        comboBoxFrameSize.getValue(),
+                        comboBoxDesignType.getValue(),
+                        Double.parseDouble(txtFieldPricePerDay.getText()),
+                        comboBoxCondition.getValue(),
+                        txtAreaConditionComment.getText(),
+                        Integer.valueOf(txtFieldBatteryCap.getText()),
+                        Integer.valueOf(txtFieldPerformance.getText()));
+            }
+            else{
+                Database.changeBikeDataFromDataBase(
+                        Integer.parseInt(txtFieldID.getText()),
+                        txtFieldName.getText(),
+                        comboBoxFrameSize.getValue(),
+                        comboBoxDesignType.getValue(),
+                        Double.parseDouble(txtFieldPricePerDay.getText()),
+                        comboBoxCondition.getValue(),
+                        txtAreaConditionComment.getText(),
+                        0,
+                        0);
+            }
         }
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+            fillBikesCombobox();
             txtFieldID.setText(String.valueOf(tempBike.getID()));
             txtFieldName.setText(tempBike.getName());
-            comboBoxFrameSize.setPromptText(String.valueOf(tempBike.getFrameSize()));
-            comboBoxDesignType.setPromptText(tempBike.getDesignType());
+            comboBoxFrameSize.setValue(Integer.parseInt(tempBike.getFrameSize()));
+            comboBoxDesignType.setValue(tempBike.getDesignType());
             txtFieldPricePerDay.setText(String.valueOf(tempBike.getPricePerDay()));
-            comboBoxCondition.setPromptText(tempBike.getCondition());
+            comboBoxCondition.setValue(tempBike.getCondition());
             txtAreaConditionComment.setText(tempBike.getConditionComment());
-            fillBikesCombobox();
+
             try{
                 txtFieldBatteryCap.setText(String.valueOf(((EBike)tempBike).getBatteryCapacity()));
                 txtFieldPerformance.setText(String.valueOf(((EBike)tempBike).getPerformance()));
