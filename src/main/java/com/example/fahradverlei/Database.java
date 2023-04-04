@@ -188,7 +188,7 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
-    /**Schreibt einen neuen Datenstatz in die Tabelle `Bike´
+    /**Schreibt einen neuen Datenstatz vom typ Ebike in die Tabelle `Bike´
      */
     public static void writeNewElectroBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){
         try {
@@ -209,17 +209,19 @@ public class Database {
         }
 
     }
+
+    /**Schreibt einen neuen Datenstatz vom typ bike in die Tabelle `Bike´
+     */
     public static void writeNewBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment) {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
-            PreparedStatement stm = con.prepareStatement("INSERT INTO bike(`Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement stm = con.prepareStatement("INSERT INTO bike(`Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`) VALUES (?, ?, ?, ?, ?, ?)");
             stm.setString(1, name);
             stm.setInt(2, frameSize);
             stm.setString(3, design);
             stm.setDouble(4, pricePerDay);
             stm.setString(5, bikeCondition);
             stm.setString(6, conditionComment);
-
             stm.executeUpdate();
             con.close();
         } catch (SQLException e) {

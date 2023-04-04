@@ -198,9 +198,9 @@ public class MainWin {
             int frameSize = Integer.parseInt(comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString());
             if(!typ.equals("EBike")){
                 Database.writeNewBikeInDatabase(name, frameSize, typ, pricePerDay, "Sehr Gut", "Passt soweit alles");
+            }else{
+                Database.writeNewElectroBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
             }
-
-            Database.writeNewElectroBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
             setBikeInvestWindow();
             fillBikeTableView();
         }
@@ -229,8 +229,7 @@ public class MainWin {
             textFieldBikeInvestPerformance.clear();
             textFieldBikeInvestPricePerDay.clear();
             comboBoxInvestBikeFrameSize.getSelectionModel().clearSelection();
-            fillBikesCombobox();
-            comboBoxInvestBikeFrameSize.setPromptText("Rahmengröße");
+            comboBoxInvestBikeType.getSelectionModel().clearSelection();
 
 
         }
