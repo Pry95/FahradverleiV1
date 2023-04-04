@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
@@ -55,6 +56,7 @@ public class ChangeCustomerWin {
         public TextField txtFieldAccountNumber;
         public Button btnSave;
         public Button btnBack;
+        public Label lblInfo;
 
         // Konstruktor von ChangeBikeWinController
         public ChangeCustomerController(MainWin mainWin, Customer tempCustomer, ChangeCustomerWin changeBikeWin) {
@@ -66,6 +68,15 @@ public class ChangeCustomerWin {
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
+            txtFieldID.setText(String.valueOf(tempCustomer.getCustomerNumber()));
+            txtFieldFristName.setText(tempCustomer.getFirstName());
+            txtFieldName.setText(tempCustomer.getName());
+            datePickerBirth.setValue(tempCustomer.getBirthDate());
+            txtFieldStreet.setText(tempCustomer.getStreet());
+            txtFieldHouseNumber.setText(String.valueOf(tempCustomer.getHousenumber()));
+            txtFieldPLZ.setText(String.valueOf(tempCustomer.getPostalCode()));
+            txtFieldTel.setText(String.valueOf(tempCustomer.getTel()));
+            txtFieldAccountNumber.setText(tempCustomer.getAccountNumber());
         }
 
         @FXML
@@ -74,6 +85,23 @@ public class ChangeCustomerWin {
         }
         @FXML
         public void btnSave(){
+            try{
+                Customer temp = new Customer(
+                        txtFieldFristName.getText(),
+                        txtFieldName.getText(),
+                        datePickerBirth.getValue(),
+                        txtFieldStreet.getText(),
+                        txtFieldHouseNumber.getText(),
+                        Integer.parseInt(txtFieldPLZ.getText()),
+                        Integer.parseInt(txtFieldTel.getText()),
+                        txtFieldAccountNumber.getText(),
+                        Integer.parseInt(txtFieldID.getText())
+                );
+            }
+
+            catch (Exception e){
+                lblInfo.setText("Falsche Eingabe!");
+            }
 
         }
     }
