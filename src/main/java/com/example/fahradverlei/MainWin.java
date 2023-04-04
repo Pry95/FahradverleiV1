@@ -90,6 +90,7 @@ public class MainWin {
         public Button btnDelBike;
         public Button btnChangeBike;
 
+        // Konstruktor von MainWinController
         public MainWinController(MainWin mainWin){
             this.mainWin = mainWin;
         }
@@ -201,7 +202,6 @@ public class MainWin {
                 Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
                 ChangeBikeWin changeBikeWin = new ChangeBikeWin(mainWin,tempBike);
             }
-
         }
     }
 }

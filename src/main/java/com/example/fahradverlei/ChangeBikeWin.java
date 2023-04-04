@@ -33,6 +33,7 @@ public class ChangeBikeWin {
         public MainWin mainWin;
         public Bike tempBike;
 
+        // Konstruktor von ChangeBikeWinController
         public ChangeBikeWinController(MainWin mainWin, Bike tempBike) {
             this.mainWin = mainWin;
             this.tempBike = tempBike;
