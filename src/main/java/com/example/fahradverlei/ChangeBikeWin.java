@@ -3,6 +3,7 @@ package com.example.fahradverlei;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.LightBase;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -55,6 +56,7 @@ public class ChangeBikeWin {
         public TextField txtFieldPerformance;
         public Label lblBatteryCap;
         public Label lblPerformance;
+        public Label lblInfo;
         public TextArea txtAreaConditionComment;
         public ComboBox<Integer> comboBoxFrameSize;
         public ComboBox<String> comboBoxDesignType;
@@ -75,34 +77,38 @@ public class ChangeBikeWin {
         @FXML
         public void btnSave(){
 
-            if (Objects.equals(comboBoxDesignType.getValue(), "EBike")){
-                Database.changeBikeDataFromDataBase(
-                        Integer.parseInt(txtFieldID.getText()),
-                        txtFieldName.getText(),
-                        comboBoxFrameSize.getValue(),
-                        comboBoxDesignType.getValue(),
-                        Double.parseDouble(txtFieldPricePerDay.getText()),
-                        comboBoxCondition.getValue(),
-                        txtAreaConditionComment.getText(),
-                        Integer.valueOf(txtFieldBatteryCap.getText()),
-                        Integer.valueOf(txtFieldPerformance.getText()));
+            try{
+                if (Objects.equals(comboBoxDesignType.getValue(), "EBike")){
+                    Database.changeBikeDataFromDataBase(
+                            Integer.parseInt(txtFieldID.getText()),
+                            txtFieldName.getText(),
+                            comboBoxFrameSize.getValue(),
+                            comboBoxDesignType.getValue(),
+                            Double.parseDouble(txtFieldPricePerDay.getText()),
+                            comboBoxCondition.getValue(),
+                            txtAreaConditionComment.getText(),
+                            Integer.valueOf(txtFieldBatteryCap.getText()),
+                            Integer.valueOf(txtFieldPerformance.getText()));
+                }
+                else{
+                    Database.changeBikeDataFromDataBase(
+                            Integer.parseInt(txtFieldID.getText()),
+                            txtFieldName.getText(),
+                            comboBoxFrameSize.getValue(),
+                            comboBoxDesignType.getValue(),
+                            Double.parseDouble(txtFieldPricePerDay.getText()),
+                            comboBoxCondition.getValue(),
+                            txtAreaConditionComment.getText(),
+                            0,
+                            0);
+                }
+                Database.readBikesFromDatabase();
+                mainWin.controller.fillBikeTableView();
+                changeBikeWin.stage.close();
             }
-            else{
-                Database.changeBikeDataFromDataBase(
-                        Integer.parseInt(txtFieldID.getText()),
-                        txtFieldName.getText(),
-                        comboBoxFrameSize.getValue(),
-                        comboBoxDesignType.getValue(),
-                        Double.parseDouble(txtFieldPricePerDay.getText()),
-                        comboBoxCondition.getValue(),
-                        txtAreaConditionComment.getText(),
-                        0,
-                        0);
+            catch (Exception e){
+                lblInfo.setText("Falsche Eingabe!");
             }
-            Database.readBikesFromDatabase();
-            mainWin.controller.fillBikeTableView();
-            changeBikeWin.stage.close();
-
         }
 
         @Override
