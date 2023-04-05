@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Database {
@@ -168,7 +169,7 @@ public class Database {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
-                    "SELECT * FROM workinghours where EmployeeId='" + employeeID+ "'");
+                    "SELECT * FROM workinghours where EmployeeId='" + employeeID+ "'" + " ORDER BY WorkDate DESC");
             while(rs.next()){
                 Database.workingHoursList.add(new WorkingHours(
                         LocalDate.parse(rs.getString("WorkDate")),
@@ -270,7 +271,6 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
-
 
     /** Löscht das übergebene Bike aus der Datenbank
      * @param tempBike Bike das aus der Datenbank gelöscht werden soll
@@ -401,6 +401,32 @@ public class Database {
                     "',AccountNumber ='" + employee.getAccountNumber() +
                     "' WHERE EmployeeNumber='" + employee.getEmployeeNumber() + "'";
             stm.execute(update);
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /** Fügt einen Eintrag in die Datenbank WokringHours hinzu
+     */
+    public static void writeWorkingHoursToDatabase(Employee employee, WorkingHours workingHours){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            String insert = "INSERT INTO workinghours(EmployeeId,WorkDate,Year,Month,Day,StartOfWork,StartOfBreak,EndOfBreak,EndOfWork,TotalHours) " +
+                    "VALUES ('"
+                    +employee.getEmployeeNumber()+"','"
+                    +workingHours.getWorkingDate()+"','"
+                    +workingHours.getWorkingDate().getYear()+"','"
+                    +workingHours.getWorkingDate().getMonthValue()+"','"
+                    +workingHours.getWorkingDate().getDayOfMonth()+"','"
+                    +workingHours.getWorkingStart()+"','"
+                    +workingHours.getBreakStart()+"','"
+                    +workingHours.getBreakEnd()+"','"
+                    +workingHours.getWorkEnd()+"','"
+                    +workingHours.getTotalHours()+"')";
+            stm.execute(insert);
             con.close();
 
         } catch (SQLException e) {

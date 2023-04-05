@@ -109,21 +109,47 @@ public class WorkingHourWin {
         @FXML
         public void btnSave(){
 
-            long hours =  (comboEnd.getValue().getTime() -comboStart.getValue().getTime()) -
-                    (comboBreakEnd.getValue().getTime()-comboBreakStart.getValue().getTime()) ;
-            double hour = (double)hours /1000/60/60;
-
-            try{
-                WorkingHours workingHour = new WorkingHours(
-                        datepicker.getValue(),
-                        comboStart.getValue(),
-                        comboBreakStart.getValue(),
-                        comboBreakEnd.getValue(),
-                        comboEnd.getValue(),hour
-                        );
+            if (comboStart.getValue().getTime() < comboBreakStart.getValue().getTime() &&
+                    comboBreakStart.getValue().getTime() < comboBreakEnd.getValue().getTime() &&
+                    comboBreakEnd.getValue().getTime() < comboEnd.getValue().getTime() &&
+                    proofIfDateExists(datepicker.getValue())){
+                try{
+                    long hours =  (comboEnd.getValue().getTime() -comboStart.getValue().getTime()) -
+                            (comboBreakEnd.getValue().getTime()-comboBreakStart.getValue().getTime()) ;
+                    double hour = Math.round(((double)hours /1000/60/60) * 100.0) / 100.0;
+                    WorkingHours workingHour = new WorkingHours(
+                            datepicker.getValue(),
+                            comboStart.getValue(),
+                            comboBreakStart.getValue(),
+                            comboBreakEnd.getValue(),
+                            comboEnd.getValue(),hour
+                    );
+                    Database.writeWorkingHoursToDatabase(tempEmployee,workingHour);
+                    fillTableViewWorkingHour();
+                    lblInfo.setText("Eintrag wurde hinzugefügt!");
+                }
+                catch (Exception e){
+                    lblInfo.setText("Falsche Eingabe!");
+                }
             }
-            catch (Exception e){
+            else{
                 lblInfo.setText("Falsche Eingabe!");
+            }
+
+
+        }
+        public boolean proofIfDateExists(LocalDate date){
+            int temp = 0;
+            for(WorkingHours element : Database.workingHoursList){
+                if(element.getWorkingDate().isEqual(date)){
+                    temp++;
+                }
+            }
+            if (temp > 0){
+                return false;
+            }
+            else{
+                return true;
             }
         }
         @FXML
