@@ -230,8 +230,6 @@ public class MainWin {
             textFieldBikeInvestPricePerDay.clear();
             comboBoxInvestBikeFrameSize.getSelectionModel().clearSelection();
             comboBoxInvestBikeType.getSelectionModel().clearSelection();
-
-
         }
 
         @FXML

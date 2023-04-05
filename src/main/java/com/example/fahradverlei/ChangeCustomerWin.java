@@ -97,6 +97,10 @@ public class ChangeCustomerWin {
                         txtFieldAccountNumber.getText(),
                         Integer.parseInt(txtFieldID.getText())
                 );
+                Database.changeCustomerDataFromDataBase(temp);
+                Database.readCustomerFromDatabase();
+                mainWin.controller.fillCustomerTableView();
+                changeCustomerWin.stage.close();
             }
 
             catch (Exception e){
