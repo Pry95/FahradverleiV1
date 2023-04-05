@@ -323,4 +323,20 @@ public class Database {
         }
     }
 
+    /** Löscht den übergebenen Mitarbeiter aus der Datenbank
+     * @param tempEmployee Mitarbeiter der aus der Datenbank gelöscht werden soll
+     */
+    public static void delEmployeeFromDatabase(Employee tempEmployee){
+        try {
+            Database.rentalList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            stm.execute("DELETE FROM employee where EmployeeNumber ='" + tempEmployee.getEmployeeNumber() + "'");
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

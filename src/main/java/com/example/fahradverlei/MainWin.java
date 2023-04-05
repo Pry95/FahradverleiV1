@@ -92,6 +92,8 @@ public class MainWin {
         public Button btnChangeBike;
         public Button btnDelCustomer;
         public Button btnChangeCustomer;
+        public Button btnDelEmployee;
+        public Button btnChangeEmployee;
 
         // Konstruktor von MainWinController
         public MainWinController(MainWin mainWin){
@@ -246,7 +248,21 @@ public class MainWin {
                 Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
                 ChangeCustomerWin changeCustomerWin = new ChangeCustomerWin(mainWin,tempCustomer);
             }
-
+        }
+        @FXML
+        public void btnChangeEmployee() throws IOException {
+            if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
+                Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
+                ChangeEmployeeWin changeEmployeeWin = new ChangeEmployeeWin(mainWin,tempEmployee);
+            }
+        }
+        @FXML
+        public void btnDelEmployee(){
+            if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
+                Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
+                Database.delEmployeeFromDatabase(tempEmployee);
+                fillEmployeeTableView();
+            }
         }
 
     }
