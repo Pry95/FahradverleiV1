@@ -226,6 +226,7 @@ public class MainWin {
                 Database.writeNewCustomerINDatabase(myCustomer);
                 setCustomerInsertWindow();
                 JOptionPane.showMessageDialog(null, "Benutzer hinzugefügt");
+                fillCustomerTableView();
 
             } catch (Exception e) {
                 setCustomerInsertWindow();
