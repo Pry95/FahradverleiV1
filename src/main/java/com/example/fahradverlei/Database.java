@@ -238,7 +238,7 @@ public class Database {
                     " `AccountNumber`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             stm.setString(1, myCustomer.getName());
             stm.setString(2, myCustomer.getFirstName());
-            stm.setDate(3, myCustomer.getBirthDate());
+            stm.setDate(3, java.sql.Date.valueOf(myCustomer.getBirthDate()));
             stm.setString(4, myCustomer.getStreet());
             stm.setString(5, myCustomer.getHousenumber());
             stm.setInt(6, myCustomer.getPostalCode());
