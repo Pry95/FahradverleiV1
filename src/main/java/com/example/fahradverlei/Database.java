@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class Database {
 
-    // Zugangsdaten für die Datenbank
+    // Zugangsdaten für die Datenbankn
     public static String url = "jdbc:mysql://localhost:3306/fahradverlei";
     public static  String user = "root";
     public static String pass = "";
