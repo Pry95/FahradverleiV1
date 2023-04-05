@@ -339,4 +339,29 @@ public class Database {
         }
     }
 
+    /** Ändert die Daten des Mitarbeiters in der Datenbank
+     * @param employee Employee Objekt das übergeben wird zum überschreiben der Daten in der Datenbank
+     */
+    public static void changeEmployeeDataFromDataBase(Employee employee) {
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            String update = "UPDATE employee SET Name ='" + employee.getName() +
+                    "',FirstName ='" + employee.getFirstName() +
+                    "',BirthDate ='" + employee.getBirthDate() +
+                    "',Street ='" + employee.getStreet() +
+                    "',HouseNumber ='" + employee.getHousenumber() +
+                    "',PostalCode ='" + employee.getPostalCode() +
+                    "',Tel ='" + employee.getTel() +
+                    "',HourlyWage ='" + employee.getHourlyWage() +
+                    "',HoursPerMonth ='" + employee.getHoursPerMonth() +
+                    "',AccountNumber ='" + employee.getAccountNumber() +
+                    "' WHERE EmployeeNumber='" + employee.getEmployeeNumber() + "'";
+            stm.execute(update);
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
