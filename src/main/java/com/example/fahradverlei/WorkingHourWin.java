@@ -81,7 +81,6 @@ public class WorkingHourWin {
             while (!time.equals(LocalTime.of(22,5))) {
                 times.add(time);
                 time = time.plusMinutes(5);
-                System.out.println("Test");
             }
 
             comboStart.getItems().addAll(times);
