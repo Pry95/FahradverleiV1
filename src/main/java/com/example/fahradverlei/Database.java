@@ -161,23 +161,21 @@ public class Database {
 
     /**Liest die Arbeitszeiten je Mitarbeiter / Jahr / Monat von der Datenbank und speichert sie in die Liste Database.workingHoursList
      * @param employeeID MitarbeiterID nach der die Datenbank gefiltert werden soll
-     * @param year Jahr nach dem die Datenbank gefiltert werden soll
-     * @param month Monat nach dem die Datenbank gefiltert werden soll
      */
-    public static void readWorkingHoursFromDatabase(Integer employeeID,Integer year, Integer month ){
+    public static void readWorkingHoursFromDatabase(Integer employeeID){
         try {
             Database.workingHoursList.clear();
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
-                    "SELECT * FROM workinghours where EmployeeId='" + employeeID+ "' AND Year='" + year + "' AND Month='" + month +"'");
+                    "SELECT * FROM workinghours where EmployeeId='" + employeeID+ "'");
             while(rs.next()){
                 Database.workingHoursList.add(new WorkingHours(
                         LocalDate.parse(rs.getString("WorkDate")),
-                        rs.getTimestamp("StartOfWork"),
-                        rs.getTimestamp("StartOfBreak"),
-                        rs.getTimestamp("EndOfBreak"),
-                        rs.getTimestamp("EndOfWork"),
+                        rs.getTime("StartOfWork"),
+                        rs.getTime("StartOfBreak"),
+                        rs.getTime("EndOfBreak"),
+                        rs.getTime("EndOfWork"),
                         rs.getDouble("TotalHours")
                 ));
             }

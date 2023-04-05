@@ -1,17 +1,19 @@
 package com.example.fahradverlei;
 
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class WorkingHours {
     private LocalDate WorkingDate;
-    private Timestamp WorkingStart;
-    private Timestamp BreakStart;
-    private Timestamp BreakEnd;
-    private Timestamp WorkEnd;
+    private Time WorkingStart;
+    private Time BreakStart;
+    private Time BreakEnd;
+    private Time WorkEnd;
     private double TotalHours;
 
-    public WorkingHours(LocalDate workingDate, Timestamp workingStart, Timestamp breakStart, Timestamp breakEnd, Timestamp workEnd, double totalHours) {
+    public WorkingHours(LocalDate workingDate, Time workingStart, Time breakStart, Time breakEnd, Time workEnd, double totalHours) {
         WorkingDate = workingDate;
         WorkingStart = workingStart;
         BreakStart = breakStart;
@@ -28,35 +30,35 @@ public class WorkingHours {
         WorkingDate = workingDate;
     }
 
-    public Timestamp getWorkingStart() {
+    public Time getWorkingStart() {
         return WorkingStart;
     }
 
-    public void setWorkingStart(Timestamp workingStart) {
+    public void setWorkingStart(Time workingStart) {
         WorkingStart = workingStart;
     }
 
-    public Timestamp getBreakStart() {
+    public Time getBreakStart() {
         return BreakStart;
     }
 
-    public void setBreakStart(Timestamp breakStart) {
+    public void setBreakStart(Time breakStart) {
         BreakStart = breakStart;
     }
 
-    public Timestamp getBreakEnd() {
+    public Time getBreakEnd() {
         return BreakEnd;
     }
 
-    public void setBreakEnd(Timestamp breakEnd) {
+    public void setBreakEnd(Time breakEnd) {
         BreakEnd = breakEnd;
     }
 
-    public Timestamp getWorkEnd() {
+    public Time getWorkEnd() {
         return WorkEnd;
     }
 
-    public void setWorkEnd(Timestamp workEnd) {
+    public void setWorkEnd(Time workEnd) {
         WorkEnd = workEnd;
     }
 

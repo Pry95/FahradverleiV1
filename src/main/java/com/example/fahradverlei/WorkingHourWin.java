@@ -7,15 +7,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -46,19 +49,19 @@ public class WorkingHourWin {
         public MainWin mainWin;
         public Employee tempEmployee;
         public WorkingHourWin workingHourWin;
-        public ComboBox<LocalTime> comboStart;
-        public ComboBox<LocalTime> comboEnd;
-        public ComboBox<LocalTime> comboBreakStart;
-        public ComboBox<LocalTime> comboBreakEnd;
+        public ComboBox<Time> comboStart;
+        public ComboBox<Time> comboEnd;
+        public ComboBox<Time> comboBreakStart;
+        public ComboBox<Time> comboBreakEnd;
         public DatePicker datepicker;
         public Label lblEmployee;
         public Label lblInfo;
         public TableView<WorkingHours> tableViewWorkingHour;
-        public TableColumn<WorkingHours,LocalDate> ColumnDate;
-        public TableColumn<WorkingHours,LocalTime> ColumnStart;
-        public TableColumn<WorkingHours,LocalTime> ColumnBreakStart;
-        public TableColumn<WorkingHours,LocalTime> ColumnBreakEnd;
-        public TableColumn<WorkingHours,LocalTime> ColumnEnd;
+        public TableColumn<WorkingHours, LocalDate> ColumnDate;
+        public TableColumn<WorkingHours,Time> ColumnStart;
+        public TableColumn<WorkingHours,Time> ColumnBreakStart;
+        public TableColumn<WorkingHours,Time> ColumnBreakEnd;
+        public TableColumn<WorkingHours,Time> ColumnEnd;
         public TableColumn<WorkingHours,Double> ColumnHours;
 
 
@@ -72,21 +75,34 @@ public class WorkingHourWin {
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
             fillComboBoxesTime();
+            fillTableViewWorkingHour();
+
+        }
+
+        private void fillTableViewWorkingHour() {
+            ColumnDate.setCellValueFactory(new PropertyValueFactory<>("WorkingDate"));
+            ColumnStart.setCellValueFactory(new PropertyValueFactory<>("WorkingStart"));
+            ColumnBreakStart.setCellValueFactory(new PropertyValueFactory<>("BreakStart"));
+            ColumnBreakEnd.setCellValueFactory(new PropertyValueFactory<>("BreakEnd"));
+            ColumnEnd.setCellValueFactory(new PropertyValueFactory<>("WorkEnd"));
+            ColumnHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
+            Database.readWorkingHoursFromDatabase(tempEmployee.getEmployeeNumber());
+            tableViewWorkingHour.setItems(Database.workingHoursList);
 
         }
 
         public void fillComboBoxesTime(){
-            List<LocalTime> times = new ArrayList<>();
-            LocalTime time = LocalTime.of(6,0);
-            while (!time.equals(LocalTime.of(22,5))) {
+            List<Time> times = new ArrayList<>();
+            Time time = Time.valueOf(LocalTime.of(6,0));
+            while (!time.equals(Time.valueOf(LocalTime.of(22,5)))) {
                 times.add(time);
-                time = time.plusMinutes(5);
+                time = Time.valueOf(time.toLocalTime().plusMinutes(5));
             }
 
             comboStart.getItems().addAll(times);
-            comboStart.setValue(LocalTime.of(7,0));
+            comboStart.setValue(Time.valueOf(LocalTime.of(7,0)));
             comboEnd.getItems().addAll(times);
-            comboEnd.setValue(LocalTime.of(15,0));
+            comboEnd.setValue(Time.valueOf(LocalTime.of(15,0)));
             comboBreakEnd.getItems().addAll(times);
             comboBreakStart.getItems().addAll(times);
             datepicker.setValue(LocalDate.now());
