@@ -112,7 +112,7 @@ public class WorkingHourWin {
             if (comboStart.getValue().getTime() < comboBreakStart.getValue().getTime() &&
                     comboBreakStart.getValue().getTime() < comboBreakEnd.getValue().getTime() &&
                     comboBreakEnd.getValue().getTime() < comboEnd.getValue().getTime() &&
-                    proofIfDateExists(datepicker.getValue())){
+                    proofIfDateExists(datepicker.getValue()) && datepicker.getValue().compareTo(LocalDate.now()) <= 0 ){
                 try{
                     long hours =  (comboEnd.getValue().getTime() -comboStart.getValue().getTime()) -
                             (comboBreakEnd.getValue().getTime()-comboBreakStart.getValue().getTime()) ;
