@@ -188,6 +188,7 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
     /**Schreibt einen neuen Datenstatz vom typ Ebike in die Tabelle `Bike´
      */
     public static void writeNewElectroBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){

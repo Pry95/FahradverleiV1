@@ -262,7 +262,6 @@ public class MainWin {
             }
         }
         @FXML
-
         public void btnDelEmployee(){
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
                 Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
