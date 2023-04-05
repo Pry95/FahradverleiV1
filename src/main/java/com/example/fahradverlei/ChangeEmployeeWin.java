@@ -42,7 +42,7 @@ public class ChangeEmployeeWin {
 
         public MainWin mainWin;
         public Employee tempEmployee;
-        public ChangeEmployeeWin changeCustomerWin;
+        public ChangeEmployeeWin changeEmployeeWin;
 
         public TextField txtFieldID;
         public TextField txtFieldFristName;
@@ -53,13 +53,15 @@ public class ChangeEmployeeWin {
         public TextField txtFieldPLZ;
         public TextField txtFieldTel;
         public TextField txtFieldAccountNumber;
+        public TextField txtFieldHourlyWage;
+        public TextField txtFieldHoursPerMonth;
         public Button btnSave;
         public Button btnBack;
         public Label lblInfo;
 
         // Konstruktor von ChangeEmployeeWinController
-        public ChangeEmployeeController(MainWin mainWin, Employee tempEmployee, ChangeEmployeeWin changeBikeWin) {
-            this.changeCustomerWin = changeBikeWin;
+        public ChangeEmployeeController(MainWin mainWin, Employee tempEmployee, ChangeEmployeeWin changeEmployeeWin) {
+            this.changeEmployeeWin = changeEmployeeWin;
             this.mainWin = mainWin;
             this.tempEmployee = tempEmployee;
         }
@@ -76,22 +78,38 @@ public class ChangeEmployeeWin {
             txtFieldPLZ.setText(String.valueOf(tempEmployee.getPostalCode()));
             txtFieldTel.setText(String.valueOf(tempEmployee.getTel()));
             txtFieldAccountNumber.setText(tempEmployee.getAccountNumber());
+            txtFieldHoursPerMonth.setText(String.valueOf(tempEmployee.getHoursPerMonth()));
+            txtFieldHourlyWage.setText(String.valueOf(tempEmployee.getHourlyWage()));
         }
 
         @FXML
         public void btnBack(){
-            changeCustomerWin.stage.close();
+            changeEmployeeWin.stage.close();
         }
         @FXML
         public void btnSave(){
             try{
-
+                Employee temp = new Employee(
+                        txtFieldFristName.getText(),
+                        txtFieldName.getText(),
+                        datePickerBirth.getValue(),
+                        txtFieldStreet.getText(),
+                        txtFieldHouseNumber.getText(),
+                        Integer.parseInt(txtFieldPLZ.getText()),
+                        Integer.parseInt(txtFieldTel.getText()),
+                        Double.parseDouble(txtFieldHourlyWage.getText()),
+                        Integer.parseInt(txtFieldHoursPerMonth.getText()),
+                        txtFieldAccountNumber.getText(),
+                        Integer.parseInt(txtFieldID.getText())
+                        );
+                Database.changeEmployeeDataFromDataBase(temp);
+                mainWin.controller.fillEmployeeTableView();
+                changeEmployeeWin.stage.close();
             }
 
             catch (Exception e){
                 lblInfo.setText("Falsche Eingabe!");
             }
-
         }
     }
 }
