@@ -5,12 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -95,7 +98,17 @@ public class MainWin {
         public TextField textFieldCustomerPostalCode;
         public TextField textFieldCustomerTel;
         public TextField textFieldCustomerAccount;
-
+        public TextField datePickerEmployeeInsert;
+        public TextField textFieldEmployeeName;
+        public TextField textFieldEmployeeFirstName;
+        public DatePicker datePickerEmployee;
+        public TextField textFieldEmployeeStreet;
+        public TextField textFieldEmployeeHouseNumber;
+        public TextField textFieldEmployeePostalCode;
+        public TextField textFieldEmployeeTel;
+        public TextField textFieldEmployeeHourlyWage;
+        public TextField textFieldEmployeeHoursPerMonth;
+        public TextField textFieldEmployeeAccount;
         public MainWin mainWin;
         public Button btnInvestNewBike;
         public Button btnDelBike;
@@ -218,12 +231,12 @@ public class MainWin {
             fillBikeTableView();
         }
         @FXML
+        //schreibt einen neuen datensatz in die Tabelle customer
         public void btnCustomerIInsert(){
             try{
-
                 Customer myCustomer = new Customer(textFieldCustomerFirstname.getText(),textFieldCustomerName.getText(),datePickerCustomer.getValue(),textFieldCustomerStreet.getText(),textFieldCustomerHouseNumber.getText(),
                         Integer.parseInt(textFieldCustomerPostalCode.getText()),Integer.parseInt(textFieldCustomerTel.getText()),textFieldCustomerAccount.getText(),1);
-                Database.writeNewCustomerINDatabase(myCustomer);
+                Database.writeNewCustomerInDatabase(myCustomer);
                 setCustomerInsertWindow();
                 JOptionPane.showMessageDialog(null, "Benutzer hinzugefügt");
                 fillCustomerTableView();
@@ -232,10 +245,24 @@ public class MainWin {
                 setCustomerInsertWindow();
                 JOptionPane.showMessageDialog(null, "Falsche Eingabe");
                 throw new RuntimeException(e);
-
+            }
+        }
+        @FXML
+        public void btnEmployeeInsert(){
+            try {
+                Employee myEmployee = new Employee(textFieldEmployeeFirstName.getText(),textFieldEmployeeName.getText(),datePickerEmployee.getValue(),textFieldEmployeeStreet.getText(),
+                        textFieldEmployeeHouseNumber.getText(),Integer.parseInt(textFieldEmployeePostalCode.getText()),Integer.parseInt(textFieldEmployeeTel.getText()),
+                        Double.parseDouble(textFieldEmployeeHourlyWage.getText()),Integer.parseInt(textFieldEmployeeHoursPerMonth.getText()),textFieldEmployeeAccount.getText(),1);
+                Database.writeNewEmployeeInDatabase(myEmployee);
+                setEmployeeInsertWindow();
+                JOptionPane.showMessageDialog(null, "Mitarbeiter hinzugefügt");
+                fillEmployeeTableView();
+            } catch (NumberFormatException e) {
+                setEmployeeInsertWindow();
+                JOptionPane.showMessageDialog(null, "Falsche Eingabe");
+                throw new RuntimeException(e);
 
             }
-
         }
 
         // Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
@@ -273,6 +300,19 @@ public class MainWin {
             textFieldCustomerTel.clear();
             textFieldCustomerName.clear();
             datePickerCustomer.setValue(null);
+        }
+        public void setEmployeeInsertWindow(){
+
+            textFieldEmployeeName.clear();
+            textFieldEmployeeFirstName.clear();
+            datePickerEmployee.setValue(null);
+            textFieldEmployeeStreet.clear();
+            textFieldEmployeeHouseNumber.clear();
+            textFieldEmployeePostalCode.clear();
+            textFieldEmployeeTel.clear();
+            textFieldEmployeeHourlyWage.clear();
+            textFieldEmployeeHoursPerMonth.clear();
+            textFieldEmployeeAccount.clear();
         }
 
         @FXML

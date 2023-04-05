@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Database {
@@ -231,7 +230,7 @@ public class Database {
     }
     /**Schreibt einen neuen Datenstatz vom typ customer in die Tabelle `Customer´
      */
-    public static void writeNewCustomerINDatabase(Customer myCustomer){
+    public static void writeNewCustomerInDatabase(Customer myCustomer){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             PreparedStatement stm = con.prepareStatement("INSERT INTO `customer`(`Name`, `FirstName`, `BirthDate`, `Street`, `HouseNumber`, `PostalCode`, `Tel`," +
@@ -244,6 +243,29 @@ public class Database {
             stm.setInt(6, myCustomer.getPostalCode());
             stm.setInt(7, myCustomer.getTel());
             stm.setString(8, myCustomer.getAccountNumber());
+            stm.executeUpdate();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /**Schreibt einen neuen Datenstatz vom typ employee in die Tabelle `employee´
+     */
+    public static void writeNewEmployeeInDatabase(Employee myEmployee){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            PreparedStatement stm = con.prepareStatement("INSERT INTO `employee`(`Name`, `FirstName`, `BirthDate`, `Street`, `HouseNumber`, `PostalCode`, `Tel`, `HourlyWage`, `HoursPerMonth`" +
+                    ", `AccountNumber`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stm.setString(1, myEmployee.getName());
+            stm.setString(2, myEmployee.getFirstName());
+            stm.setDate(3, java.sql.Date.valueOf(myEmployee.getBirthDate()));
+            stm.setString(4, myEmployee.getStreet());
+            stm.setString(5, myEmployee.getHousenumber());
+            stm.setInt(6, myEmployee.getPostalCode());
+            stm.setInt(7, myEmployee.getTel());
+            stm.setDouble(8, myEmployee.getHourlyWage());
+            stm.setInt(9, myEmployee.getHoursPerMonth());
+            stm.setString(10,myEmployee.getAccountNumber());
             stm.executeUpdate();
             con.close();
         } catch (SQLException e) {

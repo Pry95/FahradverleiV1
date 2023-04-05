@@ -232,17 +232,17 @@
                                                 <Label text="Stundenlohn" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                                                 <Label text="Stunden pro Monat" GridPane.columnIndex="5" GridPane.rowIndex="4" />
                                                 <Label text="IBAN" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <DatePicker prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
-                                                <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                                                <TextField fx:id="textFieldEmployeeFirstName" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="textFieldEmployeeName" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <DatePicker fx:id="datePickerEmployee" prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <TextField fx:id="textFieldEmployeeStreet" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <TextField fx:id="textFieldEmployeeHouseNumber" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <TextField fx:id="textFieldEmployeePostalCode" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <TextField fx:id="textFieldEmployeeTel" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <TextField fx:id="textFieldEmployeeHourlyWage" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                                                <TextField fx:id="textFieldEmployeeHoursPerMonth" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                                <TextField fx:id="textFieldEmployeeAccount" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                                                <Button fx:id="btnEmployeeInsert" mnemonicParsing="false" onAction="#btnEmployeeInsert" prefHeight="56.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="5" GridPane.rowIndex="9" />
                                                 <ImageView fitHeight="150.0" fitWidth="299.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
                                                    <image>
                                                       <Image url="@../../../Images/bike.png" />
