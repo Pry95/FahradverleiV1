@@ -73,10 +73,8 @@ public class WorkingHourWin {
         }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-
             fillComboBoxesTime();
             fillTableViewWorkingHour();
-
         }
 
         private void fillTableViewWorkingHour() {
@@ -88,7 +86,6 @@ public class WorkingHourWin {
             ColumnHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
             Database.readWorkingHoursFromDatabase(tempEmployee.getEmployeeNumber());
             tableViewWorkingHour.setItems(Database.workingHoursList);
-
         }
 
         public void fillComboBoxesTime(){
@@ -98,18 +95,36 @@ public class WorkingHourWin {
                 times.add(time);
                 time = Time.valueOf(time.toLocalTime().plusMinutes(5));
             }
-
             comboStart.getItems().addAll(times);
             comboStart.setValue(Time.valueOf(LocalTime.of(7,0)));
             comboEnd.getItems().addAll(times);
-            comboEnd.setValue(Time.valueOf(LocalTime.of(15,0)));
+            comboEnd.setValue(Time.valueOf(LocalTime.of(15,30)));
             comboBreakEnd.getItems().addAll(times);
+            comboBreakEnd.setValue(Time.valueOf(LocalTime.of(12,30)));
             comboBreakStart.getItems().addAll(times);
+            comboBreakStart.setValue(Time.valueOf(LocalTime.of(12,0)));
             datepicker.setValue(LocalDate.now());
-
         }
         @FXML
         public void btnSave(){
+
+            long hours =  (comboEnd.getValue().getTime() -comboStart.getValue().getTime()) -
+                    (comboBreakEnd.getValue().getTime()-comboBreakStart.getValue().getTime()) ;
+            double hour = (double)hours /1000/60/60;
+
+            try{
+                WorkingHours workingHour = new WorkingHours(
+                        datepicker.getValue(),
+                        comboStart.getValue(),
+                        comboBreakStart.getValue(),
+                        comboBreakEnd.getValue(),
+                        comboEnd.getValue(),hour
+                        );
+
+            }
+            catch (Exception e){
+                lblInfo.setText("Falsche Eingabe!");
+            }
 
         }
         @FXML
