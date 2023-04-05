@@ -73,6 +73,7 @@ public class WorkingHourWin {
         }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+            lblEmployee.setText("ID: " +tempEmployee.getEmployeeNumber() + " \tName: " + tempEmployee.getFirstName() + " " + tempEmployee.getName());
             fillComboBoxesTime();
             fillTableViewWorkingHour();
         }
@@ -120,12 +121,10 @@ public class WorkingHourWin {
                         comboBreakEnd.getValue(),
                         comboEnd.getValue(),hour
                         );
-
             }
             catch (Exception e){
                 lblInfo.setText("Falsche Eingabe!");
             }
-
         }
         @FXML
         public void btnBack(){
