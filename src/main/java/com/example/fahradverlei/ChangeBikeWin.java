@@ -175,5 +175,7 @@ public class ChangeBikeWin {
             comboBoxFrameSize.getItems().addAll(frameSizeList);
 
         }
+
+
     }
 }

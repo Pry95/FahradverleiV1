@@ -116,6 +116,7 @@ public class MainWin {
         public Button btnDelCustomer;
         public Button btnChangeCustomer;
 
+
         public Button btnChangeEmployee;
         public Button btnDelEmployee;
 
@@ -351,6 +352,18 @@ public class MainWin {
                 Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
                 WorkingHourWin workingHourWin = new WorkingHourWin(mainWin,tempEmployee);
             }
+        }
+        @FXML
+        /**
+         * Hier spiele ich mit meinen Eiern
+         */
+        public void btnPayroll()throws IOException{
+            if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0) {
+                Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
+                PayrollWindow payrollWindow = new PayrollWindow(mainWin, tempEmployee);
+            }
+
+
         }
     }
 }
