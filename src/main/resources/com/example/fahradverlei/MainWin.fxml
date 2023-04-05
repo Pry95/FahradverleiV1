@@ -139,7 +139,7 @@
                                                 <Label text="Postleitzahl" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                                                 <Label text="Tel" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                                                 <Label text="IBAN" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                                                <Button fx:id="btnCustomerIInsert" mnemonicParsing="false" onAction="#btnCustomerIInsert" prefHeight="52.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                                                <Button fx:id="btnCustomerIInsert" mnemonicParsing="false" onAction="#btnCustomerIInsert" prefHeight="52.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="2" GridPane.rowIndex="11" />
                                                 <Label graphicTextGap="8.0" prefHeight="84.0" prefWidth="324.0" text="Neuen Kunden Anlegen" textAlignment="CENTER" GridPane.columnIndex="1">
                                                    <font>
                                                       <Font size="30.0" />
@@ -189,7 +189,68 @@
                               </Tab>
                                <Tab text="Mitarbeiter anlegen">
                                    <content>
-                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="818.0" />
+                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="326.0" prefWidth="818.0">
+                                       <children>
+                                          <GridPane prefHeight="732.0" prefWidth="1251.0">
+                                            <columnConstraints>
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="312.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="312.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="312.0" />
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label text="Neuen MItarbeiter Anlegen" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label text="Vorname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Label text="Nachname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                                <Label text="Geburtsdatum" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                                <Label text="Straße" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                                <Label text="Hausnummer" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                                <Label text="Postleitzahl" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                                <Label text="Tel" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                                                <Label text="Stundenlohn" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+                                                <Label text="Stunden pro Monat" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                                                <Label text="IBAN" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <DatePicker prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                                                <TextField prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
+                                                <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="5" GridPane.rowIndex="9" />
+                                                <ImageView fitHeight="150.0" fitWidth="299.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                                   <image>
+                                                      <Image url="@../../../Images/bike.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </GridPane>
+                                       </children></AnchorPane>
                                    </content>
                                </Tab>
                            </tabs>
