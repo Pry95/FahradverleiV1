@@ -229,6 +229,28 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
+    /**Schreibt einen neuen Datenstatz vom typ customer in die Tabelle `Customer´
+     */
+    public static void writeNewCustomerINDatabase(Customer myCustomer){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            PreparedStatement stm = con.prepareStatement("INSERT INTO `customer`(`Name`, `FirstName`, `BirthDate`, `Street`, `HouseNumber`, `PostalCode`, `Tel`," +
+                    " `AccountNumber`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            stm.setString(1, myCustomer.getName());
+            stm.setString(2, myCustomer.getFirstName());
+            stm.setDate(3, myCustomer.getBirthDate());
+            stm.setString(4, myCustomer.getStreet());
+            stm.setString(5, myCustomer.getHousenumber());
+            stm.setInt(6, myCustomer.getPostalCode());
+            stm.setInt(7, myCustomer.getTel());
+            stm.setString(8, myCustomer.getAccountNumber());
+            stm.executeUpdate();
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     /** Löscht das übergebene Bike aus der Datenbank
      * @param tempBike Bike das aus der Datenbank gelöscht werden soll

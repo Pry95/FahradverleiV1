@@ -1,5 +1,6 @@
 package com.example.fahradverlei;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class People {
@@ -28,7 +29,7 @@ public class People {
         Name = name;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return BirthDate;
     }
 
