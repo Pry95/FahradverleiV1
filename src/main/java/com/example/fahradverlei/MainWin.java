@@ -85,6 +85,15 @@ public class MainWin {
         public TextField textFieldBikeInvestPricePerDay;
         public TextField textFieldBikeInvestBatteryCapacity;
         public TextField textFieldBikeInvestPerformance;
+        // Customer invest
+        public TextField textFieldCustomerFirstname;
+        public TextField textFieldCustomerName;
+        public DatePicker datePickerCustomer;
+        public TextField textFieldCustomerStreet;
+        public TextField textFieldCustomerHouseNumber;
+        public TextField textFieldCustomerPostalCode;
+        public TextField textFieldCustomerTel;
+        public TextField textFieldCustomerAccount;
 
         public MainWin mainWin;
         public Button btnInvestNewBike;

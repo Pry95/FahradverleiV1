@@ -122,24 +122,23 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <TextField prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                                <TextField prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                                <DatePicker prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                                <TextField fx:id="tetxFieldCustomerFirstname" prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tetxFieldCustomerName" prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                                <DatePicker fx:id="datePickerCustomer" prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                                 <Label prefHeight="26.0" prefWidth="99.0" text="Vorname" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Label text="Nachname" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                                 <Label text="Geburtsdatum" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                                                 <Label text="Straße" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                                <TextField prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                                                <TextField prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                                <TextField prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                                <TextField prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-                                                <TextField prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+                                                <TextField fx:id="tetxFieldCustomerStreet" prefHeight="56.0" prefWidth="324.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                                <TextField fx:id="tetxFieldCustomerHouseNumber" prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                                <TextField fx:id="tetxFieldCustomerPostalCode" prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                                <TextField fx:id="tetxFieldCustomerTel" prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                                                <TextField fx:id="tetxFieldCustomerAccount" prefHeight="56.0" prefWidth="312.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
                                                 <Label text="Hausnummer" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                                 <Label text="Postleitzahl" GridPane.columnIndex="3" GridPane.rowIndex="4" />
                                                 <Label text="Tel" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                                                 <Label text="IBAN" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-                                                <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="3" GridPane.rowIndex="11" />
-                                                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                                <Button fx:id="btnCustomerIInsert" mnemonicParsing="false" prefHeight="52.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="3" GridPane.rowIndex="11" />
                                              </children>
                                           </GridPane>
                                        </children></AnchorPane>
