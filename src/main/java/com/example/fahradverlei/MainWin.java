@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -213,8 +214,27 @@ public class MainWin {
             }else{
                 Database.writeNewElectroBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
             }
-            setBikeInvestWindow();
+            setBikeInsertWindow();
             fillBikeTableView();
+        }
+        @FXML
+        public void btnCustomerIInsert(){
+            try{
+
+                Customer myCustomer = new Customer(textFieldCustomerFirstname.getText(),textFieldCustomerName.getText(),datePickerCustomer.getValue(),textFieldCustomerStreet.getText(),textFieldCustomerHouseNumber.getText(),
+                        Integer.parseInt(textFieldCustomerPostalCode.getText()),Integer.parseInt(textFieldCustomerTel.getText()),textFieldCustomerAccount.getText(),1);
+                Database.writeNewCustomerINDatabase(myCustomer);
+                setCustomerInsertWindow();
+                JOptionPane.showMessageDialog(null, "Benutzer hinzugefügt");
+
+            } catch (Exception e) {
+                setCustomerInsertWindow();
+                JOptionPane.showMessageDialog(null, "Falsche Eingabe");
+                throw new RuntimeException(e);
+
+
+            }
+
         }
 
         // Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
@@ -235,15 +255,23 @@ public class MainWin {
             }
         }
         @FXML
-        public void setBikeInvestWindow(){
+        public void setBikeInsertWindow(){
             textFieldBikeInvestBatteryCapacity.clear();
             textFieldBikeInvestName.clear();
             textFieldBikeInvestPerformance.clear();
             textFieldBikeInvestPricePerDay.clear();
             comboBoxInvestBikeFrameSize.getSelectionModel().clearSelection();
             comboBoxInvestBikeType.getSelectionModel().clearSelection();
-
-
+        }
+        public void setCustomerInsertWindow(){
+            textFieldCustomerAccount.clear();
+            textFieldCustomerFirstname.clear();
+            textFieldCustomerStreet.clear();
+            textFieldCustomerHouseNumber.clear();
+            textFieldCustomerPostalCode.clear();
+            textFieldCustomerTel.clear();
+            textFieldCustomerName.clear();
+            datePickerCustomer.setValue(null);
         }
 
         @FXML
