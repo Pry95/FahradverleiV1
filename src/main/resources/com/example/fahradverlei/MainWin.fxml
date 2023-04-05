@@ -139,6 +139,7 @@
                                                 <Label text="Tel" GridPane.columnIndex="3" GridPane.rowIndex="6" />
                                                 <Label text="IBAN" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                                                 <Button mnemonicParsing="false" prefHeight="52.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+                                                <Button mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="11" />
                                              </children>
                                           </GridPane>
                                        </children></AnchorPane>
