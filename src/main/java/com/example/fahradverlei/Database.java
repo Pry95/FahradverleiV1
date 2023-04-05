@@ -299,4 +299,44 @@ public class Database {
         }
     }
 
+    /** Ändert die Daten des Kunden in der Datenbank
+     * @param customer Custumer Objekt das übergeben wird zum überschreiben der Daten in der Datenbank
+     */
+    public static void changeCustomerDataFromDataBase(Customer customer){
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            String update = "UPDATE customer SET Name ='" + customer.getName() +
+                        "',FirstName ='" + customer.getFirstName() +
+                        "',BirthDate ='" + customer.getBirthDate() +
+                        "',Street ='" + customer.getStreet() +
+                        "',HouseNumber ='" + customer.getHousenumber() +
+                        "',PostalCode ='" + customer.getPostalCode() +
+                        "',Tel ='" + customer.getTel() +
+                        "',AccountNumber ='" + customer.getAccountNumber() +
+                        "' WHERE CustomerNumber='" + customer.getCustomerNumber() + "'";
+            stm.execute(update);
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /** Löscht den übergebenen Mitarbeiter aus der Datenbank
+     * @param tempEmployee Mitarbeiter der aus der Datenbank gelöscht werden soll
+     */
+    public static void delEmployeeFromDatabase(Employee tempEmployee){
+        try {
+            Database.rentalList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            stm.execute("DELETE FROM employee where EmployeeNumber ='" + tempEmployee.getEmployeeNumber() + "'");
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

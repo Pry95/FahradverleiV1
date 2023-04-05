@@ -231,6 +231,7 @@ public class MainWin {
             comboBoxInvestBikeFrameSize.getSelectionModel().clearSelection();
             comboBoxInvestBikeType.getSelectionModel().clearSelection();
 
+
         }
 
         @FXML
