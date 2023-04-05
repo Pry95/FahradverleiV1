@@ -14,6 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         MainWin mainWin = new MainWin();
+        WorkingHourWin test = new WorkingHourWin(mainWin,null);
     }
 
     public static void main(String[] args) {
