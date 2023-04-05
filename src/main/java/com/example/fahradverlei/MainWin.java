@@ -345,5 +345,12 @@ public class MainWin {
                 ChangeEmployeeWin changeEmployeeWin = new ChangeEmployeeWin(mainWin,tempEmployee);
             }
         }
+        @FXML
+        public void btnEmployeeWorkingTime() throws IOException {
+            if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
+                Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
+                WorkingHourWin workingHourWin = new WorkingHourWin(mainWin,tempEmployee);
+            }
+        }
     }
 }
