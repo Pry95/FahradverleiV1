@@ -4,20 +4,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="6.0" layoutY="50.0" prefHeight="200.0" prefWidth="771.0">
+      <TableView fx:id="payrollTableView" layoutX="6.0" layoutY="50.0" prefHeight="200.0" prefWidth="771.0">
         <columns>
-          <TableColumn prefWidth="53.19998264312744" text="Monat" />
-          <TableColumn prefWidth="66.59997177124023" text="Jahr" />
-            <TableColumn prefWidth="92.60003662109375" text="Std./Mon" />
-            <TableColumn prefWidth="92.60003662109375" text="Tats./ Std." />
-            <TableColumn prefWidth="92.60003662109375" text="Überstunden" />
-            <TableColumn prefWidth="92.60003662109375" text="Stundenlohn" />
-            <TableColumn prefWidth="92.60003662109375" text="Brutto" />
-            <TableColumn prefWidth="92.60003662109375" text="Netto" />
-            <TableColumn prefWidth="92.60003662109375" text="Abzüge" />
+          <TableColumn fx:id="payrollTableViewMonth" prefWidth="53.19998264312744" text="Monat" />
+          <TableColumn fx:id="payrollTableViewYear" prefWidth="66.59997177124023" text="Jahr" />
+            <TableColumn fx:id="payrollTableViewHoursPerMonth" prefWidth="92.60003662109375" text="Std./Mon" />
+            <TableColumn fx:id="payrollTableViewTotalyHours" prefWidth="92.60003662109375" text="Tats./ Std." />
+            <TableColumn fx:id="payrollTableViewOvertime" prefWidth="92.60003662109375" text="Überstunden" />
+            <TableColumn fx:id="payrollTableViewHourlyWage" prefWidth="92.60003662109375" text="Stundenlohn" />
+            <TableColumn fx:id="payrollTableViewNetSalary" prefWidth="92.60003662109375" text="Brutto" />
+            <TableColumn fx:id="payrollTableViewGrossSalary" prefWidth="92.60003662109375" text="Netto" />
+            <TableColumn fx:id="payrollTableViewDeductions" prefWidth="92.60003662109375" text="Abzüge" />
         </columns>
       </TableView>
       <Label layoutX="6.0" layoutY="14.0" prefHeight="36.0" prefWidth="255.0" text="Gehaltabrechnung auswählen">

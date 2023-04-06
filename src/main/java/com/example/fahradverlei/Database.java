@@ -21,6 +21,7 @@ public class Database {
     public static ObservableList<Bike> bikeList = FXCollections.observableArrayList();
     public static ObservableList<Rental> rentalList = FXCollections.observableArrayList();
     public static ObservableList<WorkingHours> workingHoursList = FXCollections.observableArrayList();
+    public static ObservableList<Payroll> payrollsList = FXCollections.observableArrayList();
 
 
 
@@ -86,6 +87,33 @@ public class Database {
         }
 
     }
+    /**Liest die Gehaltsabrechnungen von der Datenbank und speichert sie in die Liste Database.payrollList
+     */
+    public static void readPayrolsFromaDatabase(int employeeId){
+        try{
+            Database.payrollsList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(
+                    "SELECT * FROM `payroll` WHERE EmployId = "+employeeId+"");
+            while ((rs.next())){
+                Database.payrollsList.add(new Payroll(rs.getInt("Month"),
+                        rs.getInt("Year"),
+                        rs.getInt("HoursPerMonth"),
+                        rs.getDouble("TotalHours"),
+                        rs.getDouble("OverTime"),
+                        rs.getDouble("HourlyWage"),
+                        rs.getDouble("NetSalary"),
+                        rs.getDouble("GrossSalary"),
+                        rs.getDouble("Deductions")
+                ));
+            }
+            con.close();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**Liest die Fahrradinformationen von der Datenbank und speichert sie in die Liste Database.bikeList
      */
@@ -129,7 +157,6 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     /**Liest die Verleihinformationen je Fahrrad von der Datenbank und speichert sie in die Liste Database.rentalList
@@ -157,7 +184,6 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     /**Liest die Arbeitszeiten je Mitarbeiter / Jahr / Monat von der Datenbank und speichert sie in die Liste Database.workingHoursList

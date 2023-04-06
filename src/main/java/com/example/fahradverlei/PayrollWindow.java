@@ -46,5 +46,8 @@ public class PayrollWindow {
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
         }
+        public void fillPayrollTabelView(){
+            Database.readPayrolsFromaDatabase(myEmployee.getEmployeeNumber());
+        }
     }
 }
