@@ -14,8 +14,8 @@
             <TableColumn fx:id="payrollTableViewTotalyHours" prefWidth="92.60003662109375" text="Tats./ Std." />
             <TableColumn fx:id="payrollTableViewOvertime" prefWidth="92.60003662109375" text="Überstunden" />
             <TableColumn fx:id="payrollTableViewHourlyWage" prefWidth="92.60003662109375" text="Stundenlohn" />
-            <TableColumn fx:id="payrollTableViewNetSalary" prefWidth="92.60003662109375" text="Brutto" />
-            <TableColumn fx:id="payrollTableViewGrossSalary" prefWidth="92.60003662109375" text="Netto" />
+            <TableColumn fx:id="payrollTableViewGrossSalary" prefWidth="92.60003662109375" text="Brutto" />
+            <TableColumn fx:id="payrollTableViewNetSalary" prefWidth="92.60003662109375" text="Netto" />
             <TableColumn fx:id="payrollTableViewDeductions" prefWidth="92.60003662109375" text="Abzüge" />
         </columns>
       </TableView>
@@ -24,14 +24,14 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <TableView layoutX="6.0" layoutY="310.0" prefHeight="200.0" prefWidth="771.0">
+      <TableView fx:id="monthWorkingHoursTableView" layoutX="6.0" layoutY="310.0" prefHeight="200.0" prefWidth="771.0">
         <columns>
-          <TableColumn prefWidth="140.0" text="Datum" />
-          <TableColumn prefWidth="140.0" text="Beginn" />
-            <TableColumn prefWidth="140.0" text="Pause start" />
-            <TableColumn prefWidth="140.0" text="Pause ende" />
-            <TableColumn prefWidth="140.0" text="Ende" />
-            <TableColumn prefWidth="69.800048828125" text="Stunden" />
+          <TableColumn fx:id="monthWorkingHoursTableViewDate" prefWidth="140.0" text="Datum" />
+          <TableColumn fx:id="monthWorkingHoursTableViewStart" prefWidth="140.0" text="Beginn" />
+            <TableColumn fx:id="monthWorkingHoursTableViewBreakStart" prefWidth="140.0" text="Pause start" />
+            <TableColumn fx:id="monthWorkingHoursTableViewBreakEnd" prefWidth="140.0" text="Pause ende" />
+            <TableColumn fx:id="monthWorkingHoursTableViewEnd" prefWidth="140.0" text="Ende" />
+            <TableColumn fx:id="monthWorkingHoursTableViewTotalHours" prefWidth="69.800048828125" text="Stunden" />
         </columns>
       </TableView>
       <Label layoutX="6.0" layoutY="282.0" text="Stundenzeiten">

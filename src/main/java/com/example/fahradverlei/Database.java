@@ -21,6 +21,7 @@ public class Database {
     public static ObservableList<Bike> bikeList = FXCollections.observableArrayList();
     public static ObservableList<Rental> rentalList = FXCollections.observableArrayList();
     public static ObservableList<WorkingHours> workingHoursList = FXCollections.observableArrayList();
+    public static ObservableList<WorkingHours> montWorkingHoursList = FXCollections.observableArrayList();
     public static ObservableList<Payroll> payrollsList = FXCollections.observableArrayList();
 
 
@@ -204,6 +205,29 @@ public class Database {
                     "SELECT * FROM workinghours where EmployeeId='" + employeeID+ "'" + " ORDER BY WorkDate DESC");
             while(rs.next()){
                 Database.workingHoursList.add(new WorkingHours(
+                        LocalDate.parse(rs.getString("WorkDate")),
+                        rs.getTime("StartOfWork"),
+                        rs.getTime("StartOfBreak"),
+                        rs.getTime("EndOfBreak"),
+                        rs.getTime("EndOfWork"),
+                        rs.getDouble("TotalHours")
+                ));
+            }
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public static void readMonthlyWorkingHoursFromDatabase(int month, int year,int id){
+        try {
+            Database.montWorkingHoursList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(
+                    "SELECT * FROM `workinghours` WHERE EmployeeId = "+id+" AND Month = "+month+" AND Year = "+year+";");
+            while(rs.next()){
+                Database.montWorkingHoursList.add(new WorkingHours(
                         LocalDate.parse(rs.getString("WorkDate")),
                         rs.getTime("StartOfWork"),
                         rs.getTime("StartOfBreak"),
