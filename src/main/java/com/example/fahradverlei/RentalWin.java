@@ -60,7 +60,6 @@ public class RentalWin {
         public TableColumn<Rental,String> columnType;
         public TableColumn<Rental,Integer> columnCustID;
         public TableColumn<Rental,String> columnCustomer;
-        public TableColumn<Rental,Date> columnBirth;
 
 
         public Label lblBike;
@@ -149,7 +148,6 @@ public class RentalWin {
             columnType.setCellValueFactory(new PropertyValueFactory<>("Type"));
             columnCustID.setCellValueFactory(new PropertyValueFactory<>("CustomerNumber"));
             columnCustomer.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
-            columnBirth.setCellValueFactory(new PropertyValueFactory<>("Birth"));
             tableViewRental.setItems(Database.rentalList);
         }
 

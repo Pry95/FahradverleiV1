@@ -22,14 +22,13 @@
    </Label>
    <TableView fx:id="tableViewRental" layoutX="14.0" layoutY="414.0" prefHeight="268.0" prefWidth="865.0">
      <columns>
-       <TableColumn fx:id="columnFrom" prefWidth="75.0" text="Von:" />
-       <TableColumn fx:id="columnTo" prefWidth="75.0" text="Bis:" />
-         <TableColumn fx:id="columnBikeID" prefWidth="75.0" text="Bike ID:" />
-         <TableColumn fx:id="columnBike" prefWidth="138.71429443359375" text="Bike:" />
-         <TableColumn fx:id="columnType" prefWidth="49.85711669921875" text="Art:" />
-         <TableColumn fx:id="columnCustID" prefWidth="85.85714721679688" text="Kunden ID:" />
-         <TableColumn fx:id="columnCustomer" prefWidth="203.85711669921875" text="Kunde:" />
-         <TableColumn fx:id="columnBirth" minWidth="0.0" prefWidth="96.2857666015625" text="Geb.Dat.:" />
+       <TableColumn fx:id="columnFrom" prefWidth="126.42858409881592" text="Von:" />
+       <TableColumn fx:id="columnTo" prefWidth="126.42858409881592" text="Bis:" />
+         <TableColumn fx:id="columnBikeID" prefWidth="65.0" text="Bike ID:" />
+         <TableColumn fx:id="columnBike" prefWidth="122.2857666015625" text="Bike:" />
+         <TableColumn fx:id="columnType" prefWidth="94.85714721679688" text="Art:" />
+         <TableColumn fx:id="columnCustID" minWidth="0.0" prefWidth="90.4285888671875" text="Kunden ID:" />
+         <TableColumn fx:id="columnCustomer" prefWidth="219.4285888671875" text="Kunde:" />
      </columns>
    </TableView>
    <Line endX="764.1428833007812" layoutX="115.0" layoutY="401.0" startX="-100.0" />
