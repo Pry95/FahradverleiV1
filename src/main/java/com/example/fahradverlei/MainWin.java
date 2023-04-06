@@ -131,8 +131,6 @@ public class MainWin {
             fillEmployeeTableView();
             fillBikeTableView();
             fillBikesCombobox();
-
-
         }
 
         public void fillEmployeeTableView(){
@@ -362,8 +360,13 @@ public class MainWin {
                 Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
                 PayrollWindow payrollWindow = new PayrollWindow(mainWin, tempEmployee);
             }
-
-
+        }
+        @FXML
+        public void btnRent() throws IOException {
+            if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
+                Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
+                RentalWin rentalWin = new RentalWin(mainWin,tempBike);
+            }
         }
     }
 }
