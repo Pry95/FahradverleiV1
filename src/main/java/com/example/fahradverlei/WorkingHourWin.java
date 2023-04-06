@@ -149,8 +149,6 @@ public class WorkingHourWin {
             else{
                 lblInfo.setText("Falsche Eingabe!");
             }
-
-
         }
         public boolean proofIfDateExists(LocalDate date){
             int temp = 0;
@@ -159,12 +157,7 @@ public class WorkingHourWin {
                     temp++;
                 }
             }
-            if (temp > 0){
-                return false;
-            }
-            else{
-                return true;
-            }
+            return temp <= 0;
         }
         @FXML
         public void btnBack(){
