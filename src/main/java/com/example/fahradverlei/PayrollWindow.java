@@ -24,7 +24,7 @@ public class PayrollWindow {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("payrollWindow.fxml"));
         this.controller = new PayrollWindowController(mainWin, myEmployee, this);
         fxmlLoader.setController(controller);
-        this.scene = new Scene(fxmlLoader.load(), 400, 600);
+        this.scene = new Scene(fxmlLoader.load(), 1060, 550);
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setScene(scene);
