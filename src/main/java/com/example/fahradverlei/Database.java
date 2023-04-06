@@ -171,7 +171,7 @@ public class Database {
                     "SELECT * FROM rental " +
                             "INNER JOIN bike ON rental.BikeID = bike.Id " +
                             "INNER JOIN customer ON rental.CustomerNumber = customer.CustomerNumber " +
-                            "WHERE BikeId='"+bikeID+"'");
+                            "WHERE BikeId='"+bikeID+"'" + " ORDER BY StartDate DESC");
             while(rs.next()){
                 Database.rentalList.add(new Rental(
                         rs.getInt("Id"),

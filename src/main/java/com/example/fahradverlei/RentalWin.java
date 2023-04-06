@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -49,6 +50,17 @@ public class RentalWin {
         public TableColumn<Customer,String> columnCustomerName;
         public TableColumn<Customer,String> columnCustomerFirstName;
         public TableColumn<Customer, LocalDate> columnCustomerBirth;
+
+        public TableView<Rental> tableViewRental;
+        public TableColumn<Rental, Date> columnFrom;
+        public TableColumn<Rental, Date> columnTo;
+        public TableColumn<Rental,Integer> columnBikeID;
+        public TableColumn<Rental,String > columnBike;
+        public TableColumn<Rental,String> columnType;
+        public TableColumn<Rental,Integer> columnCustID;
+        public TableColumn<Rental,String> columnCustomer;
+        public TableColumn<Rental,Date> columnBirth;
+
 
         public Label lblBike;
         public Label lblInfo;
@@ -91,6 +103,15 @@ public class RentalWin {
 
         private void fillRentalTableView() {
             Database.readRentalFromDatabase(tempBike.getID());
+            columnFrom.setCellValueFactory(new PropertyValueFactory<>("StartDate"));
+            columnTo.setCellValueFactory(new PropertyValueFactory<>("EndDate"));
+            columnBikeID.setCellValueFactory(new PropertyValueFactory<>("BikeID"));
+            columnBike.setCellValueFactory(new PropertyValueFactory<>("BikeName"));
+            columnType.setCellValueFactory(new PropertyValueFactory<>("Type"));
+            columnCustID.setCellValueFactory(new PropertyValueFactory<>("CustomerNumber"));
+            columnCustomer.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
+            columnBirth.setCellValueFactory(new PropertyValueFactory<>("Birth"));
+            tableViewRental.setItems(Database.rentalList);
         }
 
         public void fillCustomerTableView(){
