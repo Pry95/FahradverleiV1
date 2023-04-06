@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="714.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <TableView fx:id="tabViewCustomer" layoutX="14.0" layoutY="48.0" prefHeight="337.0" prefWidth="363.0">
+        <columns>
+            <TableColumn fx:id="columnCustomerID" prefWidth="32.428587913513184" text="ID" />
+            <TableColumn fx:id="columnCustomerName" prefWidth="98.57146835327148" text="Nachname" />
+            <TableColumn fx:id="columnCustomerFirstName" prefWidth="109.5714111328125" text="Vorname" />
+            <TableColumn fx:id="columnCustomerBirth" prefWidth="114.28570556640625" text="Geb.Dat." />
+            <TableColumn fx:id="columnCustomerStreet" prefWidth="208.00003051757812" text="Straße" />
+            <TableColumn fx:id="columnCustomerHouseNumber" minWidth="1.5714111328125" prefWidth="69.71429443359375" text="Nr." />
+            <TableColumn fx:id="columnCustomerPlz" minWidth="6.28570556640625" prefWidth="122.28570556640625" text="PLZ" />
+            <TableColumn fx:id="columnCustomerTel" prefWidth="146.28564453125" text="Tel" />
+            <TableColumn fx:id="columnCustomerAccount" minWidth="0.0" prefWidth="226.28570556640625" text="KontoNr." />
+        </columns>
+    </TableView>
+   <Label fx:id="lblBike" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="363.0">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+   <TableView fx:id="tableViewRental" layoutX="14.0" layoutY="414.0" prefHeight="268.0" prefWidth="865.0">
+     <columns>
+       <TableColumn fx:id="columnFrom" prefWidth="75.0" text="Von:" />
+       <TableColumn fx:id="columnTo" prefWidth="75.0" text="Bis:" />
+         <TableColumn fx:id="columnBikeID" prefWidth="75.0" text="Bike ID:" />
+         <TableColumn fx:id="columnBike" prefWidth="138.71429443359375" text="Bike:" />
+         <TableColumn fx:id="columnType" prefWidth="49.85711669921875" text="Art:" />
+         <TableColumn fx:id="columnCustomerID" prefWidth="85.85714721679688" text="Kunden ID:" />
+         <TableColumn fx:id="columnCustomer" prefWidth="203.85711669921875" text="Kunde:" />
+         <TableColumn fx:id="columnBirth" minWidth="0.0" prefWidth="96.2857666015625" text="Geb.Dat.:" />
+     </columns>
+   </TableView>
+   <Line endX="764.1428833007812" layoutX="115.0" layoutY="401.0" startX="-100.0" />
+   <Label layoutX="432.0" layoutY="48.0" prefHeight="26.0" prefWidth="410.0" text="Fahrradverleih:">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
+   <Line endX="346.14288330078125" endY="7.62939453125E-6" layoutX="533.0" layoutY="74.0" startX="-100.0" />
+   <Label layoutX="433.0" layoutY="98.0" text="Von:" />
+   <DatePicker fx:id="datePickerFrom" layoutX="432.0" layoutY="115.0" />
+   <Label layoutX="433.0" layoutY="151.0" text="Bis:" />
+   <DatePicker fx:id="datePickerTo" layoutX="432.0" layoutY="168.0" />
+   <Button fx:id="btnSave" layoutX="432.0" layoutY="292.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="174.0" text="Reservieren" />
+   <Button fx:id="btnBack" layoutX="430.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="36.0" prefWidth="174.0" text="Zurück" />
+   <Label fx:id="lblInfo" layoutX="431.0" layoutY="208.0" prefHeight="54.0" prefWidth="174.0" wrapText="true" />
+   <Button fx:id="btnDown" layoutX="853.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnDown" prefHeight="24.0" prefWidth="24.0" />
+   <Button fx:id="btnUp" layoutX="853.0" layoutY="685.0" mnemonicParsing="false" onAction="#btnUp" prefHeight="24.0" prefWidth="24.0" />
+</AnchorPane>
