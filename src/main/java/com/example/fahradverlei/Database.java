@@ -69,17 +69,20 @@ public class Database {
             ResultSet rs = stm.executeQuery(
                     "SELECT * FROM customer");
             while(rs.next()){
-                Database.customerList.add(new Customer(
-                        rs.getString("FirstName"),
-                        rs.getString("Name"),
-                        LocalDate.parse(rs.getString("BirthDate")),
-                        rs.getString("Street"),
-                        rs.getString("Housenumber"),
-                        rs.getInt("PostalCode"),
-                        rs.getInt("Tel"),
-                        rs.getString("AccountNumber"),
-                        rs.getInt("CustomerNumber")
-                ));
+                if (!Objects.equals(rs.getString("Name"), "WARTUNG")){
+                    Database.customerList.add(new Customer(
+                            rs.getString("FirstName"),
+                            rs.getString("Name"),
+                            LocalDate.parse(rs.getString("BirthDate")),
+                            rs.getString("Street"),
+                            rs.getString("Housenumber"),
+                            rs.getInt("PostalCode"),
+                            rs.getInt("Tel"),
+                            rs.getString("AccountNumber"),
+                            rs.getInt("CustomerNumber")
+                    ));
+                }
+
             }
             con.close();
 
