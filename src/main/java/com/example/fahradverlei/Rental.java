@@ -1,24 +1,31 @@
 package com.example.fahradverlei;
 
+import java.sql.Date;
 import java.time.LocalDate;
+import java.util.SplittableRandom;
 
 public class Rental {
 
     private Integer ID;
     private Integer BikeID;
-    private Integer CustomerNumber;
+    private String BikeName;
     private String Type;
-    private LocalDate StartDate;
-    private LocalDate EndDate;
+    private Integer CustomerNumber;
+    private String CustomerName;
+    private Date Birth;
+    private Date StartDate;
+    private Date EndDate;
 
-
-    public Rental(Integer ID, Integer bikeID, Integer customerNumber, String type, LocalDate startDate, LocalDate endDate) {
+    public Rental(Integer ID, Integer bikeID, String bikeName, String type, Integer customerNumber, String customerName, Date birth, Date startDate, Date endDate) {
         this.ID = ID;
-        this.BikeID = bikeID;
-        this.CustomerNumber = customerNumber;
-        this.Type = type;
-        this.StartDate = startDate;
-        this.EndDate = endDate;
+        BikeID = bikeID;
+        BikeName = bikeName;
+        Type = type;
+        CustomerNumber = customerNumber;
+        CustomerName = customerName;
+        Birth = birth;
+        StartDate = startDate;
+        EndDate = endDate;
     }
 
     public Integer getID() {
@@ -34,15 +41,15 @@ public class Rental {
     }
 
     public void setBikeID(Integer bikeID) {
-        this.BikeID = bikeID;
+        BikeID = bikeID;
     }
 
-    public Integer getCustomerNumber() {
-        return CustomerNumber;
+    public String getBikeName() {
+        return BikeName;
     }
 
-    public void setCustomerNumber(Integer customerNumber) {
-        this.CustomerNumber = customerNumber;
+    public void setBikeName(String bikeName) {
+        BikeName = bikeName;
     }
 
     public String getType() {
@@ -50,22 +57,49 @@ public class Rental {
     }
 
     public void setType(String type) {
-        this.Type = type;
+        Type = type;
     }
 
-    public LocalDate getStartDate() {
+    public Integer getCustomerNumber() {
+        return CustomerNumber;
+    }
+
+    public void setCustomerNumber(Integer customerNumber) {
+        CustomerNumber = customerNumber;
+    }
+
+    public String getCustomerName() {
+        return CustomerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        CustomerName = customerName;
+    }
+
+    public Date getBirth() {
+        return Birth;
+    }
+
+    public void setBirth(Date birth) {
+        Birth = birth;
+    }
+
+    public Date getStartDate() {
         return StartDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
-        this.StartDate = startDate;
+    public void setStartDate(Date startDate) {
+        StartDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
-        this.EndDate = endDate;
+    public void setEndDate(Date endDate) {
+        EndDate = endDate;
     }
 }
+
+
+

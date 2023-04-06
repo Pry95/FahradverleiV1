@@ -69,7 +69,9 @@ public class RentalWin {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+
             fillCustomerTableView();
+            fillRentalTableView();
 
             lblBike.setText("ID: " + tempBike.getID() + "\t\tBezeichnung: " + tempBike.getName());
 
@@ -85,6 +87,10 @@ public class RentalWin {
             view2.setPreserveRatio(true);
             btnUp.setGraphic(view2);
 
+        }
+
+        private void fillRentalTableView() {
+            Database.readRentalFromDatabase(tempBike.getID());
         }
 
         public void fillCustomerTableView(){

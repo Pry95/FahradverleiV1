@@ -168,15 +168,21 @@ public class Database {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(
-                    "SELECT * FROM rental where BikeId='" + bikeID+ "'");
+                    "SELECT * FROM rental " +
+                            "INNER JOIN bike ON rental.BikeID = bike.Id " +
+                            "INNER JOIN customer ON rental.CustomerNumber = customer.CustomerNumber " +
+                            "WHERE BikeId='"+bikeID+"'");
             while(rs.next()){
                 Database.rentalList.add(new Rental(
                         rs.getInt("Id"),
-                        rs.getInt("BikeId"),
-                        rs.getInt ("CustomerNumber"),
+                        rs.getInt("BikeID"),
+                        rs.getString("Name"),
                         rs.getString("Typ"),
-                        LocalDate.parse(rs.getString("StartDate")),
-                        LocalDate.parse(rs.getString("EndDate"))
+                        rs.getInt("CustomerNumber"),
+                        rs.getString("customer.Name") + " " + rs.getString("customer.FirstName"),
+                        rs.getDate("BirthDate"),
+                        rs.getDate("StartDate"),
+                        rs.getDate("EndDate")
                 ));
             }
             con.close();
