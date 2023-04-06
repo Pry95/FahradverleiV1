@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -99,6 +100,39 @@ public class RentalWin {
             view2.setPreserveRatio(true);
             btnUp.setGraphic(view2);
 
+            datePickerFrom.setDayCellFactory(picker -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    if (date.isBefore(LocalDate.now())) {
+                        setDisable(true);
+                    }
+                    for (Rental element : Database.rentalList) {
+                        if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))){
+                            setDisable(true);
+                        }
+                    }
+                }
+            });
+
+            datePickerFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
+                datePickerTo.setValue(newValue);
+                datePickerTo.setDayCellFactory(picker -> new DateCell() {
+                    @Override
+                    public void updateItem(LocalDate date, boolean empty) {
+                        super.updateItem(date, empty);
+                        if (date.isBefore(newValue)) {
+                            setDisable(true);
+                        }
+                        for (Rental element : Database.rentalList) {
+                            if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))){
+                                setDisable(true);
+                            }
+                        }
+                    }
+                });
+            });
+
         }
 
         private void fillRentalTableView() {
@@ -128,7 +162,10 @@ public class RentalWin {
                 Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
                 if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null){
                     Database.writeRentalToDatabase(tempBike,tempCustomer,datePickerFrom.getValue(),datePickerTo.getValue());
+                    fillRentalTableView();
                     lblInfo.setText("Fahrrad ist reserviert!");
+                    datePickerTo.setValue(null);
+                    datePickerFrom.setValue(null);
                 }
                 else {
                     lblInfo.setText("Eingabe ist fehlt!");
