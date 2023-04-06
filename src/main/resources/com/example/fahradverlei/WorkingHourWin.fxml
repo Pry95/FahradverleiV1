@@ -13,7 +13,7 @@
             <TableColumn fx:id="ColumnBreakStart" prefWidth="82.71429443359375" text="Pause start" />
             <TableColumn fx:id="ColumnBreakEnd" prefWidth="82.71429443359375" text="Pause ende" />
             <TableColumn fx:id="ColumnEnd" prefWidth="59.857177734375" text="Ende" />
-            <TableColumn fx:id="ColumnHours" prefWidth="73.14288766043529" text="Stunden" />
+            <TableColumn fx:id="ColumnHours" prefWidth="64.71435546875" text="Stunden" />
         </columns>
       </TableView>
       <Label fx:id="lblEmployee" layoutX="14.0" layoutY="2.0" prefHeight="30.0" prefWidth="441.0">
