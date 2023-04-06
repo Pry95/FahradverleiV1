@@ -1,4 +1,5 @@
 package com.example.fahradverlei;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +12,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 public class PayrollWindow {
     public Stage stage;
@@ -34,7 +39,10 @@ public class PayrollWindow {
         public MainWin mainWin;
         public Employee myEmployee;
         public PayrollWindow payrollWindow;
+        public Payroll selectedPayroll;
+        //Tableview Payroll
         public TableView<Payroll> payrollTableView;
+
         public TableColumn <Payroll, Integer> payrollTableViewMonth;
         public TableColumn <Payroll, Integer> payrollTableViewYear;
         public TableColumn <Payroll, Integer> payrollTableViewHoursPerMonth;
@@ -44,6 +52,16 @@ public class PayrollWindow {
         public TableColumn <Payroll, Double> payrollTableViewGrossSalary;
         public TableColumn <Payroll, Double> payrollTableViewNetSalary;
         public TableColumn <Payroll, Double> payrollTableViewDeductions;
+
+        //TableView monthWorkingHours
+        public TableView<WorkingHours> monthWorkingHoursTableView;
+        public TableColumn<WorkingHours, LocalDate> monthWorkingHoursTableViewDate;
+        public TableColumn<WorkingHours, Time> monthWorkingHoursTableViewStart;
+        public TableColumn<WorkingHours,Time> monthWorkingHoursTableViewBreakStart;
+        public TableColumn<WorkingHours,Time> monthWorkingHoursTableViewBreakEnd;
+        public TableColumn<WorkingHours,Time> monthWorkingHoursTableViewEnd;
+        public TableColumn<WorkingHours,Double> monthWorkingHoursTableViewTotalHours;
+
         public PayrollWindowController(MainWin mainWin,Employee myEmployee, PayrollWindow payrollWindow){
             this.payrollWindow = payrollWindow;
             this.mainWin = mainWin;
@@ -53,12 +71,13 @@ public class PayrollWindow {
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillPayrollTabelView();
+            updatemonthWorkingHoursTableView();
         }
         public void fillPayrollTabelView(){
             Database.readPayrolsFromaDatabase(myEmployee.getEmployeeNumber());
             payrollTableViewMonth.setCellValueFactory(new PropertyValueFactory<>("Month"));
             payrollTableViewYear.setCellValueFactory(new PropertyValueFactory<>("Year"));
-             payrollTableViewHoursPerMonth.setCellValueFactory(new PropertyValueFactory<>("HoursPerMonth"));
+            payrollTableViewHoursPerMonth.setCellValueFactory(new PropertyValueFactory<>("HoursPerMonth"));
             payrollTableViewTotalyHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
             payrollTableViewOvertime.setCellValueFactory(new PropertyValueFactory<>("OverTime"));
             payrollTableViewHourlyWage.setCellValueFactory(new PropertyValueFactory<>("HourlyWage"));
@@ -66,6 +85,30 @@ public class PayrollWindow {
             payrollTableViewNetSalary.setCellValueFactory(new PropertyValueFactory<>("NetSalary"));
             payrollTableViewDeductions.setCellValueFactory(new PropertyValueFactory<>("Deductions"));
             payrollTableView.setItems(Database.payrollsList);
+        }
+        public void fillmonthWorkingHoursTableView() {
+            Database.readMonthlyWorkingHoursFromDatabase(selectedPayroll.getMonth(), selectedPayroll.getYear(), myEmployee.getEmployeeNumber());
+            monthWorkingHoursTableViewDate.setCellValueFactory(new PropertyValueFactory<>("WorkingDate"));
+            monthWorkingHoursTableViewStart.setCellValueFactory(new PropertyValueFactory<>("WorkingStart"));
+            monthWorkingHoursTableViewBreakStart.setCellValueFactory(new PropertyValueFactory<>("BreakStart"));
+            monthWorkingHoursTableViewBreakEnd.setCellValueFactory(new PropertyValueFactory<>("BreakEnd"));
+            monthWorkingHoursTableViewEnd.setCellValueFactory(new PropertyValueFactory<>("WorkEnd"));
+            monthWorkingHoursTableViewTotalHours.setCellValueFactory(new PropertyValueFactory<>("TotalHours"));
+            monthWorkingHoursTableView.setItems(Database.montWorkingHoursList);
+        }
+        public void updatemonthWorkingHoursTableView(){
+             payrollTableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Payroll>() {
+                @Override
+                public void onChanged(Change<? extends Payroll> change) {
+                    selectedPayroll = payrollTableView.getSelectionModel().getSelectedItem();
+                    fillmonthWorkingHoursTableView();
+
+
+
+                }
+            });
+
+
         }
     }
 }
