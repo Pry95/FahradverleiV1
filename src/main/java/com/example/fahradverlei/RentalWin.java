@@ -93,7 +93,7 @@ public class RentalWin {
 
         }
         @FXML
-        public void setBtnUp(){
+        public void btnUp(){
 
         }
     }
