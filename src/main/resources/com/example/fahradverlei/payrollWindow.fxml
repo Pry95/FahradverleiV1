@@ -2,10 +2,53 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="550.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="168.0" layoutY="223.0" mnemonicParsing="false" text="Button" />
+      <TableView layoutX="6.0" layoutY="50.0" prefHeight="200.0" prefWidth="771.0">
+        <columns>
+          <TableColumn prefWidth="53.19998264312744" text="Monat" />
+          <TableColumn prefWidth="66.59997177124023" text="Jahr" />
+            <TableColumn prefWidth="92.60003662109375" text="Std./Mon" />
+            <TableColumn prefWidth="92.60003662109375" text="Tats./ Std." />
+            <TableColumn prefWidth="92.60003662109375" text="Überstunden" />
+            <TableColumn prefWidth="92.60003662109375" text="Stundenlohn" />
+            <TableColumn prefWidth="92.60003662109375" text="Brutto" />
+            <TableColumn prefWidth="92.60003662109375" text="Netto" />
+            <TableColumn prefWidth="92.60003662109375" text="Abzüge" />
+        </columns>
+      </TableView>
+      <Label layoutX="6.0" layoutY="14.0" prefHeight="36.0" prefWidth="255.0" text="Gehaltabrechnung auswählen">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <TableView layoutX="6.0" layoutY="310.0" prefHeight="200.0" prefWidth="771.0">
+        <columns>
+          <TableColumn prefWidth="140.0" text="Datum" />
+          <TableColumn prefWidth="140.0" text="Beginn" />
+            <TableColumn prefWidth="140.0" text="Pause start" />
+            <TableColumn prefWidth="140.0" text="Pause ende" />
+            <TableColumn prefWidth="140.0" text="Ende" />
+            <TableColumn prefWidth="69.800048828125" text="Stunden" />
+        </columns>
+      </TableView>
+      <Label layoutX="6.0" layoutY="282.0" text="Stundenzeiten">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="815.0" layoutY="136.0" text="Neue Gehaltsabrechnung">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="846.0" layoutY="227.0" prefWidth="150.0" />
+      <ComboBox layoutX="846.0" layoutY="269.0" prefWidth="150.0" />
+      <Label layoutX="910.0" layoutY="209.0" text="Jahr" />
+      <Label layoutX="903.0" layoutY="250.0" text="Monat" />
+      <Button layoutX="848.0" layoutY="310.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Buchen" />
    </children>
 </AnchorPane>
