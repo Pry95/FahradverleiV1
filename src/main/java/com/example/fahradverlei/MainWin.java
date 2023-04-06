@@ -115,6 +115,7 @@ public class MainWin {
         public Button btnChangeBike;
         public Button btnDelCustomer;
         public Button btnChangeCustomer;
+        public Button btnRepair;
 
 
         public Button btnChangeEmployee;
@@ -367,6 +368,10 @@ public class MainWin {
                 Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
                 RentalWin rentalWin = new RentalWin(mainWin,tempBike);
             }
+        }
+        @FXML
+        public void btnRepair(){
+
         }
     }
 }
