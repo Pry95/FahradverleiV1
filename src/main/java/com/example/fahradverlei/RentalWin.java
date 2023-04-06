@@ -128,6 +128,11 @@ public class RentalWin {
                             if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))){
                                 setDisable(true);
                             }
+                            if (newValue.isBefore(element.getStartDate().toLocalDate())){
+                                if (date.isAfter(element.getStartDate().toLocalDate())){
+                                    setDisable(true);
+                                }
+                            }
                         }
                     }
                 });
