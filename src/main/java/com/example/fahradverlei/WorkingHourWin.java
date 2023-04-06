@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -105,6 +106,19 @@ public class WorkingHourWin {
             comboBreakStart.getItems().addAll(times);
             comboBreakStart.setValue(Time.valueOf(LocalTime.of(12,0)));
             datepicker.setValue(LocalDate.now());
+            // lässt im Datepicker keine Auswahl von Tagen in der Zukunft oder Sonntagen zu
+            datepicker.setDayCellFactory(picker -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    if (date.isAfter(LocalDate.now())) {
+                        setDisable(true);
+                    }
+                    if (date.getDayOfWeek() == DayOfWeek.SUNDAY){
+                        setDisable(true);
+                    }
+                }
+            });
         }
         @FXML
         public void btnSave(){
