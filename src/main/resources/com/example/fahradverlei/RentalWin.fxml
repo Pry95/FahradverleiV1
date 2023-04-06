@@ -42,9 +42,9 @@
    <DatePicker fx:id="datePickerFrom" layoutX="432.0" layoutY="115.0" />
    <Label layoutX="433.0" layoutY="151.0" text="Bis:" />
    <DatePicker fx:id="datePickerTo" layoutX="432.0" layoutY="168.0" />
-   <Button fx:id="btnSave" layoutX="432.0" layoutY="292.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="174.0" text="Reservieren" />
+   <Button fx:id="btnSave" layoutX="431.0" layoutY="217.0" mnemonicParsing="false" onAction="#btnSave" prefHeight="36.0" prefWidth="174.0" text="Verleihen" />
    <Button fx:id="btnBack" layoutX="430.0" layoutY="349.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="36.0" prefWidth="174.0" text="Zurück" />
-   <Label fx:id="lblInfo" layoutX="431.0" layoutY="208.0" prefHeight="54.0" prefWidth="174.0" wrapText="true" />
+   <Label fx:id="lblInfo" alignment="CENTER" layoutX="431.0" layoutY="301.0" prefHeight="43.0" prefWidth="174.0" wrapText="true" />
    <Button fx:id="btnDown" layoutX="853.0" layoutY="367.0" mnemonicParsing="false" onAction="#btnDown" prefHeight="24.0" prefWidth="24.0" />
    <Button fx:id="btnUp" layoutX="853.0" layoutY="685.0" mnemonicParsing="false" onAction="#btnUp" prefHeight="24.0" prefWidth="24.0" />
    <ImageView fitHeight="288.0" fitWidth="207.0" layoutX="637.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
@@ -52,4 +52,5 @@
          <Image url="@../../../Images/img1.jpg" />
       </image>
    </ImageView>
+   <Button fx:id="btnRepair" layoutX="431.0" layoutY="262.0" mnemonicParsing="false" onAction="#btnRepair" prefHeight="36.0" prefWidth="174.0" text="Warten" />
 </AnchorPane>

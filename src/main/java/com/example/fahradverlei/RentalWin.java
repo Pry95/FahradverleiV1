@@ -71,6 +71,7 @@ public class RentalWin {
         public Button btnBack;
         public Button btnDown;
         public Button btnUp;
+        public Button btnRepair;
 
 
         public RentalWinController(MainWin mainWin, Bike tempBike, RentalWin rentalWin) {
@@ -164,20 +165,32 @@ public class RentalWin {
             if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
                 Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
                 if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null){
-                    Database.writeRentalToDatabase(tempBike,tempCustomer,datePickerFrom.getValue(),datePickerTo.getValue());
+                    Database.writeRentalToDatabase(tempBike,tempCustomer.getCustomerNumber(),datePickerFrom.getValue(),datePickerTo.getValue(),"VERLEIH");
                     fillRentalTableView();
                     lblInfo.setText("Fahrrad ist reserviert!");
                     datePickerTo.setValue(null);
                     datePickerFrom.setValue(null);
                 }
                 else {
-                    lblInfo.setText("Eingabe ist fehlt!");
+                    lblInfo.setText("Datum fehlt!");
                 }
             }
             else {
                 lblInfo.setText("Kunde auswählen!");
             }
-
+        }
+        @FXML
+        public void btnRepair(){
+            if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null){
+                Database.writeRentalToDatabase(tempBike,99,datePickerFrom.getValue(),datePickerTo.getValue(),"WARTUNG");
+                fillRentalTableView();
+                lblInfo.setText("Fahrradwartung reserviert!");
+                datePickerTo.setValue(null);
+                datePickerFrom.setValue(null);
+            }
+            else {
+                lblInfo.setText("Datum fehlt!");
+            }
         }
         @FXML
         public void btnBack(){

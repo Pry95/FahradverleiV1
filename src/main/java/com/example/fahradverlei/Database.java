@@ -495,14 +495,15 @@ public class Database {
 
     /** Fügt einen Eintrag in die Datenbank Rental hinzu
      */
-    public static void writeRentalToDatabase(Bike tempBike, Customer tempCustomer, LocalDate start, LocalDate end) {
+    public static void writeRentalToDatabase(Bike tempBike, Integer customerNumber, LocalDate start, LocalDate end,String prompt) {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             String insert = "INSERT INTO rental(BikeId,CustomerNumber,Typ,StartDate,EndDate) " +
                     "VALUES ('"
                     +tempBike.getID()+"','"
-                    +tempCustomer.getCustomerNumber()+"','Verleih','"
+                    +customerNumber+"','"
+                    +prompt+"','"
                     +start+"','"
                     +end+"')";
             stm.execute(insert);
