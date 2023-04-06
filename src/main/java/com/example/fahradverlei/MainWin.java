@@ -369,9 +369,5 @@ public class MainWin {
                 RentalWin rentalWin = new RentalWin(mainWin,tempBike);
             }
         }
-        @FXML
-        public void btnRepair(){
-
-        }
     }
 }
