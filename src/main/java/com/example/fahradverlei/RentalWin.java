@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -27,7 +28,7 @@ public class RentalWin {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("RentalWin.fxml"));
         this.controller = new RentalWinController(mainWin, tempBike, this);
         fxmlLoader.setController(controller);
-        this.scene = new Scene(fxmlLoader.load(), 891, 714);
+        this.scene = new Scene(fxmlLoader.load(), 891, 400);
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setTitle("Fahrrad verleihen");
@@ -70,6 +71,20 @@ public class RentalWin {
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillCustomerTableView();
 
+            lblBike.setText("ID: " + tempBike.getID() + "\t\tBezeichnung: " + tempBike.getName());
+
+            Image img = new Image("file:src/Images/down.png");
+            ImageView view = new ImageView(img);
+            view.setFitHeight(15);
+            view.setPreserveRatio(true);
+            btnDown.setGraphic(view);
+
+            Image img2 = new Image("file:src/Images/up.png");
+            ImageView view2 = new ImageView(img2);
+            view2.setFitHeight(15);
+            view2.setPreserveRatio(true);
+            btnUp.setGraphic(view2);
+
         }
 
         public void fillCustomerTableView(){
@@ -82,6 +97,19 @@ public class RentalWin {
         }
         @FXML
         public void btnSave(){
+            if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
+                Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
+                if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null){
+                    Database.writeRentalToDatabase(tempBike,tempCustomer,datePickerFrom.getValue(),datePickerTo.getValue());
+                    lblInfo.setText("Fahrrad ist reserviert!");
+                }
+                else {
+                    lblInfo.setText("Eingabe ist fehlt!");
+                }
+            }
+            else {
+                lblInfo.setText("Kunde auswählen!");
+            }
 
         }
         @FXML
@@ -91,10 +119,11 @@ public class RentalWin {
         @FXML
         public void btnDown(){
 
+            rentalWin.stage.setHeight(755);
         }
         @FXML
         public void btnUp(){
-
+            rentalWin.stage.setHeight(435);
         }
     }
 }

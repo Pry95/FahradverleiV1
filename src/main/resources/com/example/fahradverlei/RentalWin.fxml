@@ -6,17 +6,12 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="714.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <TableView fx:id="tabViewCustomer" layoutX="14.0" layoutY="48.0" prefHeight="337.0" prefWidth="363.0">
+    <TableView fx:id="tabViewCustomer" layoutX="14.0" layoutY="48.0" prefHeight="337.0" prefWidth="373.0">
         <columns>
             <TableColumn fx:id="columnCustomerID" prefWidth="32.428587913513184" text="ID" />
             <TableColumn fx:id="columnCustomerName" prefWidth="98.57146835327148" text="Nachname" />
             <TableColumn fx:id="columnCustomerFirstName" prefWidth="109.5714111328125" text="Vorname" />
             <TableColumn fx:id="columnCustomerBirth" prefWidth="114.28570556640625" text="Geb.Dat." />
-            <TableColumn fx:id="columnCustomerStreet" prefWidth="208.00003051757812" text="Straße" />
-            <TableColumn fx:id="columnCustomerHouseNumber" minWidth="1.5714111328125" prefWidth="69.71429443359375" text="Nr." />
-            <TableColumn fx:id="columnCustomerPlz" minWidth="6.28570556640625" prefWidth="122.28570556640625" text="PLZ" />
-            <TableColumn fx:id="columnCustomerTel" prefWidth="146.28564453125" text="Tel" />
-            <TableColumn fx:id="columnCustomerAccount" minWidth="0.0" prefWidth="226.28570556640625" text="KontoNr." />
         </columns>
     </TableView>
    <Label fx:id="lblBike" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="363.0">

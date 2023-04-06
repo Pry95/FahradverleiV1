@@ -459,4 +459,25 @@ public class Database {
             System.out.println(e.getMessage());
         }
     }
+
+    /** Fügt einen Eintrag in die Datenbank Rental hinzu
+     */
+    public static void writeRentalToDatabase(Bike tempBike, Customer tempCustomer, LocalDate start, LocalDate end) {
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            String insert = "INSERT INTO rental(BikeId,CustomerNumber,Typ,StartDate,EndDate) " +
+                    "VALUES ('"
+                    +tempBike.getID()+"','"
+                    +tempCustomer.getCustomerNumber()+"','Verleih','"
+                    +start+"','"
+                    +end+"')";
+            stm.execute(insert);
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }
