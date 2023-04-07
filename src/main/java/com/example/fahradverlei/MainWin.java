@@ -37,7 +37,6 @@ public class MainWin {
         this.stage.getIcons().add(new Image("file:src/Images/bike.png"));
         this.stage.setScene(scene);
         this.stage.setResizable(false);
-        this.stage.show();
     }
 
     public class MainWinController implements Initializable {
