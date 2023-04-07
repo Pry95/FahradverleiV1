@@ -33,7 +33,7 @@ public class ChangeCustomerWin {
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setTitle("Kundendaten ändern");
-        this.stage.getIcons().add(new Image("file:src/Images/bike.png"));
+        this.stage.getIcons().add(new Image("file:src/Images/logo.png"));
         this.stage.setScene(scene);
         this.stage.setResizable(false);
         this.stage.show();

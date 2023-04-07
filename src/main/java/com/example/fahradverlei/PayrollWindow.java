@@ -29,6 +29,7 @@ public class PayrollWindow {
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 1060, 550);
         this.stage = new Stage();
+        this.stage.getIcons().add(new Image("file:src/Images/logo.png"));
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setScene(scene);
         this.stage.setResizable(false);

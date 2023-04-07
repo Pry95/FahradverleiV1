@@ -34,7 +34,7 @@ public class RentalWin {
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setTitle("Fahrrad verleihen");
-        this.stage.getIcons().add(new Image("file:src/Images/bike.png"));
+        this.stage.getIcons().add(new Image("file:src/Images/logo.png"));
         this.stage.setScene(scene);
         this.stage.setResizable(false);
         this.stage.show();

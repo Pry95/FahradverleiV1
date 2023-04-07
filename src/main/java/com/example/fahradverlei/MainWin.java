@@ -34,7 +34,7 @@ public class MainWin {
         this.scene = new Scene(fxmlLoader.load(), 1250, 807);
         this.stage = new Stage();
         this.stage.setTitle("Fahrradverleih");
-        this.stage.getIcons().add(new Image("file:src/Images/bike.png"));
+        this.stage.getIcons().add(new Image("file:src/Images/logo.png"));
         this.stage.setScene(scene);
         this.stage.setResizable(false);
     }
