@@ -24,7 +24,7 @@ public class StartWin {
 
     public StartWin() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("StartWin.fxml"));
-        this.scene = new Scene(fxmlLoader.load(), 600, 400);
+        this.scene = new Scene(fxmlLoader.load(), 828, 571);
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setScene(scene);
