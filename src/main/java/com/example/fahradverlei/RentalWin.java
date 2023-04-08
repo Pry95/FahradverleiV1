@@ -173,7 +173,6 @@ public class RentalWin {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
-
                     // Compare first name and last name of every person with filter text.
                     String lowerCaseFilter = newValue.toLowerCase();
 
@@ -195,12 +194,6 @@ public class RentalWin {
 
             // 5. Add sorted (and filtered) data to the table.
             tabViewCustomer.setItems(sortedData);
-//            Database.readCustomerFromDatabase();
-//            columnCustomerID.setCellValueFactory(new PropertyValueFactory<>("CustomerNumber"));
-//            columnCustomerName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-//            columnCustomerFirstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
-//            columnCustomerBirth.setCellValueFactory(new PropertyValueFactory<>("BirthDate"));
-//            tabViewCustomer.setItems(Database.customerList);
         }
         @FXML
         public void btnSave(){
