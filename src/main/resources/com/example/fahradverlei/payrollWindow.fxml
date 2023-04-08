@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="550.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="550.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView fx:id="payrollTableView" layoutX="6.0" layoutY="50.0" prefHeight="200.0" prefWidth="771.0">
         <columns>
@@ -39,15 +39,18 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="815.0" layoutY="136.0" text="Neue Gehaltsabrechnung">
+      <Label layoutX="823.0" layoutY="150.0" text="Neue Gehaltsabrechnung">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <ComboBox layoutX="846.0" layoutY="227.0" prefWidth="150.0" />
-      <ComboBox layoutX="846.0" layoutY="269.0" prefWidth="150.0" />
-      <Label layoutX="910.0" layoutY="209.0" text="Jahr" />
-      <Label layoutX="903.0" layoutY="250.0" text="Monat" />
-      <Button layoutX="848.0" layoutY="310.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Buchen" />
+      <ComboBox fx:id="yearWorkingHoursCombobox" layoutX="942.0" layoutY="210.0" prefHeight="26.0" prefWidth="112.0" />
+      <ComboBox fx:id="monthWorkingHoursCombobox" layoutX="818.0" layoutY="210.0" prefHeight="26.0" prefWidth="112.0" />
+      <Label layoutX="987.0" layoutY="192.0" text="Jahr" />
+      <Label layoutX="850.0" layoutY="192.0" text="Monat" />
+      <Button layoutX="942.0" layoutY="250.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Buchen" />
+      <Button fx:id="showParollBtn" layoutX="818.0" layoutY="250.0" mnemonicParsing="false" onAction="#showParollBtn" prefHeight="26.0" prefWidth="112.0" text="Buchung ansehen" />
+      <Button layoutX="942.0" layoutY="480.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Zurück" />
+      <Label fx:id="newPayrollLabel" layoutX="818.0" layoutY="308.0" prefHeight="172.0" prefWidth="122.0" />
    </children>
 </AnchorPane>
