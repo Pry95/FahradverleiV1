@@ -74,7 +74,7 @@ public class WorkingHourWin {
         }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-            lblEmployee.setText("ID: " +tempEmployee.getEmployeeNumber() + " \tName: " + tempEmployee.getFirstName() + " " + tempEmployee.getName());
+            lblEmployee.setText("ID: " + tempEmployee.getEmployeeNumber() + " \tName: " + tempEmployee.getFirstName() + " " + tempEmployee.getName());
             fillComboBoxesTime();
             fillTableViewWorkingHour();
         }
@@ -116,6 +116,11 @@ public class WorkingHourWin {
                     }
                     if (date.getDayOfWeek() == DayOfWeek.SUNDAY){
                         setDisable(true);
+                    }
+                    for (WorkingHours element : Database.workingHoursList) {
+                        if (date.isEqual(element.getWorkingDate())){
+                            setDisable(true);
+                        }
                     }
                 }
             });
