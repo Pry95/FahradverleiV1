@@ -164,35 +164,27 @@ public class RentalWin {
             columnCustomerName.setCellValueFactory(new PropertyValueFactory<>("Name"));
             columnCustomerFirstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
             columnCustomerBirth.setCellValueFactory(new PropertyValueFactory<>("BirthDate"));
-            FilteredList<Customer> filteredData = new FilteredList<>(Database.customerList, p -> true);
 
-            // 2. Set the filter Predicate whenever the filter changes.
+            FilteredList<Customer> filteredData = new FilteredList<>(Database.customerList, p -> true);
             txtFieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(person -> {
-                    // If filter text is empty, display all persons.
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
-                    // Compare first name and last name of every person with filter text.
+                    String name = person.getFirstName() + " " + person.getName();
+                    String name2 = person.getName() + " " + person.getFirstName();
                     String lowerCaseFilter = newValue.toLowerCase();
 
-                    if (person.getName().toLowerCase().contains(lowerCaseFilter)) {
-                        return true; // Filter matches first name.
+                    if (name.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                        return true;
+                    } else if (name2.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                        return true;
                     }
-                    else if (person.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
-                        return true; // Filter matches last name.
-                    }
-                    return false; // Does not match.
+                    return false;
                 });
             });
-
-            // 3. Wrap the FilteredList in a SortedList.
             SortedList<Customer> sortedData = new SortedList<>(filteredData);
-
-            // 4. Bind the SortedList comparator to the TableView comparator.
             sortedData.comparatorProperty().bind(tabViewCustomer.comparatorProperty());
-
-            // 5. Add sorted (and filtered) data to the table.
             tabViewCustomer.setItems(sortedData);
         }
         @FXML

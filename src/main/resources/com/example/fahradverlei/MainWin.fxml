@@ -37,6 +37,7 @@
                                           <Button fx:id="btnDelBike" layoutX="853.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnDelBike" prefHeight="53.0" prefWidth="205.0" text="Fahrrad löschen" />
                                           <Button fx:id="btnChangeBike" layoutX="153.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnChangeBike" prefHeight="53.0" prefWidth="205.0" text="Fahrrad ändern" />
                                           <Button fx:id="btnRent" layoutX="497.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnRent" prefHeight="53.0" prefWidth="233.0" text="Fahrrad verleihen / warten" />
+                                          <TextField fx:id="txtFieldSearchBike" alignment="CENTER" layoutX="473.0" layoutY="530.0" prefHeight="37.0" prefWidth="281.0" promptText="Fahrrad suchen..." />
                                                 </children></AnchorPane>
                                         </content>
                                     </Tab>
@@ -93,6 +94,7 @@
                                           </TableView>
                                            <Button fx:id="btnDelCustomer" layoutX="853.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnDelCustomer" prefHeight="53.0" prefWidth="205.0" text="Kunde löschen" />
                                            <Button fx:id="btnChangeCustomer" layoutX="153.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnChangeCustomer" prefHeight="53.0" prefWidth="205.0" text="Kunde ändern" />
+                                           <TextField fx:id="txtFieldSearchCustomer" alignment="CENTER" layoutX="473.0" layoutY="530.0" prefHeight="37.0" prefWidth="281.0" promptText="Kunden suchen..." />
                                        </children></AnchorPane>
                               </content>
                             </Tab>
@@ -187,6 +189,7 @@
                                            <Button fx:id="btnChangeEmployee" layoutX="153.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnChangeEmployee" prefHeight="53.0" prefWidth="205.0" text="Mitarbeiter ändern" />
                                           <Button fx:id="btnEmployeeWorkingTime" layoutX="385.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnEmployeeWorkingTime" prefHeight="53.0" prefWidth="205.0" text="Arbeitszeiten" />
                                           <Button fx:id="btnPayroll" layoutX="616.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnPayroll" prefHeight="53.0" prefWidth="205.0" text="Gehaltabrechnung" />
+                                           <TextField fx:id="txtFieldSearchEmployee" alignment="CENTER" layoutX="473.0" layoutY="530.0" prefHeight="37.0" prefWidth="281.0" promptText="Mitarbeiter suchen..." />
                                        </children></AnchorPane>
                                  </content>
                               </Tab>

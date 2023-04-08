@@ -1,5 +1,7 @@
 package com.example.fahradverlei;
 
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -119,6 +121,10 @@ public class MainWin {
 
         public Button btnChangeEmployee;
         public Button btnDelEmployee;
+        public TextField txtFieldSearchBike;
+        public TextField txtFieldSearchCustomer;
+        public TextField txtFieldSearchEmployee;
+
 
         // Konstruktor von MainWinController
         public MainWinController(MainWin mainWin){
@@ -146,7 +152,7 @@ public class MainWin {
             ColumnEmployeeHourlyWage.setCellValueFactory(new PropertyValueFactory<>("HourlyWage"));
             ColumnEmployeeHoursPerMonth.setCellValueFactory(new PropertyValueFactory<>("HoursPerMonth"));
             ColumnEmployeeAccountNumber.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
-            tableViewEmployee.setItems(Database.employeeList);
+
             ColumnEmployeeHourlyWage.setCellFactory(column -> {
                 return new TableCell<Employee, Double>() {
                     @Override
@@ -161,9 +167,27 @@ public class MainWin {
                     }
                 };
             });
+            FilteredList<Employee> filteredData = new FilteredList<>(Database.employeeList, p -> true);
+            txtFieldSearchEmployee.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(person -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String name = person.getFirstName() + " " + person.getName();
+                    String name2 = person.getName() + " " + person.getFirstName();
+                    String lowerCaseFilter = newValue.toLowerCase();
 
-
-
+                    if (name.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                        return true;
+                    } else if (name2.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Employee> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tableViewEmployee.comparatorProperty());
+            tableViewEmployee.setItems(sortedData);
         }
 
         public void fillCustomerTableView(){
@@ -177,7 +201,42 @@ public class MainWin {
             columnCustomerPlz.setCellValueFactory(new PropertyValueFactory<>("PostalCode"));
             columnCustomerTel.setCellValueFactory(new PropertyValueFactory<>("Tel"));
             columnCustomerAccount.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
-            tabViewCustomer.setItems(Database.customerList);
+
+            ColumnEmployeeHourlyWage.setCellFactory(column -> {
+                return new TableCell<Employee, Double>() {
+                    @Override
+                    protected void updateItem(Double item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                            setStyle("");
+                        } else {
+                            setText(String.format("%.2f €", item));
+                        }
+                    }
+                };
+            });
+            FilteredList<Customer> filteredData = new FilteredList<>(Database.customerList, p -> true);
+            txtFieldSearchCustomer.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(person -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String name = person.getFirstName() + " " + person.getName();
+                    String name2 = person.getName() + " " + person.getFirstName();
+                    String lowerCaseFilter = newValue.toLowerCase();
+
+                    if (name.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                        return true;
+                    } else if (name2.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Customer> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tabViewCustomer.comparatorProperty());
+            tabViewCustomer.setItems(sortedData);
         }
         public void fillBikeTableView(){
             Database.readBikesFromDatabase();
@@ -190,7 +249,6 @@ public class MainWin {
             ColumnBikeContitionComment.setCellValueFactory(new PropertyValueFactory<>("ConditionComment"));
             ColumnBikeBatteryCapacity.setCellValueFactory(new PropertyValueFactory<>("BatteryCapacity"));
             ColumnBikePerformence.setCellValueFactory(new PropertyValueFactory<>("Performance"));
-            TableViewBike.setItems(Database.bikeList);
             // Fügt das € Zeichen in der BikeTableView bei PreisPerDay hinzu
             ColumnBikePricePerDay.setCellFactory(column -> {
                 return new TableCell<Bike, Double>() {
@@ -206,6 +264,24 @@ public class MainWin {
                     }
                 };
             });
+
+            FilteredList<Bike> filteredData = new FilteredList<>(Database.bikeList, p -> true);
+            txtFieldSearchBike.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(person -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String lowerCaseFilter = newValue.toLowerCase();
+
+                    if (person.getName().toLowerCase().contains(lowerCaseFilter)) {
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Bike> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(TableViewBike.comparatorProperty());
+            TableViewBike.setItems(sortedData);
         }
         public void fillBikesCombobox(){
             List<Integer> frameSizeList = new ArrayList<>();
