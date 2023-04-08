@@ -147,6 +147,22 @@ public class MainWin {
             ColumnEmployeeHoursPerMonth.setCellValueFactory(new PropertyValueFactory<>("HoursPerMonth"));
             ColumnEmployeeAccountNumber.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
             tableViewEmployee.setItems(Database.employeeList);
+            ColumnEmployeeHourlyWage.setCellFactory(column -> {
+                return new TableCell<Employee, Double>() {
+                    @Override
+                    protected void updateItem(Double item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                            setStyle("");
+                        } else {
+                            setText(String.format("%.2f €", item));
+                        }
+                    }
+                };
+            });
+
+
 
         }
 
