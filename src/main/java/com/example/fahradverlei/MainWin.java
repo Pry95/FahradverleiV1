@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -294,29 +295,32 @@ public class MainWin {
         }
         @FXML
         public void btnInvestNewBike(){
-            int batteryCapacity;
-            int performance;
 
-            String tempBatteryCapacity = textFieldBikeInvestBatteryCapacity.getText() ;
-            String tempPerformance = textFieldBikeInvestPerformance.getText();
-            if(tempBatteryCapacity.equals("")){
-                batteryCapacity = 0;
-            }else {
-                batteryCapacity = Integer.parseInt(tempBatteryCapacity);
-            }
-            if(tempPerformance.equals("")){
-                performance = 0;
-            }else{
-                performance = Integer.parseInt(tempPerformance);
-            }
             String typ = comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString();
             String name = textFieldBikeInvestName.getText();
             double pricePerDay = Double.parseDouble(textFieldBikeInvestPricePerDay.getText());
             int frameSize = Integer.parseInt(comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString());
-            if(!typ.equals("EBike")){
-                Database.writeNewBikeInDatabase(name, frameSize, typ, pricePerDay, "Sehr Gut", "Passt soweit alles");
+            if(typ.equals("EBike")){
+                try{
+                    Database.writeNewElectroBikeInDatabase(new EBike(1,textFieldBikeInvestName.getText(),comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString(),comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString(),
+                            Double.parseDouble(textFieldBikeInvestPricePerDay.getText()),"Sehr Gut", "Passt soweit alles", Integer.parseInt(textFieldBikeInvestBatteryCapacity.getText()),Integer.parseInt(textFieldBikeInvestPerformance.getText())));
+                    JOptionPane.showMessageDialog(null, "Ebike hinzugefügt");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Falsche Eingabe");
+                    setBikeInsertWindow();
+                    throw new RuntimeException(e);
+                }
+
             }else{
-                Database.writeNewElectroBikeInDatabase(name,frameSize,typ,pricePerDay,"Sehr Gut","Passt soweit alles",batteryCapacity,performance);
+                try{
+                    Database.writeNewBikeInDatabase(new Bike(1,textFieldBikeInvestName.getText(),comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString(),comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString(),
+                            Double.parseDouble(textFieldBikeInvestPricePerDay.getText()),"Sehr Gut", "Passt soweit alles"));
+                    JOptionPane.showMessageDialog(null, "Bike hinzugefügt");
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Falsche Eingabe");
+                    setBikeInsertWindow();
+                    throw new RuntimeException(e);
+                }
             }
             setBikeInsertWindow();
             fillBikeTableView();

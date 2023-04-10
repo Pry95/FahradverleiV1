@@ -249,18 +249,18 @@ public class Database {
 
     /**Schreibt einen neuen Datenstatz vom typ Ebike in die Tabelle `Bike´
      */
-    public static void writeNewElectroBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment, int battery, int performance){
+    public static void writeNewElectroBikeInDatabase(EBike myEBike){
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             PreparedStatement stm = con.prepareStatement("INSERT INTO bike(`Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`, `BatteryCapacity`, `Performance`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            stm.setString(1, name);
-            stm.setInt(2, frameSize);
-            stm.setString(3, design);
-            stm.setDouble(4, pricePerDay);
-            stm.setString(5, bikeCondition);
-            stm.setString(6, conditionComment);
-            stm.setInt(7, battery);
-            stm.setInt(8, performance);
+            stm.setString(1, myEBike.getName());
+            stm.setInt(2, Integer.parseInt(myEBike.getFrameSize()));
+            stm.setString(3, myEBike.getDesignType());
+            stm.setDouble(4, myEBike.getPricePerDay());
+            stm.setString(5, myEBike.getCondition());
+            stm.setString(6, myEBike.getConditionComment());
+            stm.setInt(7, myEBike.getBatteryCapacity());
+            stm.setInt(8, myEBike.getPerformance());
             stm.executeUpdate();
             con.close();
         } catch (SQLException e) {
@@ -271,16 +271,16 @@ public class Database {
 
     /**Schreibt einen neuen Datenstatz vom typ bike in die Tabelle `Bike´
      */
-    public static void writeNewBikeInDatabase(String name, int frameSize, String design, double pricePerDay, String bikeCondition, String conditionComment) {
+    public static void writeNewBikeInDatabase(Bike myBike) {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             PreparedStatement stm = con.prepareStatement("INSERT INTO bike(`Name`, `FrameSize`, `Design`, `PricePerDay`, `BikeCondition`, `ConditionComment`) VALUES (?, ?, ?, ?, ?, ?)");
-            stm.setString(1, name);
-            stm.setInt(2, frameSize);
-            stm.setString(3, design);
-            stm.setDouble(4, pricePerDay);
-            stm.setString(5, bikeCondition);
-            stm.setString(6, conditionComment);
+            stm.setString(1, myBike.getName());
+            stm.setInt(2, Integer.parseInt(myBike.getFrameSize()));
+            stm.setString(3, myBike.getDesignType());
+            stm.setDouble(4, myBike.getPricePerDay());
+            stm.setString(5, myBike.getCondition());
+            stm.setString(6, myBike.getConditionComment());
             stm.executeUpdate();
             con.close();
         } catch (SQLException e) {

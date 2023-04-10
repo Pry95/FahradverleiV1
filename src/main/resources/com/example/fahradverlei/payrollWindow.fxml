@@ -55,7 +55,7 @@
       <Label fx:id="newPayrollLabel" layoutX="818.0" layoutY="308.0" prefHeight="172.0" prefWidth="122.0" />
       <ImageView fx:id="payrollImageView" fitHeight="144.0" fitWidth="242.0" layoutX="819.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Images/Gehaltsabrechnung.png" />
+            <Image url="@../../../Images/bike.png" />
          </image></ImageView>
    </children>
 </AnchorPane>
