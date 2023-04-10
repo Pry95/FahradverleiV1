@@ -101,7 +101,8 @@ public class Database {
             ResultSet rs = stm.executeQuery(
                     "SELECT * FROM `payroll` WHERE EmployId = "+employeeId+"");
             while ((rs.next())){
-                Database.payrollsList.add(new Payroll(rs.getInt("Month"),
+                Database.payrollsList.add(new Payroll(rs.getInt("EmployId"),
+                        rs.getInt("Month"),
                         rs.getInt("Year"),
                         rs.getInt("HoursPerMonth"),
                         rs.getDouble("TotalHours"),
@@ -286,6 +287,29 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
+    /**Schreibt einen neuen Datenstatz vom typ customer in die Tabelle `Customer´
+     */
+    public static void writeNewPayrollInDatabase(Payroll myPayroll){
+        try{
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            PreparedStatement stm = con.prepareStatement("INSERT INTO `payroll`(`EmployId`, `Year`, `Month`, `HourlyWage`, `HoursPerMonth`, `TotalHours`, `OverTime`, `NetSalary`, `GrossSalary`, `Deductions`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stm.setInt(1, myPayroll.getEmployeeId());
+            stm.setInt(2, myPayroll.getYear());
+            stm.setInt(3, myPayroll.getMonth());
+            stm.setDouble(4, myPayroll.getHourlyWage());
+            stm.setInt(5, myPayroll.getHoursPerMonth());
+            stm.setDouble(6, myPayroll.getTotalHours());
+            stm.setDouble(7, myPayroll.getOverTime());
+            stm.setDouble(8, myPayroll.getNetSalary());
+            stm.setDouble(9,myPayroll.getGrossSalary());
+            stm.setDouble(10,myPayroll.getGrossSalary());
+            stm.executeUpdate();
+            con.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**Schreibt einen neuen Datenstatz vom typ customer in die Tabelle `Customer´
      */
     public static void writeNewCustomerInDatabase(Customer myCustomer){

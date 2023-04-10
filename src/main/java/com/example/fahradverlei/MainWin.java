@@ -445,7 +445,7 @@ public class MainWin {
         }
         @FXML
         /**
-         * Hier spiele ich mit meinen Eiern
+         * Erzeigt das Fenster Payroll
          */
         public void btnPayroll()throws IOException{
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0) {

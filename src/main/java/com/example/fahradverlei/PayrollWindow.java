@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -65,6 +66,7 @@ public class PayrollWindow {
         public ComboBox<Integer> monthWorkingHoursCombobox;
         public ComboBox<Integer> yearWorkingHoursCombobox;
         public Label newPayrollLabel;
+        public ImageView payrollImageView;
 
         public PayrollWindowController(MainWin mainWin,Employee myEmployee, PayrollWindow payrollWindow){
             this.payrollWindow = payrollWindow;
@@ -120,9 +122,16 @@ public class PayrollWindow {
                 public void onChanged(Change<? extends Payroll> change) {
                     selectedPayroll = payrollTableView.getSelectionModel().getSelectedItem();
                     fillmonthWorkingHoursTableView(selectedPayroll.getMonth(), selectedPayroll.getYear(), myEmployee.getEmployeeNumber());
+                    clearnewPayroll();
+
 
                 }
             });
+        }
+        public void clearnewPayroll(){
+            newPayrollLabel.setText("");
+            monthWorkingHoursCombobox.getSelectionModel().clearSelection();
+            yearWorkingHoursCombobox.getSelectionModel().clearSelection();
         }
 
         public void showParollBtn(){
@@ -132,6 +141,18 @@ public class PayrollWindow {
             newPayrollLabel.setText("Monat " + myPayroll.getMonth() + "\nJahr " +myPayroll.getYear() + "\nStd/Mon " + myPayroll.getHoursPerMonth() + "\nTats/Std. "+
                     myPayroll.getTotalHours() + "\nÜberstunden " + myPayroll.getOverTime() +"\nStundenlohn " + myPayroll.getHourlyWage()+
                     "\nBrutto " + myPayroll.getGrossSalary() + "\nNetto " + myPayroll.getNetSalary() + "\nAbzüge " + myPayroll.getDeductions());
+        }
+        public void payrollBookBtn(){
+            fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
+                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),myEmployee.getEmployeeNumber());
+            Payroll myPayroll = newPayroll();
+            try{
+                Database.writeNewPayrollInDatabase(myPayroll);
+                fillPayrollTabelView();
+                clearnewPayroll();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
         public Payroll newPayroll(){
             double sumHours = 0;
@@ -151,7 +172,7 @@ public class PayrollWindow {
             gross += overTimeToPay;
             net = gross * 0.7;
 
-            Payroll tempPayroll = new Payroll( Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
+            Payroll tempPayroll = new Payroll(myEmployee.getEmployeeNumber(), Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     myEmployee.getHoursPerMonth(), sumHours,overTime,myEmployee.getHourlyWage(),Math.round(net * 100.0) / 100.0,Math.round(gross * 100.0) / 100.0,Math.round((gross - net) * 100.0) / 100.0);
             return tempPayroll;

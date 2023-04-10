@@ -1,6 +1,7 @@
 package com.example.fahradverlei;
 
 public class Payroll {
+    private int EmployeeId;
     private int Month;
     private int Year;
     private int HoursPerMonth;
@@ -11,7 +12,8 @@ public class Payroll {
     private double GrossSalary;
     private double Deductions;
 
-    public Payroll(int month, int year, int hoursPerMonth, double totalHours, double overTime, double hourlyWage, double netSalary, double grossSalary, double deductions) {
+    public Payroll(int employeeId,int month, int year, int hoursPerMonth, double totalHours, double overTime, double hourlyWage, double netSalary, double grossSalary, double deductions) {
+        EmployeeId = employeeId;
         Month = month;
         Year = year;
         HoursPerMonth = hoursPerMonth;
@@ -21,6 +23,14 @@ public class Payroll {
         NetSalary = netSalary;
         GrossSalary = grossSalary;
         Deductions = deductions;
+    }
+
+    public int getEmployeeId() {
+        return EmployeeId;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        EmployeeId = employeeId;
     }
 
     public int getMonth() {
