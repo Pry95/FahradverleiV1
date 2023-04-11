@@ -23,6 +23,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 public class InvoiceController {
     @FXML
@@ -33,6 +34,9 @@ public class InvoiceController {
     public Label lblDateDestination;
     public Label lblBike;
     public Label lblTime;
+    public Label lblPrice;
+    public Label lblEndPrice;
+    public Label lblDuplikate;
     public PrinterJob printerJob;
 
     public Stage stage;
@@ -62,10 +66,19 @@ public class InvoiceController {
                 "  |  Bauart: " + bike.getDesignType() +
                 "  |  Preis / Tag: " + df.format(bike.getPricePerDay()));
 
-        lblTime.setText("Start Datum:  " + rental.getStartDate().toLocalDate().format(formatter) +
-                "\nEnd Datum:  " + rental.getEndDate().toLocalDate().format(formatter) +
-                "\nTage ausgeliehen: " + ChronoUnit.DAYS.between(rental.getStartDate().toLocalDate(),rental.getEndDate().toLocalDate().plusDays(1)));
+        Integer days = (int)ChronoUnit.DAYS.between(rental.getStartDate().toLocalDate(),rental.getEndDate().toLocalDate().plusDays(1));
+        lblTime.setText("Start Datum:\t\t\t" + rental.getStartDate().toLocalDate().format(formatter) +
+                "\nEnd Datum:\t\t\t" + rental.getEndDate().toLocalDate().format(formatter) +
+                "\nTage ausgeliehen:\t\t" + days);
 
+        double price = days * bike.getPricePerDay();
+
+        lblPrice.setText("(Tage)\t\t" + days + "\nx\n(Preis / Tag)\t" + df.format(bike.getPricePerDay()) +"\n=");
+        lblEndPrice.setText("Summe:\t\t" + df.format(price));
+
+        if (Objects.equals(rental.isDuplikate(), "ja")){
+            lblDuplikate.setText("Duplikat");
+        }
 
         printerJob = PrinterJob.createPrinterJob();
         if (printerJob != null) {

@@ -72,9 +72,30 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblTime" alignment="TOP_LEFT" layoutX="42.0" layoutY="693.0" prefHeight="115.0" prefWidth="705.0">
+      <Label fx:id="lblTime" alignment="TOP_LEFT" layoutX="42.0" layoutY="693.0" prefHeight="115.0" prefWidth="339.0">
          <font>
             <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="419.0" layoutY="665.0" prefHeight="27.0" prefWidth="120.0" text="Abrechnung:" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPrice" alignment="TOP_LEFT" layoutX="419.0" layoutY="693.0" prefHeight="99.0" prefWidth="346.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEndPrice" alignment="TOP_LEFT" layoutX="419.0" layoutY="798.0" prefHeight="45.0" prefWidth="346.0" underline="true">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-400.0" layoutX="429.0" layoutY="608.0" startX="330.0" />
+      <Label fx:id="lblDuplikate" alignment="CENTER" layoutX="224.0" layoutY="893.0" prefHeight="99.0" prefWidth="346.0" textFill="#a7a7a7">
+         <font>
+            <Font name="System Italic" size="72.0" />
          </font>
       </Label>
    </children>
