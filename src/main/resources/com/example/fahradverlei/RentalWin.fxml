@@ -54,4 +54,13 @@
    </ImageView>
    <Button fx:id="btnRepair" layoutX="431.0" layoutY="262.0" mnemonicParsing="false" onAction="#btnRepair" prefHeight="36.0" prefWidth="174.0" text="Warten" />
    <TextField fx:id="txtFieldSearch" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="242.0" promptText="Kunden durchsuchen..." />
+    <Button fx:id="btnDelFilterCustomer" layoutX="264.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnDelFilterCustomer" prefHeight="26.0" prefWidth="26.0">
+        <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../Images/delFilter.png" />
+                </image>
+            </ImageView>
+        </graphic>
+    </Button>
 </AnchorPane>

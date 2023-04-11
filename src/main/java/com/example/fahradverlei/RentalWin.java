@@ -232,5 +232,10 @@ public class RentalWin {
         public void btnUp(){
             rentalWin.stage.setHeight(435);
         }
+
+        @FXML
+        public void btnDelFilterCustomer(){
+            txtFieldSearch.clear();
+        }
     }
 }
