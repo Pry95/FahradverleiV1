@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="714.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="736.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <TableView fx:id="tabViewCustomer" layoutX="14.0" layoutY="48.0" prefHeight="337.0" prefWidth="373.0">
         <columns>
             <TableColumn fx:id="columnCustomerID" prefWidth="32.428587913513184" text="ID" />
@@ -30,7 +30,7 @@
          <TableColumn fx:id="columnCustID" minWidth="0.0" prefWidth="81.00006103515625" text="Kunden ID:" />
          <TableColumn fx:id="columnCustomer" prefWidth="159.4285888671875" text="Kunde:" />
          <TableColumn fx:id="columnPayed" prefWidth="71.28564453125" text="Bezahlt:" />
-         <TableColumn fx:id="columnDuplikate" prefWidth="71.28564453125" text="Duplikat:" />
+         <TableColumn fx:id="columnDuplikate" prefWidth="71.28564453125" text="Gedruckt:" />
      </columns>
    </TableView>
    <Line endX="764.1428833007812" layoutX="115.0" layoutY="401.0" startX="-100.0" />
@@ -65,4 +65,27 @@
             </ImageView>
         </graphic>
     </Button>
+   <Button layoutX="15.0" layoutY="693.0" mnemonicParsing="false" onAction="#btnPay" prefHeight="31.0" prefWidth="116.0">
+    <graphic>
+        <ImageView fitHeight="23.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Images/payed.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+   <Button layoutX="143.0" layoutY="694.0" mnemonicParsing="false" onAction="#btnPrint" prefHeight="31.0" prefWidth="116.0">
+    <graphic>
+        <ImageView fitHeight="23.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../Images/print.png" />
+            </image>
+        </ImageView>
+    </graphic>
+</Button>
+   <Label fx:id="lblRentalInfo" layoutX="282.0" layoutY="692.0" prefHeight="36.0" prefWidth="440.0">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Label>
 </AnchorPane>

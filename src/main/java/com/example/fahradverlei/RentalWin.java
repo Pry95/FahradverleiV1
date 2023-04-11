@@ -69,6 +69,7 @@ public class RentalWin {
 
         public Label lblBike;
         public Label lblInfo;
+        public Label lblRentalInfo;
         public DatePicker datePickerFrom;
         public DatePicker datePickerTo;
 
@@ -147,6 +148,7 @@ public class RentalWin {
         }
 
         private void fillRentalTableView() {
+
             Database.readRentalFromDatabase(tempBike.getID());
             columnFrom.setCellValueFactory(new PropertyValueFactory<>("StartDate"));
             columnTo.setCellValueFactory(new PropertyValueFactory<>("EndDate"));
@@ -157,6 +159,7 @@ public class RentalWin {
             columnCustomer.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
             columnPayed.setCellValueFactory(new PropertyValueFactory<>("Payed"));
             columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
+            tableViewRental.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
             tableViewRental.setItems(Database.rentalList);
         }
 
@@ -229,7 +232,7 @@ public class RentalWin {
         @FXML
         public void btnDown(){
 
-            rentalWin.stage.setHeight(755);
+            rentalWin.stage.setHeight(770);
         }
         @FXML
         public void btnUp(){
@@ -239,6 +242,18 @@ public class RentalWin {
         @FXML
         public void btnDelFilterCustomer(){
             txtFieldSearch.clear();
+        }
+        @FXML
+        public void btnPay() {
+            if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
+                Rental tempRental = tableViewRental.getSelectionModel().getSelectedItem();
+            }
+        }
+        @FXML
+        public void btnPrint(){
+            if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
+                Rental tempRental = tableViewRental.getSelectionModel().getSelectedItem();
+            }
         }
     }
 }
