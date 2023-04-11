@@ -278,7 +278,7 @@ public class RentalWin {
                             fillRentalTableView();
                         }
                         InvoiceController invoiceController = InvoiceController.loadFXML();
-                        invoiceController.printInvoice();
+                        invoiceController.printInvoice(item,tempBike);
                     }
 
                     else{

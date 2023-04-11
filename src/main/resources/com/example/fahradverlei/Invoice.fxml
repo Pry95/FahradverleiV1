@@ -8,8 +8,8 @@
 
 <AnchorPane fx:id="anchorPaneInvoice" stylesheets="@A4.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.InvoiceController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="1104.0" layoutX="10.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="774.0" />
-      <Label layoutX="42.0" layoutY="45.0" prefHeight="62.0" prefWidth="395.0" text="Rechnung für Verleih">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1104.0" layoutX="10.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="774.0" />
+      <Label layoutX="42.0" layoutY="45.0" prefHeight="62.0" prefWidth="242.0" text="RechnungsNr.:">
          <font>
             <Font size="36.0" />
          </font>
@@ -19,6 +19,53 @@
             <Image url="@../../../Images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblCustomer" layoutX="42.0" layoutY="137.0" prefHeight="165.0" prefWidth="212.0" />
+      <Label fx:id="lblCustomer" alignment="TOP_LEFT" layoutX="42.0" layoutY="160.0" prefHeight="124.0" prefWidth="306.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lblInvoiceNumber" layoutX="293.0" layoutY="45.0" prefHeight="62.0" prefWidth="180.0">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnPrint" layoutX="331.0" layoutY="1039.0" mnemonicParsing="false" onAction="#btnPrint" prefHeight="52.0" prefWidth="131.0" text="Drucken">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Label layoutX="42.0" layoutY="128.0" prefHeight="17.0" prefWidth="56.0" text="Kunde" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lblDeliverer" alignment="TOP_LEFT" layoutX="42.0" layoutY="316.0" prefHeight="124.0" prefWidth="377.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="284.0" prefHeight="27.0" prefWidth="120.0" text="Anbieter" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="498.0" layoutY="440.0" prefHeight="27.0" prefWidth="120.0" text="Datum, Ort" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDateDestination" alignment="TOP_LEFT" layoutX="498.0" layoutY="472.0" prefHeight="27.0" prefWidth="255.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Line endX="-400.0" layoutX="432.0" layoutY="523.0" startX="330.0" />
+      <Label layoutX="42.0" layoutY="561.0" prefHeight="27.0" prefWidth="120.0" text="Leihobjekt:" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblBike" alignment="TOP_LEFT" layoutX="42.0" layoutY="593.0" prefHeight="124.0" prefWidth="377.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
