@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1130.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.PrintPayroll">
+   <children>
+      <AnchorPane fx:id="printPayrollAnchorpane" layoutX="15.0" layoutY="15.0" prefHeight="1100.0" prefWidth="700.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="461.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="34.0" layoutY="62.0" prefHeight="68.0" prefWidth="224.0" text="Gehaltsabrechnung:">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
