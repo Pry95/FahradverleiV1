@@ -1,16 +1,26 @@
 package com.example.fahradverlei;
+import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.*;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.awt.print.Printable;
 import java.io.IOException;
 import java.net.PortUnreachableException;
 import java.net.URL;
@@ -37,7 +47,7 @@ public class PayrollWindow {
         this.stage.show();
     }
 
-    public class PayrollWindowController implements Initializable{
+    public class PayrollWindowController implements Initializable {
         public MainWin mainWin;
         public Employee myEmployee;
         public PayrollWindow payrollWindow;
@@ -45,30 +55,30 @@ public class PayrollWindow {
         //Tableview Payroll
         public TableView<Payroll> payrollTableView;
 
-        public TableColumn <Payroll, Integer> payrollTableViewMonth;
-        public TableColumn <Payroll, Integer> payrollTableViewYear;
-        public TableColumn <Payroll, Integer> payrollTableViewHoursPerMonth;
-        public TableColumn <Payroll, Double> payrollTableViewTotalyHours;
-        public TableColumn <Payroll, Double> payrollTableViewOvertime;
-        public TableColumn <Payroll, Double> payrollTableViewHourlyWage;
-        public TableColumn <Payroll, Double> payrollTableViewGrossSalary;
-        public TableColumn <Payroll, Double> payrollTableViewNetSalary;
-        public TableColumn <Payroll, Double> payrollTableViewDeductions;
+        public TableColumn<Payroll, Integer> payrollTableViewMonth;
+        public TableColumn<Payroll, Integer> payrollTableViewYear;
+        public TableColumn<Payroll, Integer> payrollTableViewHoursPerMonth;
+        public TableColumn<Payroll, Double> payrollTableViewTotalyHours;
+        public TableColumn<Payroll, Double> payrollTableViewOvertime;
+        public TableColumn<Payroll, Double> payrollTableViewHourlyWage;
+        public TableColumn<Payroll, Double> payrollTableViewGrossSalary;
+        public TableColumn<Payroll, Double> payrollTableViewNetSalary;
+        public TableColumn<Payroll, Double> payrollTableViewDeductions;
 
         //TableView monthWorkingHours
         public TableView<WorkingHours> monthWorkingHoursTableView;
         public TableColumn<WorkingHours, LocalDate> monthWorkingHoursTableViewDate;
         public TableColumn<WorkingHours, Time> monthWorkingHoursTableViewStart;
-        public TableColumn<WorkingHours,Time> monthWorkingHoursTableViewBreakStart;
-        public TableColumn<WorkingHours,Time> monthWorkingHoursTableViewBreakEnd;
-        public TableColumn<WorkingHours,Time> monthWorkingHoursTableViewEnd;
-        public TableColumn<WorkingHours,Double> monthWorkingHoursTableViewTotalHours;
+        public TableColumn<WorkingHours, Time> monthWorkingHoursTableViewBreakStart;
+        public TableColumn<WorkingHours, Time> monthWorkingHoursTableViewBreakEnd;
+        public TableColumn<WorkingHours, Time> monthWorkingHoursTableViewEnd;
+        public TableColumn<WorkingHours, Double> monthWorkingHoursTableViewTotalHours;
         public ComboBox<Integer> monthWorkingHoursCombobox;
         public ComboBox<Integer> yearWorkingHoursCombobox;
         public Label newPayrollLabel;
         public ImageView payrollImageView;
 
-        public PayrollWindowController(MainWin mainWin,Employee myEmployee, PayrollWindow payrollWindow){
+        public PayrollWindowController(MainWin mainWin, Employee myEmployee, PayrollWindow payrollWindow) {
             this.payrollWindow = payrollWindow;
             this.mainWin = mainWin;
             this.myEmployee = myEmployee;
@@ -81,7 +91,8 @@ public class PayrollWindow {
             updatemonthWorkingHoursTableView();
 
         }
-        public void fillPayrollTabelView(){
+
+        public void fillPayrollTabelView() {
             Database.readPayrolsFromaDatabase(myEmployee.getEmployeeNumber());
             payrollTableViewMonth.setCellValueFactory(new PropertyValueFactory<>("Month"));
             payrollTableViewYear.setCellValueFactory(new PropertyValueFactory<>("Year"));
@@ -94,8 +105,9 @@ public class PayrollWindow {
             payrollTableViewDeductions.setCellValueFactory(new PropertyValueFactory<>("Deductions"));
             payrollTableView.setItems(Database.payrollsList);
         }
+
         public void fillmonthWorkingHoursTableView(int month, int year, int employeeId) {
-            Database.readMonthlyWorkingHoursFromDatabase(month,year,employeeId);
+            Database.readMonthlyWorkingHoursFromDatabase(month, year, employeeId);
             monthWorkingHoursTableViewDate.setCellValueFactory(new PropertyValueFactory<>("WorkingDate"));
             monthWorkingHoursTableViewStart.setCellValueFactory(new PropertyValueFactory<>("WorkingStart"));
             monthWorkingHoursTableViewBreakStart.setCellValueFactory(new PropertyValueFactory<>("BreakStart"));
@@ -105,20 +117,21 @@ public class PayrollWindow {
             monthWorkingHoursTableView.setItems(Database.montWorkingHoursList);
         }
 
-        public void fillCombobox(){
+        public void fillCombobox() {
             List<Integer> monthList = new ArrayList<>();
             List<Integer> yearList = new ArrayList<>();
-            for(int i = 1;i <= 12;i++){
+            for (int i = 1; i <= 12; i++) {
                 monthList.add(i);
             }
-            for(int i = 2023;i >= 2000;i--){
+            for (int i = 2023; i >= 2000; i--) {
                 yearList.add(i);
             }
             monthWorkingHoursCombobox.getItems().addAll(monthList);
             yearWorkingHoursCombobox.getItems().addAll(yearList);
         }
-        public void updatemonthWorkingHoursTableView(){
-             payrollTableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Payroll>() {
+
+        public void updatemonthWorkingHoursTableView() {
+            payrollTableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Payroll>() {
                 @Override
                 public void onChanged(Change<? extends Payroll> change) {
                     selectedPayroll = payrollTableView.getSelectionModel().getSelectedItem();
@@ -129,25 +142,27 @@ public class PayrollWindow {
                 }
             });
         }
-        public void clearnewPayroll(){
+
+        public void clearnewPayroll() {
             newPayrollLabel.setText("");
             monthWorkingHoursCombobox.getSelectionModel().clearSelection();
             yearWorkingHoursCombobox.getSelectionModel().clearSelection();
         }
 
-        public void showParollBtn(){
+        public void showParollBtn() {
             fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),myEmployee.getEmployeeNumber());
+                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
             Payroll myPayroll = newPayroll();
-            newPayrollLabel.setText("Monat " + myPayroll.getMonth() + "\nJahr " +myPayroll.getYear() + "\nStd/Mon " + myPayroll.getHoursPerMonth() + "\nTats/Std. "+
-                    myPayroll.getTotalHours() + "\nÜberstunden " + myPayroll.getOverTime() +"\nStundenlohn " + myPayroll.getHourlyWage()+
+            newPayrollLabel.setText("Monat " + myPayroll.getMonth() + "\nJahr " + myPayroll.getYear() + "\nStd/Mon " + myPayroll.getHoursPerMonth() + "\nTats/Std. " +
+                    myPayroll.getTotalHours() + "\nÜberstunden " + myPayroll.getOverTime() + "\nStundenlohn " + myPayroll.getHourlyWage() +
                     "\nBrutto " + myPayroll.getGrossSalary() + "\nNetto " + myPayroll.getNetSalary() + "\nAbzüge " + myPayroll.getDeductions());
         }
-        public void payrollBookBtn(){
+
+        public void payrollBookBtn() {
             fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),myEmployee.getEmployeeNumber());
+                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
             Payroll myPayroll = newPayroll();
-            try{
+            try {
                 Database.writeNewPayrollInDatabase(myPayroll);
                 fillPayrollTabelView();
                 clearnewPayroll();
@@ -155,17 +170,18 @@ public class PayrollWindow {
                 throw new RuntimeException(e);
             }
         }
-        public Payroll newPayroll(){
+
+        public Payroll newPayroll() {
             double sumHours = 0;
             double overTime = 0;
             double gross;
             double net;
-            double overTimeToPay = 0;
-            for( int i = 0; i < Database.montWorkingHoursList.size();i++){
+            double overTimeToPay ;
+            for (int i = 0; i < Database.montWorkingHoursList.size(); i++) {
                 double tempSum = Database.montWorkingHoursList.get(i).getTotalHours();
                 sumHours += tempSum;
             }
-            if(myEmployee.getHoursPerMonth() < sumHours){
+            if (myEmployee.getHoursPerMonth() < sumHours) {
                 overTime = (sumHours - myEmployee.getHoursPerMonth());
             }
             gross = myEmployee.getHoursPerMonth() * myEmployee.getHourlyWage();
@@ -175,16 +191,30 @@ public class PayrollWindow {
 
             Payroll tempPayroll = new Payroll(myEmployee.getEmployeeNumber(), Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    myEmployee.getHoursPerMonth(), sumHours,overTime,myEmployee.getHourlyWage(),Math.round(net * 100.0) / 100.0,Math.round((gross * 100.0)) / 100.0,Math.round(((gross - net) * 100.0) / 100.0));
+                    myEmployee.getHoursPerMonth(), sumHours, overTime, myEmployee.getHourlyWage(), Math.round(net * 100.0) / 100.0, Math.round((gross * 100.0)) / 100.0, Math.round(((gross - net) * 100.0) / 100.0));
             return tempPayroll;
 
 
         }
-        public void delPayrollBtn(){
-            if(payrollTableView.getSelectionModel().getSelectedItems().size() >0){
+
+        public void delPayrollBtn() {
+            if (payrollTableView.getSelectionModel().getSelectedItems().size() > 0) {
                 Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
                 Database.delPayrollFromDatabase(myPayroll);
                 fillPayrollTabelView();
+            }
+        }
+        public  void payrollWinBackBtn(){
+            payrollWindow.stage.close();
+        }
+
+        public void payrollPrintBtn() throws IOException {
+
+            if (payrollTableView.getSelectionModel().getSelectedItems().size() > 0) {
+                Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
+                PrintPayroll invoiceController = PrintPayroll.loadFXML();
+                invoiceController.printPayroll(myPayroll,myEmployee,Database.montWorkingHoursList);
+
             }
         }
 

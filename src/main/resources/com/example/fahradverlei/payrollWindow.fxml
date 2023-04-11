@@ -51,13 +51,14 @@
       <Label layoutX="850.0" layoutY="250.0" text="Monat" />
       <Button fx:id="payrollBookBtn" layoutX="942.0" layoutY="310.0" mnemonicParsing="false" onAction="#payrollBookBtn" prefHeight="26.0" prefWidth="112.0" text="Buchen" />
       <Button fx:id="showParollBtn" layoutX="812.0" layoutY="310.0" mnemonicParsing="false" onAction="#showParollBtn" prefHeight="26.0" prefWidth="112.0" text="Buchung ansehen" />
-      <Button layoutX="942.0" layoutY="480.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="112.0" text="Zurück" />
+      <Button fx:id="payrollWinBackBtn" layoutX="942.0" layoutY="481.0" mnemonicParsing="false" onAction="#payrollWinBackBtn" prefHeight="26.0" prefWidth="112.0" text="Zurück" />
       <Label fx:id="newPayrollLabel" layoutX="812.0" layoutY="336.0" prefHeight="172.0" prefWidth="122.0" />
       <ImageView fx:id="payrollImageView" fitHeight="155.0" fitWidth="242.0" layoutX="818.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Images/Gehaltsabrechnung.png" />
          </image></ImageView>
-      <Button fx:id="delPayrollBtn" layoutX="942.0" layoutY="453.0" mnemonicParsing="false" onAction="#delPayrollBtn" prefHeight="26.0" prefWidth="112.0" text="Löschen" />
-      <Label layoutX="946.0" layoutY="428.0" text="Gehaltsabrechnung" />
+      <Button fx:id="delPayrollBtn" layoutX="942.0" layoutY="409.0" mnemonicParsing="false" onAction="#delPayrollBtn" prefHeight="26.0" prefWidth="112.0" text="Löschen" />
+      <Label layoutX="946.0" layoutY="349.0" text="Gehaltsabrechnung" />
+      <Button fx:id="payrollPrintBtn" layoutX="942.0" layoutY="367.0" mnemonicParsing="false" onAction="#payrollPrintBtn" prefHeight="26.0" prefWidth="112.0" text="Drucken" />
    </children>
 </AnchorPane>
