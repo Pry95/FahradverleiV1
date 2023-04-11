@@ -564,4 +564,26 @@ public class Database {
         }
 
     }
+
+    public static void changeRentalDataFromDataBase(ObservableList<Rental> rentalList,String prompt) {
+        try {
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            if (Objects.equals(prompt, "pay")){
+                for (Rental element: rentalList) {
+                    String update = "UPDATE rental SET payed ='ja' WHERE Id='" + element.getID() + "'";
+                    stm.execute(update);
+                }
+            } else if (Objects.equals(prompt, "print")) {
+                for (Rental element: rentalList) {
+                    String update = "UPDATE rental SET duplikate ='ja' WHERE Id='" + element.getID() + "'";
+                    stm.execute(update);
+                }
+            }
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

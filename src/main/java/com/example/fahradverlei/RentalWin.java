@@ -1,5 +1,7 @@
 package com.example.fahradverlei;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -246,14 +249,39 @@ public class RentalWin {
         @FXML
         public void btnPay() {
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
-                Rental tempRental = tableViewRental.getSelectionModel().getSelectedItem();
+                ObservableList<Rental> selectedItems = tableViewRental.getSelectionModel().getSelectedItems();
+                if (checkRentalList(selectedItems)){
+                    lblRentalInfo.setText("");
+                    Database.changeRentalDataFromDataBase(selectedItems,"pay");
+                    fillRentalTableView();
+                }
+                else{
+                    lblRentalInfo.setText("Einträge vom Typ Wartung können nicht bezahlt werden werden!");
+                }
             }
         }
         @FXML
         public void btnPrint(){
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
-                Rental tempRental = tableViewRental.getSelectionModel().getSelectedItem();
+                ObservableList<Rental> selectedItems = tableViewRental.getSelectionModel().getSelectedItems();
+                if (checkRentalList(selectedItems)){
+                    lblRentalInfo.setText("");
+                    Database.changeRentalDataFromDataBase(selectedItems,"print");
+                    fillRentalTableView();
+                }
+                else{
+                    lblRentalInfo.setText("Einträge vom Typ Wartung können nicht gedruckt werden!");
+                }
             }
+        }
+
+        public boolean checkRentalList(ObservableList<Rental> rentalList){
+            for (Rental element:rentalList) {
+                if (Objects.equals(element.getType(), "WARTUNG")){
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
