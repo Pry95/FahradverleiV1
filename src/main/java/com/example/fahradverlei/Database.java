@@ -302,7 +302,7 @@ public class Database {
             stm.setDouble(7, myPayroll.getOverTime());
             stm.setDouble(8, myPayroll.getNetSalary());
             stm.setDouble(9,myPayroll.getGrossSalary());
-            stm.setDouble(10,myPayroll.getGrossSalary());
+            stm.setDouble(10,myPayroll.getDeductions());
             stm.executeUpdate();
             con.close();
         } catch (Exception e) {

@@ -175,7 +175,7 @@ public class PayrollWindow {
 
             Payroll tempPayroll = new Payroll(myEmployee.getEmployeeNumber(), Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    myEmployee.getHoursPerMonth(), sumHours,overTime,myEmployee.getHourlyWage(),Math.round(net * 100.0) / 100.0,Math.round(gross * 100.0) / 100.0,Math.round(((gross - net) * 100.0) / 100.0));
+                    myEmployee.getHoursPerMonth(), sumHours,overTime,myEmployee.getHourlyWage(),Math.round(net * 100.0) / 100.0,Math.round((gross * 100.0)) / 100.0,Math.round(((gross - net) * 100.0) / 100.0));
             return tempPayroll;
 
         }
