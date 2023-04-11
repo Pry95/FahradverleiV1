@@ -464,5 +464,18 @@ public class MainWin {
                 RentalWin rentalWin = new RentalWin(mainWin,tempBike);
             }
         }
+
+        @FXML
+        public void btnDelFilterBike(){
+            txtFieldSearchBike.clear();
+        }
+        @FXML
+        public void btnDelFilterCustomer(){
+            txtFieldSearchCustomer.clear();
+        }
+        @FXML
+        public void btnDelFilterEmployee(){
+            txtFieldSearchEmployee.clear();
+        }
     }
 }
