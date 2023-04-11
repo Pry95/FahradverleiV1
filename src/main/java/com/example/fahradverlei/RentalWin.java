@@ -90,7 +90,7 @@ public class RentalWin {
             fillCustomerTableView();
             fillRentalTableView();
 
-            lblBike.setText("ID: " + tempBike.getID() + "\t\tBezeichnung: " + tempBike.getName());
+            lblBike.setText("ID: " + tempBike.getID() + "\t\tBezeichnung: " + tempBike.getName() + "\t\tArt: " + tempBike.getDesignType());
 
             Image img = new Image("file:src/Images/down.png");
             ImageView view = new ImageView(img);
