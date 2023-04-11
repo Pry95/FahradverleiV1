@@ -28,7 +28,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="btnPrint" layoutX="331.0" layoutY="1039.0" mnemonicParsing="false" onAction="#btnPrint" prefHeight="52.0" prefWidth="131.0" text="Drucken">
+      <Button fx:id="btnPrint" layoutX="319.0" layoutY="1039.0" mnemonicParsing="false" onAction="#btnPrint" prefHeight="52.0" prefWidth="154.0" text="PDF speichern">
          <font>
             <Font size="18.0" />
          </font></Button>
@@ -57,12 +57,22 @@
          </font>
       </Label>
       <Line endX="-400.0" layoutX="432.0" layoutY="523.0" startX="330.0" />
-      <Label layoutX="42.0" layoutY="561.0" prefHeight="27.0" prefWidth="120.0" text="Leihobjekt:" underline="true">
+      <Label layoutX="42.0" layoutY="533.0" prefHeight="27.0" prefWidth="120.0" text="Leihobjekt:" underline="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblBike" alignment="TOP_LEFT" layoutX="42.0" layoutY="593.0" prefHeight="124.0" prefWidth="377.0">
+      <Label fx:id="lblBike" alignment="TOP_LEFT" layoutX="42.0" layoutY="561.0" prefHeight="34.0" prefWidth="705.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="665.0" prefHeight="27.0" prefWidth="120.0" text="Zeitraum:" underline="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTime" alignment="TOP_LEFT" layoutX="42.0" layoutY="693.0" prefHeight="115.0" prefWidth="705.0">
          <font>
             <Font size="18.0" />
          </font>
