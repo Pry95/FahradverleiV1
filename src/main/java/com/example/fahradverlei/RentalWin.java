@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -53,21 +54,21 @@ public class RentalWin {
         public RentalWin rentalWin;
 
         public TableView<Customer> tabViewCustomer;
-        public TableColumn<Customer,Integer> columnCustomerID;
-        public TableColumn<Customer,String> columnCustomerName;
-        public TableColumn<Customer,String> columnCustomerFirstName;
+        public TableColumn<Customer, Integer> columnCustomerID;
+        public TableColumn<Customer, String> columnCustomerName;
+        public TableColumn<Customer, String> columnCustomerFirstName;
         public TableColumn<Customer, LocalDate> columnCustomerBirth;
 
         public TableView<Rental> tableViewRental;
         public TableColumn<Rental, Date> columnFrom;
         public TableColumn<Rental, Date> columnTo;
-        public TableColumn<Rental,Integer> columnBikeID;
-        public TableColumn<Rental,String > columnBike;
-        public TableColumn<Rental,String> columnType;
-        public TableColumn<Rental,Integer> columnCustID;
-        public TableColumn<Rental,String> columnCustomer;
-        public TableColumn<Rental,String> columnPayed;
-        public TableColumn<Rental,String> columnDuplikate;
+        public TableColumn<Rental, Integer> columnBikeID;
+        public TableColumn<Rental, String> columnBike;
+        public TableColumn<Rental, String> columnType;
+        public TableColumn<Rental, Integer> columnCustID;
+        public TableColumn<Rental, String> columnCustomer;
+        public TableColumn<Rental, String> columnPayed;
+        public TableColumn<Rental, String> columnDuplikate;
 
 
         public Label lblBike;
@@ -119,7 +120,7 @@ public class RentalWin {
                         setDisable(true);
                     }
                     for (Rental element : Database.rentalList) {
-                        if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))){
+                        if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))) {
                             setDisable(true);
                         }
                     }
@@ -136,11 +137,11 @@ public class RentalWin {
                             setDisable(true);
                         }
                         for (Rental element : Database.rentalList) {
-                            if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))){
+                            if (date.isBefore(element.getEndDate().toLocalDate().plusDays(1)) && date.isAfter(element.getStartDate().toLocalDate().minusDays(1))) {
                                 setDisable(true);
                             }
-                            if (newValue.isBefore(element.getStartDate().toLocalDate())){
-                                if (date.isAfter(element.getStartDate().toLocalDate())){
+                            if (newValue.isBefore(element.getStartDate().toLocalDate())) {
+                                if (date.isAfter(element.getStartDate().toLocalDate())) {
                                     setDisable(true);
                                 }
                             }
@@ -162,11 +163,10 @@ public class RentalWin {
             columnCustomer.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
             columnPayed.setCellValueFactory(new PropertyValueFactory<>("Payed"));
             columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
-            tableViewRental.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
             tableViewRental.setItems(Database.rentalList);
         }
 
-        public void fillCustomerTableView(){
+        public void fillCustomerTableView() {
 
             Database.readCustomerFromDatabase();
             columnCustomerID.setCellValueFactory(new PropertyValueFactory<>("CustomerNumber"));
@@ -196,92 +196,92 @@ public class RentalWin {
             sortedData.comparatorProperty().bind(tabViewCustomer.comparatorProperty());
             tabViewCustomer.setItems(sortedData);
         }
+
         @FXML
-        public void btnSave(){
-            if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
+        public void btnSave() {
+            if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0) {
                 Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
-                if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null){
-                    Database.writeRentalToDatabase(tempBike,tempCustomer.getCustomerNumber(),datePickerFrom.getValue(),datePickerTo.getValue(),"VERLEIH");
+                if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null) {
+                    Database.writeRentalToDatabase(tempBike, tempCustomer.getCustomerNumber(), datePickerFrom.getValue(), datePickerTo.getValue(), "VERLEIH");
                     fillRentalTableView();
                     lblInfo.setText("Fahrrad ist reserviert!");
                     datePickerTo.setValue(null);
                     datePickerFrom.setValue(null);
-                }
-                else {
+                } else {
                     lblInfo.setText("Datum fehlt!");
                 }
-            }
-            else {
+            } else {
                 lblInfo.setText("Kunde auswählen!");
             }
         }
+
         @FXML
-        public void btnRepair(){
-            if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null){
-                Database.writeRentalToDatabase(tempBike,99,datePickerFrom.getValue(),datePickerTo.getValue(),"WARTUNG");
+        public void btnRepair() {
+            if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null) {
+                Database.writeRentalToDatabase(tempBike, 99, datePickerFrom.getValue(), datePickerTo.getValue(), "WARTUNG");
                 fillRentalTableView();
                 lblInfo.setText("Fahrradwartung reserviert!");
                 datePickerTo.setValue(null);
                 datePickerFrom.setValue(null);
-            }
-            else {
+            } else {
                 lblInfo.setText("Datum fehlt!");
             }
         }
+
         @FXML
-        public void btnBack(){
+        public void btnBack() {
             rentalWin.stage.close();
         }
+
         @FXML
-        public void btnDown(){
+        public void btnDown() {
 
             rentalWin.stage.setHeight(770);
         }
+
         @FXML
-        public void btnUp(){
+        public void btnUp() {
             rentalWin.stage.setHeight(435);
         }
 
         @FXML
-        public void btnDelFilterCustomer(){
+        public void btnDelFilterCustomer() {
             txtFieldSearch.clear();
         }
+
         @FXML
         public void btnPay() {
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
-                ObservableList<Rental> selectedItems = tableViewRental.getSelectionModel().getSelectedItems();
-                if (checkRentalList(selectedItems)){
+                Rental item = tableViewRental.getSelectionModel().getSelectedItem();
+                if (!Objects.equals(item.isPayed(), "ja")){
                     lblRentalInfo.setText("");
-                    Database.changeRentalDataFromDataBase(selectedItems,"pay");
+                    Database.changeRentalDataFromDataBase(item, "pay");
                     fillRentalTableView();
                 }
-                else{
-                    lblRentalInfo.setText("Einträge vom Typ Wartung können nicht bezahlt werden werden!");
-                }
+            } else {
+                lblRentalInfo.setText("Einträge vom Typ Wartung können nicht bezahlt werden werden!");
             }
         }
+
         @FXML
-        public void btnPrint(){
+        public void btnPrint() throws IOException {
+
+
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
-                ObservableList<Rental> selectedItems = tableViewRental.getSelectionModel().getSelectedItems();
-                if (checkRentalList(selectedItems)){
+                Rental item = tableViewRental.getSelectionModel().getSelectedItem();
+                if (!Objects.equals(item.isDuplikate(), "ja")){
                     lblRentalInfo.setText("");
-                    Database.changeRentalDataFromDataBase(selectedItems,"print");
+                    Database.changeRentalDataFromDataBase(item,"print");
                     fillRentalTableView();
+                }
+                InvoiceController invoiceController = InvoiceController.loadFXML();
+                invoiceController.printInvoice();
+
                 }
                 else{
                     lblRentalInfo.setText("Einträge vom Typ Wartung können nicht gedruckt werden!");
                 }
             }
         }
-
-        public boolean checkRentalList(ObservableList<Rental> rentalList){
-            for (Rental element:rentalList) {
-                if (Objects.equals(element.getType(), "WARTUNG")){
-                    return false;
-                }
-            }
-            return true;
-        }
     }
-}
+

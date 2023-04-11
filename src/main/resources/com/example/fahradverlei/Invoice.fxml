@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="anchorPaneInvoice" stylesheets="@A4.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.InvoiceController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="1104.0" layoutX="10.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="774.0" />
+      <Label layoutX="42.0" layoutY="45.0" prefHeight="62.0" prefWidth="395.0" text="Rechnung für Verleih">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="537.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Images/logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="lblCustomer" layoutX="42.0" layoutY="137.0" prefHeight="165.0" prefWidth="212.0" />
+   </children>
+</AnchorPane>
