@@ -253,35 +253,38 @@ public class RentalWin {
         public void btnPay() {
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
                 Rental item = tableViewRental.getSelectionModel().getSelectedItem();
-                if (!Objects.equals(item.isPayed(), "ja")){
-                    lblRentalInfo.setText("");
-                    Database.changeRentalDataFromDataBase(item, "pay");
-                    fillRentalTableView();
+                if (!Objects.equals(item.getType(), "WARTUNG")){
+                    if (!Objects.equals(item.isPayed(), "ja")){
+                        lblRentalInfo.setText("");
+                        Database.changeRentalDataFromDataBase(item, "pay");
+                        fillRentalTableView();
+                    }
                 }
-            } else {
+             else {
                 lblRentalInfo.setText("Einträge vom Typ Wartung können nicht bezahlt werden werden!");
+            }
             }
         }
 
         @FXML
         public void btnPrint() throws IOException {
 
-
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
                 Rental item = tableViewRental.getSelectionModel().getSelectedItem();
-                if (!Objects.equals(item.isDuplikate(), "ja")){
-                    lblRentalInfo.setText("");
-                    Database.changeRentalDataFromDataBase(item,"print");
-                    fillRentalTableView();
-                }
-                InvoiceController invoiceController = InvoiceController.loadFXML();
-                invoiceController.printInvoice();
+                    if (!Objects.equals(item.getType(), "WARTUNG")){
+                        if (!Objects.equals(item.isDuplikate(), "ja")){
+                            lblRentalInfo.setText("");
+                            Database.changeRentalDataFromDataBase(item,"print");
+                            fillRentalTableView();
+                        }
+                        InvoiceController invoiceController = InvoiceController.loadFXML();
+                        invoiceController.printInvoice();
+                    }
 
-                }
-                else{
-                    lblRentalInfo.setText("Einträge vom Typ Wartung können nicht gedruckt werden!");
-                }
-            }
+                    else{
+                        lblRentalInfo.setText("Einträge vom Typ Wartung können nicht gedruckt werden!");
+                    }
+            }   }
         }
     }
 
