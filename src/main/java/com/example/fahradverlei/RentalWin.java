@@ -63,6 +63,8 @@ public class RentalWin {
         public TableColumn<Rental,String> columnType;
         public TableColumn<Rental,Integer> columnCustID;
         public TableColumn<Rental,String> columnCustomer;
+        public TableColumn<Rental,String> columnPayed;
+        public TableColumn<Rental,String> columnDuplikate;
 
 
         public Label lblBike;
@@ -153,6 +155,8 @@ public class RentalWin {
             columnType.setCellValueFactory(new PropertyValueFactory<>("Type"));
             columnCustID.setCellValueFactory(new PropertyValueFactory<>("CustomerNumber"));
             columnCustomer.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
+            columnPayed.setCellValueFactory(new PropertyValueFactory<>("Payed"));
+            columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
             tableViewRental.setItems(Database.rentalList);
         }
 

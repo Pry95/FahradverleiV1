@@ -22,13 +22,15 @@
    </Label>
    <TableView fx:id="tableViewRental" layoutX="14.0" layoutY="414.0" prefHeight="268.0" prefWidth="865.0">
      <columns>
-       <TableColumn fx:id="columnFrom" prefWidth="126.42858409881592" text="Von:" />
-       <TableColumn fx:id="columnTo" prefWidth="126.42858409881592" text="Bis:" />
-         <TableColumn fx:id="columnBikeID" prefWidth="65.0" text="Bike ID:" />
-         <TableColumn fx:id="columnBike" prefWidth="122.2857666015625" text="Bike:" />
-         <TableColumn fx:id="columnType" prefWidth="94.85714721679688" text="Art:" />
-         <TableColumn fx:id="columnCustID" minWidth="0.0" prefWidth="90.4285888671875" text="Kunden ID:" />
-         <TableColumn fx:id="columnCustomer" prefWidth="219.4285888671875" text="Kunde:" />
+       <TableColumn fx:id="columnFrom" text="Von:" />
+       <TableColumn fx:id="columnTo" text="Bis:" />
+         <TableColumn fx:id="columnBikeID" prefWidth="81.4285888671875" text="Bike ID:" />
+         <TableColumn fx:id="columnBike" prefWidth="121.142822265625" text="Bike:" />
+         <TableColumn fx:id="columnType" prefWidth="103.00009155273438" text="Art:" />
+         <TableColumn fx:id="columnCustID" minWidth="0.0" prefWidth="81.00006103515625" text="Kunden ID:" />
+         <TableColumn fx:id="columnCustomer" prefWidth="159.4285888671875" text="Kunde:" />
+         <TableColumn fx:id="columnPayed" prefWidth="71.28564453125" text="Bezahlt:" />
+         <TableColumn fx:id="columnDuplikate" prefWidth="71.28564453125" text="Duplikat:" />
      </columns>
    </TableView>
    <Line endX="764.1428833007812" layoutX="115.0" layoutY="401.0" startX="-100.0" />

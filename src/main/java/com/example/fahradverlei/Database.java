@@ -525,14 +525,26 @@ public class Database {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
-            String insert = "INSERT INTO rental(BikeId,CustomerNumber,Typ,StartDate,EndDate) " +
-                    "VALUES ('"
-                    +tempBike.getID()+"','"
-                    +customerNumber+"','"
-                    +prompt+"','"
-                    +start+"','"
-                    +end+"')";
-            stm.execute(insert);
+            if(Objects.equals(prompt, "WARTUNG")){
+                String insert = "INSERT INTO rental(BikeId,CustomerNumber,Typ,StartDate,EndDate) " +
+                        "VALUES ('"
+                        +tempBike.getID()+"','"
+                        +customerNumber+"','"
+                        +prompt+"','"
+                        +start+"','"
+                        +end+"')";
+                stm.execute(insert);
+            }
+            else{
+                String insert = "INSERT INTO rental(BikeId,CustomerNumber,Typ,StartDate,EndDate,payed,duplikate) " +
+                        "VALUES ('"
+                        +tempBike.getID()+"','"
+                        +customerNumber+"','"
+                        +prompt+"','"
+                        +start+"','"
+                        +end+"','nein','nein')";
+                stm.execute(insert);
+            }
             con.close();
 
         } catch (SQLException e) {
