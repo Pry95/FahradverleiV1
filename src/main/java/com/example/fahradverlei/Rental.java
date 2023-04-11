@@ -15,8 +15,12 @@ public class Rental {
     private Date Birth;
     private Date StartDate;
     private Date EndDate;
+    private String Payed;
+    private  String Duplikate;
 
-    public Rental(Integer ID, Integer bikeID, String bikeName, String type, Integer customerNumber, String customerName, Date birth, Date startDate, Date endDate) {
+
+
+    public Rental(Integer ID, Integer bikeID, String bikeName, String type, Integer customerNumber, String customerName, Date birth, Date startDate, Date endDate, String payed, String duplikate) {
         this.ID = ID;
         BikeID = bikeID;
         BikeName = bikeName;
@@ -26,7 +30,10 @@ public class Rental {
         Birth = birth;
         StartDate = startDate;
         EndDate = endDate;
+        Payed = payed;
+        Duplikate = duplikate;
     }
+
 
     public Integer getID() {
         return ID;
@@ -98,6 +105,21 @@ public class Rental {
 
     public void setEndDate(Date endDate) {
         EndDate = endDate;
+    }
+    public String isPayed() {
+        return Payed;
+    }
+
+    public void setPayed(String payed) {
+        Payed = payed;
+    }
+
+    public String isDuplikate() {
+        return Duplikate;
+    }
+
+    public void setDuplikate(String duplikate) {
+        Duplikate = duplikate;
     }
 }
 

@@ -142,7 +142,6 @@ public class RentalWin {
                     }
                 });
             });
-
         }
 
         private void fillRentalTableView() {

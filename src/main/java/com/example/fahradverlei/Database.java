@@ -187,7 +187,9 @@ public class Database {
                         rs.getString("customer.Name") + " " + rs.getString("customer.FirstName"),
                         rs.getDate("BirthDate"),
                         rs.getDate("StartDate"),
-                        rs.getDate("EndDate")
+                        rs.getDate("EndDate"),
+                        rs.getString("payed"),
+                        rs.getString("duplikate")
                 ));
             }
             con.close();
