@@ -299,28 +299,6 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Verleih">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TabPane prefHeight="770.0" prefWidth="1250.0" tabClosingPolicy="UNAVAILABLE">
-                           <tabs>
-                              <Tab text="Fahrrad verleihen">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
-                                 </content>
-                              </Tab>
-                              <Tab text="Fahrrad warten">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="480.0" prefWidth="802.0" />
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
         </tabs>
       </TabPane>
    </children>
