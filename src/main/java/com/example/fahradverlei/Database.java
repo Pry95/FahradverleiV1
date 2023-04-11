@@ -311,6 +311,18 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
+    public static void delPayrollFromDatabase(Payroll myPayroll){
+        try {
+            Database.rentalList.clear();
+            Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
+            Statement stm = con.createStatement();
+            stm.execute("DELETE FROM `payroll` WHERE EmployId = " + myPayroll.getEmployeeId() + " AND Year = " + myPayroll.getYear() + " AND Month = " + myPayroll.getMonth() + ";");
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     /**Schreibt einen neuen Datenstatz vom typ customer in die Tabelle `Customer´
      */

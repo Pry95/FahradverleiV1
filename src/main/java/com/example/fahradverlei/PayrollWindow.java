@@ -178,6 +178,14 @@ public class PayrollWindow {
                     myEmployee.getHoursPerMonth(), sumHours,overTime,myEmployee.getHourlyWage(),Math.round(net * 100.0) / 100.0,Math.round((gross * 100.0)) / 100.0,Math.round(((gross - net) * 100.0) / 100.0));
             return tempPayroll;
 
+
+        }
+        public void delPayrollBtn(){
+            if(payrollTableView.getSelectionModel().getSelectedItems().size() >0){
+                Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
+                Database.delPayrollFromDatabase(myPayroll);
+                fillPayrollTabelView();
+            }
         }
 
     }
