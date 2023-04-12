@@ -168,17 +168,27 @@ public class PayrollWindow {
         }
 
         public void payrollBookBtn() {
-            fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
-            Payroll myPayroll = newPayroll();
-            try {
-                Database.writeNewPayrollInDatabase(myPayroll);
-                fillPayrollTabelView();
-                clearnewPayroll();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            int month = 0;
+            int year = 0;
+            try{
+                month = Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString());
+                year = Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString());
+            } catch (Exception i) {}
+                if (month != 0 && year != 0) {
+                    fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
+                            Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
+                    Payroll myPayroll = newPayroll();
+                    try {
+                        Database.writeNewPayrollInDatabase(myPayroll);
+                        fillPayrollTabelView();
+                        clearnewPayroll();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+
             }
-        }
+
 
         public Payroll newPayroll() {
             double sumHours = 0;
