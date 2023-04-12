@@ -145,8 +145,12 @@ public class RentalWin {
         }
 
         public void fillComboBoxFilter(){
-            comboboxFilter.getItems().addAll("RechnungsNr","BikeID","Bike","Art","KundenID","Kunde","Bezahlt","Bezahlt Am","Gedruckt");
+            comboboxFilter.getItems().addAll("RechnungsNr","Art","KundenID","Kunde");
             comboboxFilter.setValue("RechnungsNr");
+            comboboxFilter.setOnAction(event -> {
+                txtFieldSearchRental.clear();
+
+            });
         }
 
         private void fillRentalTableView() {
@@ -163,7 +167,6 @@ public class RentalWin {
             columnPayed.setCellValueFactory(new PropertyValueFactory<>("Payed"));
             columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
             columnPayDate.setCellValueFactory((new PropertyValueFactory<>("PayDate")));
-//            tableViewRental.setItems(Database.rentalList);
 
             FilteredList<Rental> filteredData = new FilteredList<>(Database.rentalList, p -> true);
             txtFieldSearchRental.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -171,12 +174,19 @@ public class RentalWin {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
-                    if (rental.getCustomerName().toLowerCase().contains(newValue.toLowerCase())) {
+                    if (Objects.equals(comboboxFilter.getValue(), "RechnungsNr") && Objects.equals(rental.getID(), Integer.valueOf(newValue))) {
                         return true;
                     }
-
+                    else if (Objects.equals(comboboxFilter.getValue(), "Art") && rental.getType().toLowerCase().contains(newValue.toLowerCase())) {
+                        return true;
+                    }
+                    else if (Objects.equals(comboboxFilter.getValue(), "KundenID") && Objects.equals(rental.getCustomerNumber(), Integer.valueOf(newValue))) {
+                        return true;
+                    }
+                    else if (Objects.equals(comboboxFilter.getValue(), "Kunde") && rental.getCustomerName().toLowerCase().contains(newValue.toLowerCase())) {
+                        return true;
+                    }
                         return false;
-
                 });
             });
             SortedList<Rental> sortedData = new SortedList<>(filteredData);
