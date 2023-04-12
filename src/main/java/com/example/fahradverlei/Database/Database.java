@@ -1,4 +1,4 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.Database;
 
 import com.example.fahradverlei.ObjectStruktures.*;
 import javafx.collections.FXCollections;
@@ -23,8 +23,6 @@ public class Database {
     public static ObservableList<WorkingHours> workingHoursList = FXCollections.observableArrayList();
     public static ObservableList<WorkingHours> montWorkingHoursList = FXCollections.observableArrayList();
     public static ObservableList<Payroll> payrollsList = FXCollections.observableArrayList();
-
-
 
 
 
