@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="736.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="780.0" prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <TableView fx:id="tabViewCustomer" layoutX="14.0" layoutY="48.0" prefHeight="337.0" prefWidth="373.0">
         <columns>
             <TableColumn fx:id="columnCustomerID" prefWidth="32.428587913513184" text="ID" />
@@ -88,4 +88,6 @@
          <Font size="14.0" />
       </font>
    </Label>
+   <TextField fx:id="txtFieldSearchRental" layoutX="143.0" layoutY="739.0" prefHeight="26.0" prefWidth="242.0" promptText="Verleih Tabelle durchsuchen..." />
+   <ComboBox fx:id="comboboxFilter" layoutX="15.0" layoutY="739.0" prefHeight="25.0" prefWidth="116.0" />
 </AnchorPane>
