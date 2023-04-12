@@ -53,7 +53,8 @@ public class InvoiceController {
     public Stage stage;
     public Parent root;
     public Button btnPrint;
-    public final String firstPartOfPath = "C:\\Users\\16262\\Desktop\\Rechnungen\\";
+    public final String pathDesktop = System.getProperty("user.home") + "/Desktop";
+    public final String firstPartOfPath = pathDesktop + "\\Rechnungen\\";
     public String endPartOfPath;
     public String completePath;
 
