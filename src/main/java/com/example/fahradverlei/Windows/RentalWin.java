@@ -58,6 +58,7 @@ public class RentalWin {
         public TableColumn<Customer, LocalDate> columnCustomerBirth;
 
         public TableView<Rental> tableViewRental;
+        public TableColumn<Rental,Integer>columnID;
         public TableColumn<Rental, Date> columnFrom;
         public TableColumn<Rental, Date> columnTo;
         public TableColumn<Rental, Integer> columnBikeID;
@@ -143,6 +144,7 @@ public class RentalWin {
         private void fillRentalTableView() {
 
             Database.readRentalFromDatabase(tempBike.getID());
+            columnID.setCellValueFactory(new PropertyValueFactory<>("ID"));
             columnFrom.setCellValueFactory(new PropertyValueFactory<>("StartDate"));
             columnTo.setCellValueFactory(new PropertyValueFactory<>("EndDate"));
             columnBikeID.setCellValueFactory(new PropertyValueFactory<>("BikeID"));

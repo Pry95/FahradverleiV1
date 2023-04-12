@@ -64,8 +64,12 @@ public class InvoiceController {
     }
 
     public void printInvoice(Rental rental, Bike bike) {
-        endPartOfPath = rental.getCustomerName() + "_ReNr" + rental.getID()+ ".pdf";
+        endPartOfPath = rental.getCustomerName().replace(" ","") + "_ReNr" + rental.getID()+ ".pdf";
         completePath = firstPartOfPath + endPartOfPath;
+        if (Objects.equals(rental.isDuplikate(), "ja")){
+            completePath = completePath.substring(0,completePath.length()-4) + "_Du.pdf";
+        }
+
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DecimalFormat decimalFormatter = new DecimalFormat("#,##0.00 €");
 
@@ -151,7 +155,6 @@ public class InvoiceController {
             }
         });
         delay.play();
-
     }
 
     private Customer getCustomerFromCustomerList(Rental item) {
