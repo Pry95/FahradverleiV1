@@ -11,4 +11,7 @@ module com.example.fahradverlei {
     opens com.example.fahradverlei.ObjectStruktures to javafx.fxml;
     exports com.example.fahradverlei.Database;
     opens com.example.fahradverlei.Database to javafx.fxml;
+    exports com.example.fahradverlei.Windows;
+    opens com.example.fahradverlei.Windows to javafx.fxml;
+
 }

@@ -1,14 +1,12 @@
 package com.example.fahradverlei;
 
+
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.util.Date;
 
 public class Main extends Application {
 

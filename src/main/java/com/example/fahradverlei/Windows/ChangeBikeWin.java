@@ -1,6 +1,7 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
+import com.example.fahradverlei.MainWin;
 import com.example.fahradverlei.ObjectStruktures.Bike;
 import com.example.fahradverlei.ObjectStruktures.EBike;
 import javafx.fxml.FXML;
