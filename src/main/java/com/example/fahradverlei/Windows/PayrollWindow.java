@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Time;
@@ -185,6 +186,7 @@ public class PayrollWindow {
                     fillPayrollTabelView();
                     clearnewPayroll();
                 } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, "Gehaltsabrechnung beteits vorhanden!");
                     throw new RuntimeException(e);
                 }
             }
