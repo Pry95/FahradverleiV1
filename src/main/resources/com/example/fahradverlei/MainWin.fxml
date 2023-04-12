@@ -61,13 +61,13 @@
                                           <Label layoutX="378.0" layoutY="139.0" text="Tagessatz €" />
                                           <TextField fx:id="textFieldBikeInvestPricePerDay" layoutX="263.0" layoutY="165.0" prefHeight="56.0" prefWidth="312.0" />
                                           <TextField fx:id="textFieldBikeInvestBatteryCapacity" layoutX="262.0" layoutY="240.0" prefHeight="56.0" prefWidth="312.0" />
-                                          <Label layoutX="302.0" layoutY="219.0" prefHeight="26.0" prefWidth="231.0" text="Batterkamazität (Nur bei EBike)" />
+                                          <Label layoutX="302.0" layoutY="219.0" prefHeight="26.0" prefWidth="231.0" text="Batteriekapazität (Nur bei EBike)" />
                                           <Label layoutX="301.0" layoutY="296.0" prefHeight="26.0" prefWidth="234.0" text="Leistung (Nur bei Ebike)" />
                                           <TextField fx:id="textFieldBikeInvestPerformance" layoutX="263.0" layoutY="317.0" prefHeight="56.0" prefWidth="312.0" />
                                            <Button fx:id="btnInvestNewBike" layoutX="704.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnInvestNewBike" prefHeight="56.0" prefWidth="312.0" text="Einfügen" />
-                                          <ImageView fx:id="imageViewBikeInvest" fitHeight="219.0" fitWidth="312.0" layoutX="704.0" layoutY="176.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="imageViewBikeInvest" fitHeight="421.0" fitWidth="338.0" layoutX="716.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../Images/bike.png" />
+                                                <Image url="@../../../Images/addBike.png" />
                                              </image></ImageView>
                                           <Label layoutX="381.0" layoutY="376.0" text="Fahrradtyp" />
                                           <Label layoutX="369.0" layoutY="461.0" text="Rahmengröße" />
@@ -165,14 +165,14 @@
                                                 <Label text="Tel" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                                                 <Label text="IBAN" GridPane.columnIndex="3" GridPane.rowIndex="9" />
                                                 <Button fx:id="btnCustomerIInsert" mnemonicParsing="false" onAction="#btnCustomerIInsert" prefHeight="52.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="5" GridPane.rowIndex="8" />
-                                                <Label graphicTextGap="8.0" prefHeight="84.0" prefWidth="324.0" text="Neuen Kunden Anlegen" textAlignment="CENTER" GridPane.columnIndex="1">
+                                                <Label graphicTextGap="8.0" prefHeight="51.0" prefWidth="389.0" text="Neuen Kunden Anlegen" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.columnSpan="2">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Label>
-                                                <ImageView fitHeight="219.0" fitWidth="317.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                                <ImageView fitHeight="127.0" fitWidth="310.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5">
                                                    <image>
-                                                      <Image url="@../../../Images/bike.png" />
+                                                      <Image url="@../../../Images/addCustomer.png" />
                                                    </image></ImageView>
                                              </children>
                                           </GridPane>
@@ -214,7 +214,7 @@
                                            <Button fx:id="btnDelEmployee" layoutX="853.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnDelEmployee" prefHeight="53.0" prefWidth="205.0" text="Mitarbeiter löschen" />
                                            <Button fx:id="btnChangeEmployee" layoutX="153.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnChangeEmployee" prefHeight="53.0" prefWidth="205.0" text="Mitarbeiter ändern" />
                                           <Button fx:id="btnEmployeeWorkingTime" layoutX="385.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnEmployeeWorkingTime" prefHeight="53.0" prefWidth="205.0" text="Arbeitszeiten" />
-                                          <Button fx:id="btnPayroll" layoutX="616.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnPayroll" prefHeight="53.0" prefWidth="205.0" text="Gehaltabrechnung" />
+                                          <Button fx:id="btnPayroll" layoutX="616.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnPayroll" prefHeight="53.0" prefWidth="205.0" text="Gehaltsabrechnung" />
                                            <TextField fx:id="txtFieldSearchEmployee" alignment="CENTER" layoutX="473.0" layoutY="530.0" prefHeight="37.0" prefWidth="281.0" promptText="Mitarbeiter suchen..." />
                                            <Button fx:id="btnDelFilterEmployee" layoutX="765.0" layoutY="532.0" mnemonicParsing="false" onAction="#btnDelFilterEmployee" prefHeight="30.0" prefWidth="30.0">
                                                <graphic>
@@ -258,7 +258,7 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Label text="Neuen MItarbeiter Anlegen" GridPane.columnIndex="1">
+                                                <Label prefHeight="35.0" prefWidth="335.0" text="Neuen Mitarbeiter Anlegen" GridPane.columnIndex="1" GridPane.columnSpan="2">
                                                    <font>
                                                       <Font size="24.0" />
                                                    </font>
@@ -284,9 +284,9 @@
                                                 <TextField fx:id="textFieldEmployeeHoursPerMonth" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
                                                 <TextField fx:id="textFieldEmployeeAccount" prefHeight="56.0" prefWidth="300.0" GridPane.columnIndex="5" GridPane.rowIndex="7" />
                                                 <Button fx:id="btnEmployeeInsert" mnemonicParsing="false" onAction="#btnEmployeeInsert" prefHeight="56.0" prefWidth="312.0" text="Einfügen" GridPane.columnIndex="5" GridPane.rowIndex="9" />
-                                                <ImageView fitHeight="150.0" fitWidth="299.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                                <ImageView fitHeight="297.0" fitWidth="558.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
                                                    <image>
-                                                      <Image url="@../../../Images/bike.png" />
+                                                      <Image url="@../../../Images/addEmployee.png" />
                                                    </image>
                                                 </ImageView>
                                              </children>
