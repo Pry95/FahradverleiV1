@@ -1,10 +1,8 @@
 package com.example.fahradverlei.Windows;
 import com.example.fahradverlei.Database.Database;
-import com.example.fahradverlei.MainWin;
 import com.example.fahradverlei.ObjectStruktures.Employee;
 import com.example.fahradverlei.ObjectStruktures.Payroll;
 import com.example.fahradverlei.ObjectStruktures.WorkingHours;
-import com.example.fahradverlei.PrintPayroll;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,7 +27,7 @@ public class PayrollWindow {
     public MainWin mainWin;
     public PayrollWindow(MainWin mainWin, Employee myEmployee) throws  IOException{
         this.mainWin = mainWin;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("payrollWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/payrollWindow.fxml"));
         this.controller = new PayrollWindowController(mainWin, myEmployee, this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 1150, 550);

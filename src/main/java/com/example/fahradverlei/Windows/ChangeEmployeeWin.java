@@ -1,7 +1,6 @@
 package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
-import com.example.fahradverlei.MainWin;
 import com.example.fahradverlei.ObjectStruktures.Employee;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +27,7 @@ public class ChangeEmployeeWin {
 
     public ChangeEmployeeWin(MainWin mainWin, Employee tempEmployee) throws IOException {
         this.mainWin = mainWin;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("ChangeEmployeeWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/ChangeEmployeeWin.fxml"));
         this.controller = new ChangeEmployeeController(mainWin, tempEmployee,this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 703, 404);

@@ -1,4 +1,4 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.Windows;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,7 +14,7 @@ public class StartWin {
     public Scene scene;
 
     public StartWin() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(StartWin.class.getResource("StartWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(StartWin.class.getResource("/com/example/fahradverlei/StartWin.fxml"));
         this.scene = new Scene(fxmlLoader.load(), 828, 571);
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);

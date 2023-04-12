@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="1130.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.PrintPayroll">
+<AnchorPane prefHeight="1130.0" prefWidth="730.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.Windows.PrintPayroll">
    <children>
       <AnchorPane fx:id="printPayrollAnchorpane" layoutX="15.0" layoutY="15.0" prefHeight="1100.0" prefWidth="700.0">
          <children>

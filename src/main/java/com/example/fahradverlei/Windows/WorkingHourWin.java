@@ -1,7 +1,6 @@
 package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
-import com.example.fahradverlei.MainWin;
 import com.example.fahradverlei.ObjectStruktures.Employee;
 import com.example.fahradverlei.ObjectStruktures.WorkingHours;
 import javafx.fxml.FXML;
@@ -33,7 +32,7 @@ public class WorkingHourWin {
 
     public WorkingHourWin(MainWin mainWin, Employee tempEmployee) throws IOException {
         this.mainWin = mainWin;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("WorkingHourWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/WorkingHourWin.fxml"));
         this.controller = new WorkingHourController(mainWin, tempEmployee, this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 703, 404);

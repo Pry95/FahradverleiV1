@@ -1,4 +1,4 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.ObjectStruktures.Employee;
 import com.example.fahradverlei.ObjectStruktures.Payroll;
@@ -21,7 +21,7 @@ public class PrintPayroll {
     public AnchorPane printPayrollAnchorpane;
     public Label testlabel;
     public static PrintPayroll loadFXML() throws IOException{
-        FXMLLoader fxmlLoader = new FXMLLoader(PrintPayroll.class.getResource("PrintPayrollWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(PrintPayroll.class.getResource("/com/example/fahradverlei/PrintPayrollWin.fxml"));
         fxmlLoader.load();
         return fxmlLoader.getController();
     }

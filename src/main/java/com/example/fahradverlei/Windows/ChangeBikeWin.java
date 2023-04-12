@@ -1,7 +1,6 @@
 package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
-import com.example.fahradverlei.MainWin;
 import com.example.fahradverlei.ObjectStruktures.Bike;
 import com.example.fahradverlei.ObjectStruktures.EBike;
 import javafx.fxml.FXML;
@@ -29,7 +28,7 @@ public class ChangeBikeWin {
 
     public ChangeBikeWin(MainWin mainWin, Bike tempBike) throws IOException {
         this.mainWin = mainWin;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("ChangeBikeWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/ChangeBikeWin.fxml"));
         this.controller = new ChangeBikeWin.ChangeBikeWinController(mainWin, tempBike,this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 703, 404);

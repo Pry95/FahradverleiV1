@@ -1,11 +1,10 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
 import com.example.fahradverlei.ObjectStruktures.Bike;
 import com.example.fahradverlei.ObjectStruktures.Customer;
 import com.example.fahradverlei.ObjectStruktures.EBike;
 import com.example.fahradverlei.ObjectStruktures.Employee;
-import com.example.fahradverlei.Windows.*;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -35,7 +34,7 @@ public class MainWin {
     public MainWinController controller;
 
     public MainWin() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("MainWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/MainWin.fxml"));
         this.controller = new MainWinController(this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 1250, 807);

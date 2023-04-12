@@ -1,6 +1,8 @@
 package com.example.fahradverlei;
 
 
+import com.example.fahradverlei.Windows.MainWin;
+import com.example.fahradverlei.Windows.StartWin;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.stage.Stage;

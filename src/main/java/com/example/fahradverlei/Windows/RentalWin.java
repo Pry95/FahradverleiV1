@@ -1,8 +1,6 @@
 package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
-import com.example.fahradverlei.InvoiceController;
-import com.example.fahradverlei.MainWin;
 import com.example.fahradverlei.ObjectStruktures.Bike;
 import com.example.fahradverlei.ObjectStruktures.Customer;
 import com.example.fahradverlei.ObjectStruktures.Rental;
@@ -34,7 +32,7 @@ public class RentalWin {
 
     public RentalWin(MainWin mainWin, Bike tempBike) throws IOException {
         this.mainWin = mainWin;
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("RentalWin.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/RentalWin.fxml"));
         this.controller = new RentalWinController(mainWin, tempBike, this);
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 891, 736);

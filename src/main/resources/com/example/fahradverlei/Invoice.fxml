@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPaneInvoice" stylesheets="@A4.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.InvoiceController">
+<AnchorPane fx:id="anchorPaneInvoice" stylesheets="@A4.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.fahradverlei.Windows.InvoiceController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="1104.0" layoutX="10.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="774.0" />
       <Label layoutX="42.0" layoutY="45.0" prefHeight="62.0" prefWidth="242.0" text="RechnungsNr.:">

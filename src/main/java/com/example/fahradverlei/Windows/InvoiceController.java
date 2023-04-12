@@ -1,4 +1,4 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.Windows;
 
 import com.example.fahradverlei.Database.Database;
 import com.example.fahradverlei.ObjectStruktures.Bike;
@@ -45,7 +45,7 @@ public class InvoiceController {
     public Button btnPrint;
 
     public static InvoiceController loadFXML() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(InvoiceController.class.getResource("Invoice.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(InvoiceController.class.getResource("/com/example/fahradverlei/Invoice.fxml"));
         fxmlLoader.load();
         return fxmlLoader.getController();
     }
