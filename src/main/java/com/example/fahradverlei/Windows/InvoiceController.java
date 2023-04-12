@@ -4,6 +4,7 @@ import com.example.fahradverlei.Database.Database;
 import com.example.fahradverlei.ObjectStruktures.Bike;
 import com.example.fahradverlei.ObjectStruktures.Customer;
 import com.example.fahradverlei.ObjectStruktures.Rental;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -49,6 +53,9 @@ public class InvoiceController {
     public Stage stage;
     public Parent root;
     public Button btnPrint;
+    public final String firstPartOfPath = "C:\\Users\\16262\\Desktop\\Rechnungen\\";
+    public String endPartOfPath;
+    public String completePath;
 
     public static InvoiceController loadFXML() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(InvoiceController.class.getResource("/com/example/fahradverlei/Invoice.fxml"));
@@ -57,6 +64,8 @@ public class InvoiceController {
     }
 
     public void printInvoice(Rental rental, Bike bike) {
+        endPartOfPath = rental.getCustomerName() + "_ReNr" + rental.getID()+ ".pdf";
+        completePath = firstPartOfPath + endPartOfPath;
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DecimalFormat decimalFormatter = new DecimalFormat("#,##0.00 €");
 
@@ -109,6 +118,8 @@ public class InvoiceController {
             Scale scaleTransform = new Scale(scale, scale);
             root.getTransforms().add(scaleTransform);
         }
+        printerJob.getJobSettings().setJobName("output.pdf");
+        printerJob.getJobSettings().setOutputFile( completePath);
 
         // Druckvorschau, erstellt ein Fenster für die Druckvorschau
         Scene scene = new Scene(anchorPaneInvoice,500,700);
@@ -120,15 +131,27 @@ public class InvoiceController {
         stage.show();
     }
 
-    public void btnPrint(ActionEvent actionEvent) {
+    public void btnPrint(ActionEvent actionEvent) throws IOException {
         // Drucken Sie den Root-Knoten
         btnPrint.setVisible(false);
         stage.close();
-        boolean printed = printerJob.printPage(root);
-        if (printed) {
-            printerJob.endJob();
+        File temp = new File(completePath);
+        if (!temp.exists()){
+            boolean printed = printerJob.printPage(root);
+            if (printed) {
+                printerJob.endJob();
+            }
         }
-        System.out.println(printerJob.getJobSettings().getOutputFile());
+        PauseTransition delay = new PauseTransition(Duration.seconds(1));
+        delay.setOnFinished(event -> {
+            try {
+                Desktop.getDesktop().open(temp);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        delay.play();
+
     }
 
     private Customer getCustomerFromCustomerList(Rental item) {
