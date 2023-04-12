@@ -165,6 +165,7 @@ public class PayrollWindow {
                         "\nNetto " + myPayroll.getNetSalary() +
                         "\nAbzüge " + myPayroll.getDeductions());
             }
+
         }
 
         public void payrollBookBtn() {
