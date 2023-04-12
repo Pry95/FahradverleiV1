@@ -37,7 +37,7 @@ public class RentalWin {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("RentalWin.fxml"));
         this.controller = new RentalWinController(mainWin, tempBike, this);
         fxmlLoader.setController(controller);
-        this.scene = new Scene(fxmlLoader.load(), 891, 400);
+        this.scene = new Scene(fxmlLoader.load(), 891, 736);
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setTitle("Fahrrad verleihen");
@@ -99,17 +99,6 @@ public class RentalWin {
 
             lblBike.setText("ID: " + tempBike.getID() + "\t\tBezeichnung: " + tempBike.getName() + "\t\tArt: " + tempBike.getDesignType());
 
-            Image img = new Image("file:src/Images/down.png");
-            ImageView view = new ImageView(img);
-            view.setFitHeight(15);
-            view.setPreserveRatio(true);
-            btnDown.setGraphic(view);
-
-            Image img2 = new Image("file:src/Images/up.png");
-            ImageView view2 = new ImageView(img2);
-            view2.setFitHeight(15);
-            view2.setPreserveRatio(true);
-            btnUp.setGraphic(view2);
 
 
             datePickerFrom.setDayCellFactory(picker -> new DateCell() {
@@ -231,17 +220,6 @@ public class RentalWin {
         @FXML
         public void btnBack() {
             rentalWin.stage.close();
-        }
-
-        @FXML
-        public void btnDown() {
-
-            rentalWin.stage.setHeight(770);
-        }
-
-        @FXML
-        public void btnUp() {
-            rentalWin.stage.setHeight(435);
         }
 
         @FXML

@@ -532,6 +532,11 @@ public class Database {
     }
 
     /** Fügt einen Eintrag in die Datenbank Rental hinzu
+     * @param tempBike BikeInformationen die benötigt werden
+     * @param customerNumber ID vom Customer
+     * @param start StartDatum
+     * @param end Enddatum
+     * @param prompt "WARTUNG" für Null Werte bei payed und duplikate
      */
     public static void writeRentalToDatabase(Bike tempBike, Integer customerNumber, LocalDate start, LocalDate end,String prompt) {
         try {
@@ -565,15 +570,19 @@ public class Database {
 
     }
 
-    public static void changeRentalDataFromDataBase(Rental item,String prompt) {
+    /** Ändert die Rental Einträge payed und duplikate auf "ja"
+     * @param rental Enthält die Rentalinformationen
+     * @param prompt "pay" für payed auf "ja" ändern, "print" für duplikate auf "ja" ändern
+     */
+    public static void changeRentalDataFromDataBase(Rental rental,String prompt) {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             if (Objects.equals(prompt, "pay")){
-                String update = "UPDATE rental SET payed ='ja' WHERE Id='" + item.getID() + "'";
+                String update = "UPDATE rental SET payed ='ja' WHERE Id='" + rental.getID() + "'";
                 stm.execute(update);
             } else if (Objects.equals(prompt, "print")) {
-                    String update = "UPDATE rental SET duplikate ='ja' WHERE Id='" + item.getID() + "'";
+                    String update = "UPDATE rental SET duplikate ='ja' WHERE Id='" + rental.getID() + "'";
                     stm.execute(update);
             }
             con.close();
