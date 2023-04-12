@@ -142,12 +142,10 @@ public class InvoiceController {
         btnPrint.setVisible(false);
         stage.close();
         File temp = new File(completePath);
-        if (!temp.exists()){
             boolean printed = printerJob.printPage(root);
             if (printed) {
                 printerJob.endJob();
             }
-        }
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event -> {
             try {
