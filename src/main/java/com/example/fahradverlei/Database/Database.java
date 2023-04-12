@@ -573,12 +573,12 @@ public class Database {
      * @param rental Enthält die Rentalinformationen
      * @param prompt "pay" für payed auf "ja" ändern, "print" für duplikate auf "ja" ändern
      */
-    public static void changeRentalDataFromDataBase(Rental rental,String prompt) {
+    public static void changeRentalDataFromDataBase(Rental rental,String prompt,LocalDate now) {
         try {
             Connection con = DriverManager.getConnection(Database.url, Database.user, Database.pass);
             Statement stm = con.createStatement();
             if (Objects.equals(prompt, "pay")){
-                String update = "UPDATE rental SET payed ='ja' WHERE Id='" + rental.getID() + "'";
+                String update = "UPDATE rental SET payed ='ja',payDate = '" + now + "' WHERE Id='" + rental.getID() + "'";
                 stm.execute(update);
             } else if (Objects.equals(prompt, "print")) {
                     String update = "UPDATE rental SET duplikate ='ja' WHERE Id='" + rental.getID() + "'";

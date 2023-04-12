@@ -233,7 +233,7 @@ public class RentalWin {
                 if (!Objects.equals(item.getType(), "WARTUNG")){
                     if (!Objects.equals(item.isPayed(), "ja")){
                         lblRentalInfo.setText("");
-                        Database.changeRentalDataFromDataBase(item, "pay");
+                        Database.changeRentalDataFromDataBase(item, "pay",LocalDate.now());
                         fillRentalTableView();
                     }
                 }
@@ -251,7 +251,7 @@ public class RentalWin {
                     if (!Objects.equals(item.getType(), "WARTUNG")){
                         if (!Objects.equals(item.isDuplikate(), "ja")){
                             lblRentalInfo.setText("");
-                            Database.changeRentalDataFromDataBase(item,"print");
+                            Database.changeRentalDataFromDataBase(item,"print",null);
                             fillRentalTableView();
                         }
                         InvoiceController invoiceController = InvoiceController.loadFXML();
