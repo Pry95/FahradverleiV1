@@ -57,8 +57,7 @@
          <image>
             <Image url="@../../../Images/Gehaltsabrechnung.png" />
          </image></ImageView>
-      <Button fx:id="delPayrollBtn" layoutX="942.0" layoutY="409.0" mnemonicParsing="false" onAction="#delPayrollBtn" prefHeight="26.0" prefWidth="112.0" text="Löschen" />
-      <Label layoutX="946.0" layoutY="349.0" text="Gehaltsabrechnung" />
-      <Button fx:id="payrollPrintBtn" layoutX="942.0" layoutY="367.0" mnemonicParsing="false" onAction="#payrollPrintBtn" prefHeight="26.0" prefWidth="112.0" text="Drucken" />
+      <Button fx:id="delPayrollBtn" layoutX="539.0" layoutY="262.0" mnemonicParsing="false" onAction="#delPayrollBtn" prefHeight="26.0" prefWidth="112.0" text="Löschen" />
+      <Button fx:id="payrollPrintBtn" layoutX="665.0" layoutY="262.0" mnemonicParsing="false" onAction="#payrollPrintBtn" prefHeight="26.0" prefWidth="112.0" text="Drucken" />
    </children>
 </AnchorPane>

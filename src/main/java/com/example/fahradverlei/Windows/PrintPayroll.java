@@ -16,7 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
-
 import java.io.IOException;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -70,6 +69,7 @@ public class PrintPayroll {
 
                 // Erstellen Sie den Root-Knoten, der gedruckt werden soll
                 Parent root = printPayrollAnchorpane; // Erstellen Sie Ihren Root-Knoten hier
+                // Setzt die werte auf die Seite
                 printLabelFirstName.setText(myEmploy.getFirstName());
                 printLabelName.setText(myEmploy.getName());
                 printLabelStreet.setText(myEmploy.getStreet());
@@ -90,7 +90,7 @@ public class PrintPayroll {
                 Scale scaleTransform = new Scale(scale, scale);
                 root.getTransforms().add(scaleTransform);
                 // Erstellen Sie eine Kopie des Root-Knotens für die Druckvorschau
-                WritableImage preview = root.snapshot(null, null);
+                //WritableImage preview = root.snapshot(null, null);
 
 
                 // Drucken Sie den Root-Knoten
