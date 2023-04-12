@@ -142,12 +142,23 @@ public class PayrollWindow {
         }
 
         public void showParollBtn() {
-            fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
-            Payroll myPayroll = newPayroll();
-            newPayrollLabel.setText("Monat " + myPayroll.getMonth() + "\nJahr " + myPayroll.getYear() + "\nStd/Mon " + myPayroll.getHoursPerMonth() + "\nTats/Std. " +
-                    myPayroll.getTotalHours() + "\nÜberstunden " + myPayroll.getOverTime() + "\nStundenlohn " + myPayroll.getHourlyWage() +
-                    "\nBrutto " + myPayroll.getGrossSalary() + "\nNetto " + myPayroll.getNetSalary() + "\nAbzüge " + myPayroll.getDeductions());
+            int month = 0;
+            int year = 0;
+            try{
+                month = Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString());
+                year = Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString());
+            } catch (Exception e) {
+
+            }
+
+            if(month != 0 && year !=0) {
+                fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
+                        Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
+                Payroll myPayroll = newPayroll();
+                newPayrollLabel.setText("Monat " + myPayroll.getMonth() + "\nJahr " + myPayroll.getYear() + "\nStd/Mon " + myPayroll.getHoursPerMonth() + "\nTats/Std. " +
+                        myPayroll.getTotalHours() + "\nÜberstunden " + myPayroll.getOverTime() + "\nStundenlohn " + myPayroll.getHourlyWage() +
+                        "\nBrutto " + myPayroll.getGrossSalary() + "\nNetto " + myPayroll.getNetSalary() + "\nAbzüge " + myPayroll.getDeductions());
+            }
         }
 
         public void payrollBookBtn() {
@@ -194,6 +205,7 @@ public class PayrollWindow {
                 Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
                 Database.delPayrollFromDatabase(myPayroll);
                 fillPayrollTabelView();
+                monthWorkingHoursTableView.getItems().clear();
             }
         }
         public  void payrollWinBackBtn(){
