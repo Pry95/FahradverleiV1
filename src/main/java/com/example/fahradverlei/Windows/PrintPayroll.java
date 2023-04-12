@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class PrintPayroll {
-    @FXML
+
     public AnchorPane printPayrollAnchorpane;
     public Label printLabelName;
     public Label printLabelFirstName;

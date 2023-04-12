@@ -47,6 +47,16 @@
                                                         </ImageView>
                                                     </graphic>
                                                 </Button>
+                                          <ImageView fitHeight="63.0" fitWidth="148.0" layoutX="14.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Images/logo.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fitHeight="68.0" fitWidth="296.0" layoutX="944.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Images/Sp.jpg" />
+                                             </image>
+                                          </ImageView>
                                                 </children></AnchorPane>
                                         </content>
                                     </Tab>
@@ -115,6 +125,16 @@
                                                    </ImageView>
                                                </graphic>
                                            </Button>
+                                           <ImageView fitHeight="63.0" fitWidth="148.0" layoutX="14.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../../Images/logo.png" />
+                                               </image>
+                                           </ImageView>
+                                           <ImageView fitHeight="68.0" fitWidth="296.0" layoutX="944.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../../Images/Sp.jpg" />
+                                               </image>
+                                           </ImageView>
                                        </children></AnchorPane>
                               </content>
                             </Tab>
@@ -225,6 +245,16 @@
                                                    </ImageView>
                                                </graphic>
                                            </Button>
+                                           <ImageView fitHeight="63.0" fitWidth="148.0" layoutX="14.0" layoutY="527.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../../Images/logo.png" />
+                                               </image>
+                                           </ImageView>
+                                           <ImageView fitHeight="68.0" fitWidth="296.0" layoutX="944.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+                                               <image>
+                                                   <Image url="@../../../Images/Sp.jpg" />
+                                               </image>
+                                           </ImageView>
                                        </children></AnchorPane>
                                  </content>
                               </Tab>
