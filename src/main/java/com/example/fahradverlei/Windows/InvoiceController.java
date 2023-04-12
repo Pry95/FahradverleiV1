@@ -60,9 +60,7 @@ public class InvoiceController {
 
         anchorPaneInvoice.setStyle("-fx-background-color: white;");
         Customer customer = getCustomerFromCustomerList(rental);
-        lblCustomer.setText("Name:\t\t" + customer.getName() + " " + customer.getFirstName() +
-                "\nAnschrift:\t\t" + customer.getStreet() + " " + customer.getHousenumber() +
-                "\nPLZ:\t\t\t" + customer.getPostalCode());
+        lblCustomer.setText(customer.stringForInvoiceTitel());
         lblDeliverer.setText("Name:\t\tBikemaster GmbH\nAnschrift:\t\tUrheberverletzungsstraße 45\nPLZ:\t\t\t6969");
         lblInvoiceNumber.setText(String.valueOf(rental.getID()));
         lblDateDestination.setText(LocalDate.now().format(dateFormatter) + ", Puntigam Links");

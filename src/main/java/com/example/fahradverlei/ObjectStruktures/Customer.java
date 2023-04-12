@@ -11,6 +11,11 @@ public class Customer extends People {
         AccountNumber = accountNumber;
         CustomerNumber = customerNumber;
     }
+    public String stringForInvoiceTitel(){
+        return "Name:\t\t" + this.getName() + " " + this.getFirstName() +
+                "\nAnschrift:\t\t" + this.getStreet() + " " + this.getHousenumber() +
+                "\nPLZ:\t\t\t" + this.getPostalCode();
+    }
 
     public String getAccountNumber() {
         return AccountNumber;

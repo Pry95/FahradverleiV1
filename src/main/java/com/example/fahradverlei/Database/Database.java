@@ -8,7 +8,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Database {
+public final class Database {
 
     // Zugangsdaten für die Datenbankn
     public static String url = "jdbc:mysql://localhost:3306/fahradverlei";
