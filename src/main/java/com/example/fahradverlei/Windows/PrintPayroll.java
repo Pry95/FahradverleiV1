@@ -29,6 +29,15 @@ public class PrintPayroll {
     public Label printLabelFirstName;
     public Label printLabelStreet;
     public Label printLabelPostalCode;
+    public Label printDateLabel;
+    public Label printGrossLabel;
+    public Label printDeductionsLabel;
+    public Label printNetLabel;
+    public Label printPostalCodeLabel;
+    public Label printHourlyWageLabel;
+    public Label printTotalHoursLabel;
+    public Label printOverTimeLabel;
+
     public TableView<WorkingHours> tableViewprint;
     public TableColumn<WorkingHours, LocalDate> printDate;
     public TableColumn<WorkingHours, Time> printStart;
@@ -65,6 +74,13 @@ public class PrintPayroll {
                 printLabelName.setText(myEmploy.getName());
                 printLabelStreet.setText(myEmploy.getStreet());
                 printLabelPostalCode.setText(String.valueOf(myEmploy.getPostalCode()));
+                printDateLabel.setText(String.format("%02d",myPayroll.getMonth()) + "-" + String.valueOf(myPayroll.getYear()));
+                printNetLabel.setText(String.format("%.2f €",myPayroll.getNetSalary()));
+                printDeductionsLabel.setText(String.format("%.2f €",myPayroll.getDeductions()));
+                printGrossLabel.setText(String.format("%.2f €",myPayroll.getGrossSalary()));
+                printHourlyWageLabel.setText(String.format("%.2f €",myEmploy.getHourlyWage()));
+                printTotalHoursLabel.setText("(" + String.format("%.2f ",myPayroll.getTotalHours()) + " / " + String.format("%.2f",(double)myEmploy.getHoursPerMonth()) + ")");
+                printOverTimeLabel.setText(String.format("%.2f ",myPayroll.getOverTime()));
                 fillPrintTableView(myWorkingHoursList);
 
                 // Erstellen Sie den Druckbereich
