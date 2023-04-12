@@ -67,6 +67,7 @@ public class RentalWin {
         public TableColumn<Rental, String> columnCustomer;
         public TableColumn<Rental, String> columnPayed;
         public TableColumn<Rental, String> columnDuplikate;
+        public TableColumn<Rental,Date> columnPayDate;
 
 
         public Label lblBike;
@@ -151,6 +152,7 @@ public class RentalWin {
             columnCustomer.setCellValueFactory(new PropertyValueFactory<>("CustomerName"));
             columnPayed.setCellValueFactory(new PropertyValueFactory<>("Payed"));
             columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
+            columnPayDate.setCellValueFactory((new PropertyValueFactory<>("PayDate")));
             tableViewRental.setItems(Database.rentalList);
         }
 

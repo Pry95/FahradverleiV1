@@ -34,7 +34,7 @@
          </font></Button>
       <Label layoutX="42.0" layoutY="128.0" prefHeight="17.0" prefWidth="56.0" text="Kunde" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font></Label>
       <Label fx:id="lblDeliverer" alignment="TOP_LEFT" layoutX="42.0" layoutY="316.0" prefHeight="124.0" prefWidth="377.0">
          <font>
@@ -43,12 +43,12 @@
       </Label>
       <Label layoutX="42.0" layoutY="284.0" prefHeight="27.0" prefWidth="120.0" text="Anbieter" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <Label layoutX="498.0" layoutY="440.0" prefHeight="27.0" prefWidth="120.0" text="Datum, Ort" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <Label fx:id="lblDateDestination" alignment="TOP_LEFT" layoutX="498.0" layoutY="472.0" prefHeight="27.0" prefWidth="255.0">
@@ -59,7 +59,7 @@
       <Line endX="-400.0" layoutX="432.0" layoutY="523.0" startX="330.0" />
       <Label layoutX="42.0" layoutY="533.0" prefHeight="27.0" prefWidth="120.0" text="Leihobjekt:" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <Label fx:id="lblBike" alignment="TOP_LEFT" layoutX="42.0" layoutY="561.0" prefHeight="34.0" prefWidth="705.0">
@@ -69,7 +69,7 @@
       </Label>
       <Label layoutX="42.0" layoutY="665.0" prefHeight="27.0" prefWidth="120.0" text="Zeitraum:" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <Label fx:id="lblTime" alignment="TOP_LEFT" layoutX="42.0" layoutY="693.0" prefHeight="115.0" prefWidth="339.0">
@@ -79,7 +79,7 @@
       </Label>
       <Label layoutX="419.0" layoutY="665.0" prefHeight="27.0" prefWidth="120.0" text="Abrechnung:" underline="true">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
       <Label fx:id="lblPrice" alignment="TOP_LEFT" layoutX="419.0" layoutY="693.0" prefHeight="99.0" prefWidth="346.0">
@@ -93,9 +93,14 @@
          </font>
       </Label>
       <Line endX="-400.0" layoutX="429.0" layoutY="608.0" startX="330.0" />
-      <Label fx:id="lblDuplikate" alignment="CENTER" layoutX="224.0" layoutY="893.0" prefHeight="99.0" prefWidth="346.0" textFill="#a7a7a7">
+      <Label fx:id="lblDuplikate" alignment="CENTER" layoutX="224.0" layoutY="857.0" prefHeight="99.0" prefWidth="346.0" textFill="#a7a7a7">
          <font>
             <Font name="System Italic" size="72.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPayed" alignment="CENTER" layoutX="129.0" layoutY="983.0" prefHeight="45.0" prefWidth="536.0" textFill="RED">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
    </children>

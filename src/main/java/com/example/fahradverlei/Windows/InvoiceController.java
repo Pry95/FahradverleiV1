@@ -38,6 +38,10 @@ public class InvoiceController {
     public Label lblPrice;
     public Label lblEndPrice;
     public Label lblDuplikate;
+    public Label lblPayed;
+
+
+
     public PrinterJob printerJob;
 
     public Stage stage;
@@ -51,6 +55,9 @@ public class InvoiceController {
     }
 
     public void printInvoice(Rental rental, Bike bike) {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        DecimalFormat decimalFormatter = new DecimalFormat("#,##0.00 €");
+
         anchorPaneInvoice.setStyle("-fx-background-color: white;");
         Customer customer = getCustomerFromCustomerList(rental);
         lblCustomer.setText("Name:\t\t" + customer.getName() + " " + customer.getFirstName() +
@@ -58,27 +65,28 @@ public class InvoiceController {
                 "\nPLZ:\t\t\t" + customer.getPostalCode());
         lblDeliverer.setText("Name:\t\tBikemaster GmbH\nAnschrift:\t\tUrheberverletzungsstraße 45\nPLZ:\t\t\t6969");
         lblInvoiceNumber.setText(String.valueOf(rental.getID()));
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        lblDateDestination.setText(currentDate.format(formatter) + ", Puntigam Links");
-        DecimalFormat df = new DecimalFormat("#,##0.00 €");
+        lblDateDestination.setText(LocalDate.now().format(dateFormatter) + ", Puntigam Links");
+
         lblBike.setText("ID: " + bike.getID() +
                 "  |  Bezeichnung: " + bike.getName() +
                 "  |  Bauart: " + bike.getDesignType() +
-                "  |  Preis / Tag: " + df.format(bike.getPricePerDay()));
+                "  |  Preis / Tag: " + decimalFormatter.format(bike.getPricePerDay()));
 
         Integer days = (int)ChronoUnit.DAYS.between(rental.getStartDate().toLocalDate(),rental.getEndDate().toLocalDate().plusDays(1));
-        lblTime.setText("Start Datum:\t\t\t" + rental.getStartDate().toLocalDate().format(formatter) +
-                "\nEnd Datum:\t\t\t" + rental.getEndDate().toLocalDate().format(formatter) +
+        lblTime.setText("Start Datum:\t\t\t" + rental.getStartDate().toLocalDate().format(dateFormatter) +
+                "\nEnd Datum:\t\t\t" + rental.getEndDate().toLocalDate().format(dateFormatter) +
                 "\nTage ausgeliehen:\t\t" + days);
 
         double price = days * bike.getPricePerDay();
 
-        lblPrice.setText("(Tage)\t\t" + days + "\nx\n(Preis / Tag)\t" + df.format(bike.getPricePerDay()) +"\n=");
-        lblEndPrice.setText("Summe:\t\t" + df.format(price));
+        lblPrice.setText("(Tage)\t\t" + days + "\nx\n(Preis / Tag)\t" + decimalFormatter.format(bike.getPricePerDay()) +"\n=");
+        lblEndPrice.setText("Summe:\t\t" + decimalFormatter.format(price));
 
         if (Objects.equals(rental.isDuplikate(), "ja")){
             lblDuplikate.setText("Duplikat");
+        }
+        if (rental.getPayDate() != null){
+            lblPayed.setText("bezahlt am: " + rental.getPayDate().toLocalDate().format(dateFormatter));
         }
 
         printerJob = PrinterJob.createPrinterJob();
