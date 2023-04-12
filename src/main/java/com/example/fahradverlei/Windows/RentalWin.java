@@ -35,7 +35,7 @@ public class RentalWin {
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/RentalWin.fxml"));
         this.controller = new RentalWinController(mainWin, tempBike, this);
         fxmlLoader.setController(controller);
-        this.scene = new Scene(fxmlLoader.load(), 891, 736);
+        this.scene = new Scene(fxmlLoader.load(), 891, 780);
         this.stage = new Stage();
         this.stage.initModality(Modality.APPLICATION_MODAL);
         this.stage.setTitle("Fahrrad verleihen");
@@ -83,6 +83,8 @@ public class RentalWin {
         public Button btnUp;
         public Button btnRepair;
         public TextField txtFieldSearch;
+        public TextField txtFieldSearchRental;
+        public ComboBox<String> comboboxFilter;
 
 
         public RentalWinController(MainWin mainWin, Bike tempBike, RentalWin rentalWin) {
@@ -94,6 +96,7 @@ public class RentalWin {
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
+            fillComboBoxFilter();
             fillCustomerTableView();
             fillRentalTableView();
 
@@ -117,7 +120,7 @@ public class RentalWin {
             });
 
 
-            datePickerFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
+                datePickerFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
                 datePickerTo.setValue(newValue);
                 datePickerTo.setDayCellFactory(picker -> new DateCell() {
                     @Override
@@ -141,6 +144,11 @@ public class RentalWin {
             });
         }
 
+        public void fillComboBoxFilter(){
+            comboboxFilter.getItems().addAll("RechnungsNr","BikeID","Bike","Art","KundenID","Kunde","Bezahlt","Bezahlt Am","Gedruckt");
+            comboboxFilter.setValue("RechnungsNr");
+        }
+
         private void fillRentalTableView() {
 
             Database.readRentalFromDatabase(tempBike.getID());
@@ -155,8 +163,27 @@ public class RentalWin {
             columnPayed.setCellValueFactory(new PropertyValueFactory<>("Payed"));
             columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
             columnPayDate.setCellValueFactory((new PropertyValueFactory<>("PayDate")));
-            tableViewRental.setItems(Database.rentalList);
+//            tableViewRental.setItems(Database.rentalList);
+
+            FilteredList<Rental> filteredData = new FilteredList<>(Database.rentalList, p -> true);
+            txtFieldSearchRental.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(rental -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    if (rental.getCustomerName().toLowerCase().contains(newValue.toLowerCase())) {
+                        return true;
+                    }
+
+                        return false;
+
+                });
+            });
+            SortedList<Rental> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(tableViewRental.comparatorProperty());
+            tableViewRental.setItems(sortedData);
         }
+
 
         public void fillCustomerTableView() {
 
