@@ -165,31 +165,20 @@ public class PayrollWindow {
                         "\nNetto " + myPayroll.getNetSalary() +
                         "\nAbzüge " + myPayroll.getDeductions());
             }
-
         }
 
         public void payrollBookBtn() {
-            int month = 0;
-            int year = 0;
-            try{
-                month = Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString());
-                year = Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString());
-            } catch (Exception i) {}
-                if (month != 0 && year != 0) {
-                    fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                            Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
-                    Payroll myPayroll = newPayroll();
-                    try {
-                        Database.writeNewPayrollInDatabase(myPayroll);
-                        fillPayrollTabelView();
-                        clearnewPayroll();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-
+            fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
+                    Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
+            Payroll myPayroll = newPayroll();
+            try {
+                Database.writeNewPayrollInDatabase(myPayroll);
+                fillPayrollTabelView();
+                clearnewPayroll();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-
+        }
 
         public Payroll newPayroll() {
             double sumHours = 0;
@@ -211,7 +200,7 @@ public class PayrollWindow {
 
             Payroll tempPayroll = new Payroll(myEmployee.getEmployeeNumber(), Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
-                    myEmployee.getHoursPerMonth(), Math.round((sumHours + 100) / 100), Math.round((overTime + 100) / 100), myEmployee.getHourlyWage(), Math.round(net * 100.0) / 100.0, Math.round((gross * 100.0)) / 100.0, Math.round(((gross - net) * 100.0) / 100.0));
+                    myEmployee.getHoursPerMonth(), Math.round((sumHours * 100) / 100.0), Math.round((overTime * 100) / 100.0), myEmployee.getHourlyWage(), Math.round(net * 100.0) / 100.0, Math.round((gross * 100.0)) / 100.0, Math.round(((gross - net) * 100.0) / 100.0));
             return tempPayroll;
 
 
