@@ -170,9 +170,9 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Label>
-                                                <ImageView fitHeight="127.0" fitWidth="310.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5">
+                                                <ImageView fitHeight="244.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="5">
                                                    <image>
-                                                      <Image url="@../../../Images/addCustomer.png" />
+                                                      <Image url="@../../../Images/addCustomer.jpg" />
                                                    </image></ImageView>
                                              </children>
                                           </GridPane>
