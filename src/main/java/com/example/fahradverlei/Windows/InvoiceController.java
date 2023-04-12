@@ -53,8 +53,7 @@ public class InvoiceController {
     public Stage stage;
     public Parent root;
     public Button btnPrint;
-    public final String pathDesktop = System.getProperty("user.home") + "/Desktop";
-    public final String firstPartOfPath = pathDesktop + "\\Rechnungen\\";
+    public final String firstPartOfPath = System.getProperty("user.home") + "/Desktop" + "\\Rechnungen\\";
     public String endPartOfPath;
     public String completePath;
 
@@ -65,6 +64,8 @@ public class InvoiceController {
     }
 
     public void printInvoice(Rental rental, Bike bike) {
+        File folder = new File(firstPartOfPath);
+        folder.mkdir();
         endPartOfPath = rental.getCustomerName().replace(" ","") + "_ReNr" + rental.getID()+ ".pdf";
         completePath = firstPartOfPath + endPartOfPath;
         if (Objects.equals(rental.isDuplikate(), "ja")){
