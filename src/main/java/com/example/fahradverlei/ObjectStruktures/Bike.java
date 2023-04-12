@@ -1,5 +1,7 @@
 package com.example.fahradverlei.ObjectStruktures;
 
+import java.text.DecimalFormat;
+
 public class Bike {
     private int ID;
     private String Name;
@@ -8,6 +10,7 @@ public class Bike {
     private Double PricePerDay;
     private String Condition;
     private String ConditionComment;
+    private final DecimalFormat decimalFormatter = new DecimalFormat("#,##0.00 €");
 
     public Bike(int ID, String name, String frameSize, String designType, Double pricePerDay, String condition, String conditionComment) {
         this.ID = ID;
@@ -18,7 +21,12 @@ public class Bike {
         this.Condition = condition;
         this.ConditionComment = conditionComment;
     }
-
+    public String stringForInvoice(){
+        return "ID: " + this.getID() +
+                "  |  Bezeichnung: " + this.getName() +
+                "  |  Bauart: " + this.getDesignType() +
+                "  |  Preis / Tag: " + decimalFormatter.format(this.getPricePerDay());
+    }
     public int getID() {
         return ID;
     }

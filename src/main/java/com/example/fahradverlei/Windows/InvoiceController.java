@@ -64,11 +64,7 @@ public class InvoiceController {
         lblDeliverer.setText("Name:\t\tBikemaster GmbH\nAnschrift:\t\tUrheberverletzungsstraße 45\nPLZ:\t\t\t6969");
         lblInvoiceNumber.setText(String.valueOf(rental.getID()));
         lblDateDestination.setText(LocalDate.now().format(dateFormatter) + ", Puntigam Links");
-
-        lblBike.setText("ID: " + bike.getID() +
-                "  |  Bezeichnung: " + bike.getName() +
-                "  |  Bauart: " + bike.getDesignType() +
-                "  |  Preis / Tag: " + decimalFormatter.format(bike.getPricePerDay()));
+        lblBike.setText(bike.stringForInvoice());
 
         Integer days = (int)ChronoUnit.DAYS.between(rental.getStartDate().toLocalDate(),rental.getEndDate().toLocalDate().plusDays(1));
         lblTime.setText("Start Datum:\t\t\t" + rental.getStartDate().toLocalDate().format(dateFormatter) +
