@@ -64,8 +64,8 @@
                                           <Label layoutX="302.0" layoutY="219.0" prefHeight="26.0" prefWidth="231.0" text="Batteriekapazität (Nur bei EBike)" />
                                           <Label layoutX="301.0" layoutY="296.0" prefHeight="26.0" prefWidth="234.0" text="Leistung (Nur bei Ebike)" />
                                           <TextField fx:id="textFieldBikeInvestPerformance" layoutX="263.0" layoutY="317.0" prefHeight="56.0" prefWidth="312.0" />
-                                           <Button fx:id="btnInvestNewBike" layoutX="704.0" layoutY="361.0" mnemonicParsing="false" onAction="#btnInvestNewBike" prefHeight="56.0" prefWidth="312.0" text="Einfügen" />
-                                          <ImageView fx:id="imageViewBikeInvest" fitHeight="421.0" fitWidth="338.0" layoutX="716.0" layoutY="-17.0" pickOnBounds="true" preserveRatio="true">
+                                           <Button fx:id="btnInvestNewBike" layoutX="705.0" layoutY="402.0" mnemonicParsing="false" onAction="#btnInvestNewBike" prefHeight="56.0" prefWidth="312.0" text="Einfügen" />
+                                          <ImageView fx:id="imageViewBikeInvest" fitHeight="381.0" fitWidth="290.0" layoutX="730.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@../../../Images/addBike.png" />
                                              </image></ImageView>
