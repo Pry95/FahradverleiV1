@@ -24,12 +24,12 @@
                                                     <TableView fx:id="TableViewBike" layoutX="14.0" layoutY="14.0" prefHeight="500.0" prefWidth="1226.0">
                                                         <columns>
                                                             <TableColumn fx:id="ColumnBikeId" prefWidth="75.0" text="BikeId" />
-                                                            <TableColumn fx:id="ColumnBikeName" prefWidth="114.20001220703125" text="Name" />
+                                                            <TableColumn fx:id="ColumnBikeName" minWidth="150.0" prefWidth="150.0" text="Name" />
                                                             <TableColumn fx:id="ColumnBikeFrameSize" prefWidth="114.20001220703125" text="Rahmengröße" />
                                                             <TableColumn fx:id="ColumnBikeDisign" prefWidth="114.20001220703125" text="Fahrradtyp" />
                                                             <TableColumn fx:id="ColumnBikePricePerDay" prefWidth="114.20001220703125" text="Tagessatz" />
                                                             <TableColumn fx:id="ColumnBikeCondition" prefWidth="114.20001220703125" text="Zustand" />
-                                                            <TableColumn fx:id="ColumnBikeContitionComment" prefWidth="347.60015869140625" text="Kommentar" />
+                                                            <TableColumn fx:id="ColumnBikeContitionComment" prefWidth="300.0" text="Kommentar" />
                                                             <TableColumn fx:id="ColumnBikeBatteryCapacity" minWidth="0.0" prefWidth="99.0" text="Reichweite" />
                                                             <TableColumn fx:id="ColumnBikePerformence" minWidth="8.39990234375" prefWidth="130.60009765625" text="Leistung \ Kw" />
                                                         </columns>
