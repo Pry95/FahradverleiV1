@@ -155,9 +155,15 @@ public class PayrollWindow {
                 fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                         Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
                 Payroll myPayroll = newPayroll();
-                newPayrollLabel.setText("Monat " + myPayroll.getMonth() + "\nJahr " + myPayroll.getYear() + "\nStd/Mon " + myPayroll.getHoursPerMonth() + "\nTats/Std. " +
-                        myPayroll.getTotalHours() + "\nÜberstunden " + myPayroll.getOverTime() + "\nStundenlohn " + myPayroll.getHourlyWage() +
-                        "\nBrutto " + myPayroll.getGrossSalary() + "\nNetto " + myPayroll.getNetSalary() + "\nAbzüge " + myPayroll.getDeductions());
+                newPayrollLabel.setText("Monat " + myPayroll.getMonth() +
+                        "\nJahr " + myPayroll.getYear() +
+                        "\nStd/Mon " + myPayroll.getHoursPerMonth() +
+                        "\nTats/Std. " + myPayroll.getTotalHours() +
+                        "\nÜberstunden " + myPayroll.getOverTime() +
+                        "\nStundenlohn " + myPayroll.getHourlyWage() +
+                        "\nBrutto " + myPayroll.getGrossSalary() +
+                        "\nNetto " + myPayroll.getNetSalary() +
+                        "\nAbzüge " + myPayroll.getDeductions());
             }
         }
 
