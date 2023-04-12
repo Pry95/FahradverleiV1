@@ -45,6 +45,16 @@
                </children>
             </GridPane>
             <Label fx:id="printDateLabel" layoutX="258.0" layoutY="88.0" prefHeight="18.0" prefWidth="86.0" text="Label" />
+            <TableView fx:id="tableViewprint" layoutX="34.0" layoutY="311.0" prefHeight="651.0" prefWidth="628.0">
+              <columns>
+                <TableColumn fx:id="printDate" prefWidth="75.0" text="Datum" />
+                <TableColumn fx:id="printStart" prefWidth="110.19995880126953" text="Beginn" />
+                  <TableColumn fx:id="printBreakStart" prefWidth="110.19995880126953" text="Pause start" />
+                  <TableColumn fx:id="printBreakEnd" prefWidth="110.19995880126953" text="Pause ende" />
+                  <TableColumn fx:id="printEnd" prefWidth="110.19995880126953" text="Ende" />
+                  <TableColumn fx:id="printTotalHours" prefWidth="85.5999755859375" text="Stunden" />
+              </columns>
+            </TableView>
          </children></AnchorPane>
    </children>
 </AnchorPane>
