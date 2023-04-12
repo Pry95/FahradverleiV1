@@ -319,7 +319,7 @@ public final class Database {
             con.close();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
         }
     }
 
