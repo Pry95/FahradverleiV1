@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.print.PageLayout;
+import javafx.print.Printer;
 import javafx.print.PrinterJob;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -43,6 +44,7 @@ public class InvoiceController {
 
 
     public PrinterJob printerJob;
+    public Printer printerPDF;
 
     public Stage stage;
     public Parent root;
@@ -83,7 +85,16 @@ public class InvoiceController {
             lblPayed.setText("bezahlt am: " + rental.getPayDate().toLocalDate().format(dateFormatter));
         }
 
-        printerJob = PrinterJob.createPrinterJob();
+        //Drucker für den Druckjob auswählen --> Microsoft Print to PDF
+        for (Printer printer : Printer.getAllPrinters()) {
+            if (printer.getName().equals("Microsoft Print to PDF")) {
+                printerJob = PrinterJob.createPrinterJob();
+                printerJob.setPrinter(printer);
+                printerPDF = printer;
+                break;
+            }
+        }
+        //Druckjob
         if (printerJob != null) {
             // Erstellen Sie das Druck-Layout
             PageLayout pageLayout = printerJob.getJobSettings().getPageLayout();
@@ -92,13 +103,14 @@ public class InvoiceController {
             root = anchorPaneInvoice; // Erstellen Sie Ihren Root-Knoten hier
 
             // Erstellen Sie den Druckbereich
-            double scaleX = pageLayout.getPrintableWidth() / root.getBoundsInParent().getWidth();
+            double scaleX = (pageLayout.getPrintableWidth()) / root.getBoundsInParent().getWidth();
             double scaleY = pageLayout.getPrintableHeight() / root.getBoundsInParent().getHeight();
             double scale = Math.min(scaleX, scaleY);
             Scale scaleTransform = new Scale(scale, scale);
             root.getTransforms().add(scaleTransform);
         }
 
+        // Druckvorschau, erstellt ein Fenster für die Druckvorschau
         Scene scene = new Scene(anchorPaneInvoice,500,700);
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -108,6 +120,17 @@ public class InvoiceController {
         stage.show();
     }
 
+    public void btnPrint(ActionEvent actionEvent) {
+        // Drucken Sie den Root-Knoten
+        btnPrint.setVisible(false);
+        stage.close();
+        boolean printed = printerJob.printPage(root);
+        if (printed) {
+            printerJob.endJob();
+        }
+        System.out.println(printerJob.getJobSettings().getOutputFile());
+    }
+
     private Customer getCustomerFromCustomerList(Rental item) {
         Customer temp = null;
         for (Customer element: Database.customerList) {
@@ -115,18 +138,9 @@ public class InvoiceController {
                 temp = element;
                 break;
             }
-
         }
         return temp;
     }
 
-    public void btnPrint(ActionEvent actionEvent) {
-        // Drucken Sie den Root-Knoten
-        btnPrint.setVisible(false);
-        boolean printed = printerJob.printPage(root);
-        if (printed) {
-            printerJob.endJob();
-        }
-        stage.close();
-    }
+
 }
