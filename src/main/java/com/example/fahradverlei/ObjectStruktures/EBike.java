@@ -1,4 +1,6 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.ObjectStruktures;
+
+import com.example.fahradverlei.ObjectStruktures.Bike;
 
 public class EBike extends Bike {
 

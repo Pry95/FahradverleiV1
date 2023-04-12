@@ -1,4 +1,4 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.ObjectStruktures;
 
 public class Payroll {
     private int EmployeeId;

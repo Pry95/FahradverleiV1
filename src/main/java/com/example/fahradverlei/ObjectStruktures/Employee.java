@@ -1,8 +1,8 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.ObjectStruktures;
 
 import java.time.LocalDate;
 
-public class Employee extends People{
+public class Employee extends People {
     private double HourlyWage;
     private int HoursPerMonth;
     private String AccountNumber;

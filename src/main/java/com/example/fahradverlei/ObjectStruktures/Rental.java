@@ -1,8 +1,6 @@
-package com.example.fahradverlei;
+package com.example.fahradverlei.ObjectStruktures;
 
 import java.sql.Date;
-import java.time.LocalDate;
-import java.util.SplittableRandom;
 
 public class Rental {
 

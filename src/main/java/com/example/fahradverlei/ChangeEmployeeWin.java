@@ -1,5 +1,6 @@
 package com.example.fahradverlei;
 
+import com.example.fahradverlei.ObjectStruktures.Employee;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

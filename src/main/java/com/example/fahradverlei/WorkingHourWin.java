@@ -1,7 +1,7 @@
 package com.example.fahradverlei;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.fahradverlei.ObjectStruktures.Employee;
+import com.example.fahradverlei.ObjectStruktures.WorkingHours;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +19,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 

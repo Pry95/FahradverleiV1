@@ -1,28 +1,19 @@
 package com.example.fahradverlei;
-import javafx.application.Platform;
+import com.example.fahradverlei.ObjectStruktures.Employee;
+import com.example.fahradverlei.ObjectStruktures.Payroll;
+import com.example.fahradverlei.ObjectStruktures.WorkingHours;
 import javafx.collections.ListChangeListener;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.print.*;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
-import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.awt.print.Printable;
 import java.io.IOException;
-import java.net.PortUnreachableException;
 import java.net.URL;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -33,7 +24,7 @@ public class PayrollWindow {
     public Scene scene;
     public PayrollWindowController controller;
     public MainWin mainWin;
-    public PayrollWindow(MainWin mainWin,Employee myEmployee) throws  IOException{
+    public PayrollWindow(MainWin mainWin, Employee myEmployee) throws  IOException{
         this.mainWin = mainWin;
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("payrollWindow.fxml"));
         this.controller = new PayrollWindowController(mainWin, myEmployee, this);

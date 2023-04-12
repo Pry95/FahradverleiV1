@@ -1,15 +1,15 @@
 package com.example.fahradverlei;
 
+import com.example.fahradverlei.ObjectStruktures.Bike;
+import com.example.fahradverlei.ObjectStruktures.EBike;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.LightBase;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;

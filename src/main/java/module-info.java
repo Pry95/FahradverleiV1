@@ -7,4 +7,6 @@ module com.example.fahradverlei {
 
     opens com.example.fahradverlei to javafx.fxml;
     exports com.example.fahradverlei;
+    exports com.example.fahradverlei.ObjectStruktures;
+    opens com.example.fahradverlei.ObjectStruktures to javafx.fxml;
 }

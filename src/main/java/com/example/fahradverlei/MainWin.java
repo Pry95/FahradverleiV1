@@ -1,12 +1,15 @@
 package com.example.fahradverlei;
 
+import com.example.fahradverlei.ObjectStruktures.Bike;
+import com.example.fahradverlei.ObjectStruktures.Customer;
+import com.example.fahradverlei.ObjectStruktures.EBike;
+import com.example.fahradverlei.ObjectStruktures.Employee;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -16,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;

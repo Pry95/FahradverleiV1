@@ -1,7 +1,8 @@
 package com.example.fahradverlei;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.fahradverlei.ObjectStruktures.Bike;
+import com.example.fahradverlei.ObjectStruktures.Customer;
+import com.example.fahradverlei.ObjectStruktures.Rental;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -11,19 +12,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 public class RentalWin {
 
@@ -115,6 +112,7 @@ public class RentalWin {
                     }
                 }
             });
+
 
             datePickerFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
                 datePickerTo.setValue(newValue);

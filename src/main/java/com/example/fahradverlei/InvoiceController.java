@@ -1,7 +1,8 @@
 package com.example.fahradverlei;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.fahradverlei.ObjectStruktures.Bike;
+import com.example.fahradverlei.ObjectStruktures.Customer;
+import com.example.fahradverlei.ObjectStruktures.Rental;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Modality;
@@ -49,7 +49,7 @@ public class InvoiceController {
         return fxmlLoader.getController();
     }
 
-    public void printInvoice(Rental rental,Bike bike) {
+    public void printInvoice(Rental rental, Bike bike) {
         anchorPaneInvoice.setStyle("-fx-background-color: white;");
         Customer customer = getCustomerFromCustomerList(rental);
         lblCustomer.setText("Name:\t\t" + customer.getName() + " " + customer.getFirstName() +

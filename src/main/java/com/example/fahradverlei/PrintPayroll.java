@@ -1,19 +1,17 @@
 package com.example.fahradverlei;
 
+import com.example.fahradverlei.ObjectStruktures.Employee;
+import com.example.fahradverlei.ObjectStruktures.Payroll;
+import com.example.fahradverlei.ObjectStruktures.WorkingHours;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.print.PageLayout;
 import javafx.print.PrinterJob;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.transform.Scale;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.List;
