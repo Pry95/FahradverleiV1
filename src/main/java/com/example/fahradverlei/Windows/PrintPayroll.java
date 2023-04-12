@@ -36,7 +36,7 @@ public class PrintPayroll {
 
                 // Erstellen Sie den Root-Knoten, der gedruckt werden soll
                 Parent root = printPayrollAnchorpane; // Erstellen Sie Ihren Root-Knoten hier
-                testlabel.setText(myEmploy.getFirstName() +" " + myEmploy.getName());
+
 
                 // Erstellen Sie den Druckbereich
                 double scaleX = pageLayout.getPrintableWidth() / root.getBoundsInParent().getWidth();
