@@ -59,5 +59,10 @@
          </image></ImageView>
       <Button fx:id="delPayrollBtn" layoutX="539.0" layoutY="262.0" mnemonicParsing="false" onAction="#delPayrollBtn" prefHeight="26.0" prefWidth="112.0" text="Löschen" />
       <Button fx:id="payrollPrintBtn" layoutX="665.0" layoutY="262.0" mnemonicParsing="false" onAction="#payrollPrintBtn" prefHeight="26.0" prefWidth="112.0" text="Drucken" />
+      <TextField fx:id="searchPayrollTextfield" layoutX="308.0" layoutY="262.0" prefHeight="26.0" prefWidth="150.0" promptText="Jahr eingeben" />
+
+
+
+
    </children>
 </AnchorPane>

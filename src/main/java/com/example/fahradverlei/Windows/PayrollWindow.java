@@ -1,9 +1,12 @@
 package com.example.fahradverlei.Windows;
 import com.example.fahradverlei.Database.Database;
+import com.example.fahradverlei.ObjectStruktures.Customer;
 import com.example.fahradverlei.ObjectStruktures.Employee;
 import com.example.fahradverlei.ObjectStruktures.Payroll;
 import com.example.fahradverlei.ObjectStruktures.WorkingHours;
 import javafx.collections.ListChangeListener;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -73,6 +76,12 @@ public class PayrollWindow {
         public ComboBox<Integer> monthWorkingHoursCombobox;
         public ComboBox<Integer> yearWorkingHoursCombobox;
         public Label newPayrollLabel;
+        public TextField searchPayrollTextfield;
+        public Button clearTxtFieldBtn;
+
+
+
+
 
 
 
@@ -94,6 +103,7 @@ public class PayrollWindow {
             fillPayrollTabelView();
             fillCombobox();
             updatemonthWorkingHoursTableView();
+
         }
 
 
@@ -110,7 +120,23 @@ public class PayrollWindow {
             payrollTableViewGrossSalary.setCellValueFactory(new PropertyValueFactory<>("GrossSalary"));
             payrollTableViewNetSalary.setCellValueFactory(new PropertyValueFactory<>("NetSalary"));
             payrollTableViewDeductions.setCellValueFactory(new PropertyValueFactory<>("Deductions"));
-            payrollTableView.setItems(Database.payrollsList);
+
+            FilteredList<Payroll> filteredData = new FilteredList<>(Database.payrollsList, p -> true);
+            searchPayrollTextfield.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredData.setPredicate(myPayroll -> {
+                    if (newValue == null || newValue.isEmpty()) {
+                        return true;
+                    }
+                    String year = String.valueOf(myPayroll.getYear());
+                    if(year.contains(newValue)){
+                        return true;
+                    }
+                    return false;
+                });
+            });
+            SortedList<Payroll> sortedData = new SortedList<>(filteredData);
+            sortedData.comparatorProperty().bind(payrollTableView.comparatorProperty());
+            payrollTableView.setItems(sortedData);
         }
 
 
@@ -237,7 +263,7 @@ public class PayrollWindow {
         }
 
 
-        /** Hier wird eine neue Gehaltsabrechnung in die Tabelle `Payroll´ geschrieben.
+        /** Hier wird eine neue Gehaltsabrechnung (Payroll) erstellt.
          */
         public Payroll newPayroll() {
             double sumHours = 0;
@@ -256,7 +282,7 @@ public class PayrollWindow {
             overTimeToPay = (overTime * myEmployee.getHourlyWage()) * 1.5;
             gross += overTimeToPay;
             net = gross * 0.7;
-
+            //Hier wird die Gehaltsabrechnung erzeugt und die Werte auf 2 Nachkommastellen Gerundet.
             Payroll tempPayroll = new Payroll(myEmployee.getEmployeeNumber(), Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                     myEmployee.getHoursPerMonth(), Math.round((sumHours * 100) / 100.0), Math.round((overTime * 100) / 100.0), myEmployee.getHourlyWage(), Math.round(net * 100.0) / 100.0, Math.round((gross * 100.0)) / 100.0, Math.round(((gross - net) * 100.0) / 100.0));
@@ -265,6 +291,9 @@ public class PayrollWindow {
 
         }
 
+
+        /** Hier wird eine Gehaltsabrechnung aus Tabelle `Payroll´ gelöscht.
+         */
         public void delPayrollBtn() {
             if (payrollTableView.getSelectionModel().getSelectedItems().size() > 0) {
                 Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
@@ -277,6 +306,9 @@ public class PayrollWindow {
             payrollWindow.stage.close();
         }
 
+
+        /** Hier wird der Druchvorgang für die Gehaltsabrechnung gestarted.
+         */
         public void payrollPrintBtn() throws IOException {
 
             if (payrollTableView.getSelectionModel().getSelectedItems().size() > 0) {
