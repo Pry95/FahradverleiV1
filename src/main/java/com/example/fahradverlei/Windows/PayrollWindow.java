@@ -318,6 +318,9 @@ public class PayrollWindow {
 
             }
         }
+        public void clearTxtFieldBtn(){
+            searchPayrollTextfield.clear();
+        }
 
     }
 }
