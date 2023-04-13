@@ -26,6 +26,10 @@ public class PayrollWindow {
     public Scene scene;
     public PayrollWindowController controller;
     public MainWin mainWin;
+
+    /** Diese Methode erstellt ein neues Fenster für die Lohnabrechnung eines Mitarbeiters und
+     *  konfiguriert es mit einer FXML-Datei und den erforderlichen Eigenschaften.
+     */
     public PayrollWindow(MainWin mainWin, Employee myEmployee) throws  IOException{
         this.mainWin = mainWin;
         FXMLLoader fxmlLoader = new FXMLLoader(MainWin.class.getResource("/com/example/fahradverlei/payrollWindow.fxml"));
@@ -47,7 +51,6 @@ public class PayrollWindow {
         public Payroll selectedPayroll;
         //Tableview Payroll
         public TableView<Payroll> payrollTableView;
-
         public TableColumn<Payroll, Integer> payrollTableViewMonth;
         public TableColumn<Payroll, Integer> payrollTableViewYear;
         public TableColumn<Payroll, Integer> payrollTableViewHoursPerMonth;
@@ -57,6 +60,7 @@ public class PayrollWindow {
         public TableColumn<Payroll, Double> payrollTableViewGrossSalary;
         public TableColumn<Payroll, Double> payrollTableViewNetSalary;
         public TableColumn<Payroll, Double> payrollTableViewDeductions;
+
 
         //TableView monthWorkingHours
         public TableView<WorkingHours> monthWorkingHoursTableView;
@@ -69,22 +73,32 @@ public class PayrollWindow {
         public ComboBox<Integer> monthWorkingHoursCombobox;
         public ComboBox<Integer> yearWorkingHoursCombobox;
         public Label newPayrollLabel;
-        public ImageView payrollImageView;
 
+
+
+        /** Estellt einen neuen Controller und erhölt Referenzen auf das Mainwin, den Übergebenen Mitarbeiter
+         * und die Gehaltsabrechnung.
+         */
         public PayrollWindowController(MainWin mainWin, Employee myEmployee, PayrollWindow payrollWindow) {
             this.payrollWindow = payrollWindow;
             this.mainWin = mainWin;
             this.myEmployee = myEmployee;
         }
 
+
+        /** Diese Methode füllt eine Tabelle mit Lohnabrechnungsinformationen, füllt eine Combobox mit Monaten und
+         *  Jahren und aktualisiert eine Tabelle mit Arbeitsstunden.
+         */
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillPayrollTabelView();
             fillCombobox();
             updatemonthWorkingHoursTableView();
-
         }
 
+
+        /** Füllt die Gehaltsabrechnungen in die Tableview
+         */
         public void fillPayrollTabelView() {
             Database.readPayrolsFromaDatabase(myEmployee.getEmployeeNumber());
             payrollTableViewMonth.setCellValueFactory(new PropertyValueFactory<>("Month"));
@@ -99,6 +113,10 @@ public class PayrollWindow {
             payrollTableView.setItems(Database.payrollsList);
         }
 
+
+        /** Füllt die entsprechenden Arbeitszeiten in die Tableview.
+         */
+
         public void fillmonthWorkingHoursTableView(int month, int year, int employeeId) {
             Database.readMonthlyWorkingHoursFromDatabase(month, year, employeeId);
             monthWorkingHoursTableViewDate.setCellValueFactory(new PropertyValueFactory<>("WorkingDate"));
@@ -110,19 +128,27 @@ public class PayrollWindow {
             monthWorkingHoursTableView.setItems(Database.montWorkingHoursList);
         }
 
+
+        /** Füllt die Comboboxen mir Jahren und Monaten
+         */
         public void fillCombobox() {
+            Calendar calendar = Calendar.getInstance();
+            int currentYear = calendar.get(Calendar.YEAR);
             List<Integer> monthList = new ArrayList<>();
             List<Integer> yearList = new ArrayList<>();
             for (int i = 1; i <= 12; i++) {
                 monthList.add(i);
             }
-            for (int i = 2023; i >= 2000; i--) {
+            for (int i = currentYear; i >= 2000; i--) {
                 yearList.add(i);
             }
             monthWorkingHoursCombobox.getItems().addAll(monthList);
             yearWorkingHoursCombobox.getItems().addAll(yearList);
         }
 
+
+        /** Updated die Arbeitszeiten Tableview mit den zur Ausgewählten Gehaltsabrechnung passenden Arbeitszeiten.
+         */
         public void updatemonthWorkingHoursTableView() {
             payrollTableView.getSelectionModel().getSelectedItems().addListener(new ListChangeListener<Payroll>() {
                 @Override
@@ -132,16 +158,24 @@ public class PayrollWindow {
                     clearnewPayroll();
 
 
+
                 }
             });
         }
 
+
+        /** Setzt das Label für die Vorschau einer neune Gehalbtabrechnung auf einen leeren String und
+         * löscht die auswahl aus den Comboboxen.
+         */
         public void clearnewPayroll() {
             newPayrollLabel.setText("");
             monthWorkingHoursCombobox.getSelectionModel().clearSelection();
             yearWorkingHoursCombobox.getSelectionModel().clearSelection();
         }
 
+
+        /** Zeigt dei Vorschau einer Gehaltsabrechnung.
+         */
         public void showParollBtn() {
             int month = 0;
             int year = 0;
@@ -151,11 +185,14 @@ public class PayrollWindow {
             } catch (Exception e) {
 
             }
-
+            // Prüft ob Jahr und Monat ausgewält wurden.
             if(month != 0 && year !=0) {
+                // Arbeitszeiten Tableview wird mit enstprechenden Arbeitszeiten befüllt.
+                // Hier werden Jahr, Monat und Mitarbeiter Id übergeben.
                 fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                         Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
                 Payroll myPayroll = newPayroll();
+                //Hier wird der String für die Vorschau der neuen Gehaltsabrechnung gestaltet.
                 newPayrollLabel.setText("Monat " + myPayroll.getMonth() +
                         "\nJahr " + myPayroll.getYear() +
                         "\nStd/Mon " + myPayroll.getHoursPerMonth() +
@@ -168,6 +205,9 @@ public class PayrollWindow {
             }
         }
 
+
+        /** Hier wird eine neue Gehaltsabrechnung in die Tabelle `Payroll´ geschrieben.
+         */
         public void payrollBookBtn() {
             int month = 0;
             int year = 0;
@@ -177,11 +217,15 @@ public class PayrollWindow {
             } catch (Exception e) {
 
             }
+            // Prüft ob Jahr und Monat ausgewält wurden.
             if(month != 0 && year !=0) {
+                // Arbeitszeiten Tableview wird mit enstprechenden Arbeitszeiten befüllt.
+                // Hier werden Jahr, Monat und Mitarbeiter Id übergeben.
                 fillmonthWorkingHoursTableView(Integer.parseInt(monthWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()),
                         Integer.parseInt(yearWorkingHoursCombobox.getSelectionModel().getSelectedItem().toString()), myEmployee.getEmployeeNumber());
                 Payroll myPayroll = newPayroll();
                 try {
+                    // Hier wird die erstelle Gehaltsabrechnung in die Datenbank geschrieben.
                     Database.writeNewPayrollInDatabase(myPayroll);
                     fillPayrollTabelView();
                     clearnewPayroll();
@@ -192,6 +236,9 @@ public class PayrollWindow {
             }
         }
 
+
+        /** Hier wird eine neue Gehaltsabrechnung in die Tabelle `Payroll´ geschrieben.
+         */
         public Payroll newPayroll() {
             double sumHours = 0;
             double overTime = 0;

@@ -224,6 +224,8 @@ public final class Database {
             System.out.println(e.getMessage());
         }
     }
+    /**Liest die Arbeitszeiten aus der Datenbank bei den das Jahr, der Monat und die Mittarbeiter Id übereinstimmen.
+     */
     public static void readMonthlyWorkingHoursFromDatabase(int month, int year,int id){
         try {
             Database.montWorkingHoursList.clear();
@@ -310,6 +312,8 @@ public final class Database {
             throw new RuntimeException(e);
         }
     }
+    /**Löscht eine Datensatz aus der Tabelle Payroll.
+     */
     public static void delPayrollFromDatabase(Payroll myPayroll){
         try {
             Database.rentalList.clear();
