@@ -53,7 +53,7 @@
       <Button fx:id="payrollBookBtn" layoutX="942.0" layoutY="310.0" mnemonicParsing="false" onAction="#payrollBookBtn" prefHeight="26.0" prefWidth="112.0" text="Buchen" />
       <Button fx:id="showParollBtn" layoutX="812.0" layoutY="310.0" mnemonicParsing="false" onAction="#showParollBtn" prefHeight="26.0" prefWidth="112.0" text="Buchung ansehen" />
       <Button fx:id="payrollWinBackBtn" layoutX="942.0" layoutY="481.0" mnemonicParsing="false" onAction="#payrollWinBackBtn" prefHeight="26.0" prefWidth="112.0" text="Zurück" />
-      <Label fx:id="newPayrollLabel" layoutX="812.0" layoutY="336.0" prefHeight="172.0" prefWidth="122.0" />
+      <Label fx:id="newPayrollLabel" layoutX="812.0" layoutY="336.0" prefHeight="172.0" prefWidth="112.0" />
       <ImageView fx:id="payrollImageView" fitHeight="155.0" fitWidth="242.0" layoutX="818.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Images/Gehaltsabrechnung.png" />
@@ -61,23 +61,13 @@
       <Button fx:id="delPayrollBtn" layoutX="500.0" layoutY="262.0" mnemonicParsing="false" onAction="#delPayrollBtn" prefHeight="26.0" prefWidth="112.0" text="Löschen" />
       <Button fx:id="payrollPrintBtn" layoutX="665.0" layoutY="262.0" mnemonicParsing="false" onAction="#payrollPrintBtn" prefHeight="26.0" prefWidth="112.0" text="Drucken" />
       <TextField fx:id="searchPayrollTextfield" layoutX="134.0" layoutY="262.0" prefHeight="26.0" prefWidth="150.0" promptText="Jahr eingeben" />
-      <Button fx:id="clearTxtFieldBtn" layoutX="336.0" layoutY="262.0" mnemonicParsing="false" onAction="#clearTxtFieldBtn" prefHeight="26.0" prefWidth="112.0">
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="1.0" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill></Button>
-       
+      <Button fx:id="clearTxtFieldBtn" layoutX="336.0" layoutY="262.0" mnemonicParsing="false" onAction="#clearTxtFieldBtn" prefHeight="36.0" prefWidth="35.0">
+          <graphic>
+              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../../../Images/delFilter.png"></Image>
+              </ImageView>
+          </graphic>
+      </Button>
+
    </children>
 </AnchorPane>
