@@ -43,13 +43,10 @@ public class ChangeBikeWin {
 
     public class ChangeBikeWinController implements Initializable {
 
+        // FXML Elemente
         public MainWin mainWin;
         public Bike tempBike;
         public ChangeBikeWin changeBikeWin;
-
-        public Button btnBack;
-        public Button btnSave;
-
         public TextField txtFieldID;
         public TextField txtFieldName;
         public TextField txtFieldPricePerDay;
@@ -57,6 +54,7 @@ public class ChangeBikeWin {
         public TextField txtFieldPerformance;
         public Label lblBatteryCap;
         public Label lblPerformance;
+
         public Label lblInfo;
         public TextArea txtAreaConditionComment;
         public ComboBox<Integer> comboBoxFrameSize;
@@ -71,49 +69,11 @@ public class ChangeBikeWin {
             this.tempBike = tempBike;
         }
 
-        @FXML
-        public void btnBack(){
-            changeBikeWin.stage.close();
-        }
-        @FXML
-        public void btnSave(){
-
-            try{
-                if (Objects.equals(comboBoxDesignType.getValue(), "EBike")){
-                    Database.changeBikeDataFromDataBase(
-                            Integer.parseInt(txtFieldID.getText()),
-                            txtFieldName.getText(),
-                            comboBoxFrameSize.getValue(),
-                            comboBoxDesignType.getValue(),
-                            Double.parseDouble(txtFieldPricePerDay.getText()),
-                            comboBoxCondition.getValue(),
-                            txtAreaConditionComment.getText(),
-                            Integer.valueOf(txtFieldBatteryCap.getText()),
-                            Integer.valueOf(txtFieldPerformance.getText()));
-                }
-                else{
-                    Database.changeBikeDataFromDataBase(
-                            Integer.parseInt(txtFieldID.getText()),
-                            txtFieldName.getText(),
-                            comboBoxFrameSize.getValue(),
-                            comboBoxDesignType.getValue(),
-                            Double.parseDouble(txtFieldPricePerDay.getText()),
-                            comboBoxCondition.getValue(),
-                            txtAreaConditionComment.getText(),
-                            0,
-                            0);
-                }
-                Database.readBikesFromDatabase();
-                mainWin.controller.fillBikeTableView();
-                changeBikeWin.stage.close();
-            }
-            catch (Exception e){
-                lblInfo.setText("Falsche Eingabe!");
-            }
-        }
-
+        // Methode die beim Start des neuen Fensters aufgerufen wird
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+
+            // versteckt die Textfields und die Label wenn das ausgewählte Objekt kein Ebike ist
             if (!Objects.equals(tempBike.getDesignType(), "EBike")){
                 txtFieldBatteryCap.setVisible(false);
                 txtFieldPerformance.setVisible(false);
@@ -121,6 +81,8 @@ public class ChangeBikeWin {
                 lblPerformance.setVisible(false);
 
             }
+
+            // Event: ändert die Eigenschaften der FXML Elemente wenn das ausgewählte Combobox Element kein Ebike ist
             comboBoxDesignType.setOnAction(event -> {
                 if(!Objects.equals(comboBoxDesignType.getSelectionModel().getSelectedItem(), "EBike")){
                     txtFieldBatteryCap.setText("");
@@ -130,6 +92,7 @@ public class ChangeBikeWin {
                     lblBatteryCap.setVisible(false);
                     lblPerformance.setVisible(false);
                 }
+                // Event: ändert die Eigenschaften der FXML Elemente wenn das ausgewählte Combobox Element ein Ebike ist
                 else {
                     try {
                         txtFieldBatteryCap.setVisible(true);
@@ -139,11 +102,13 @@ public class ChangeBikeWin {
                         txtFieldBatteryCap.setText(String.valueOf(((EBike) tempBike).getBatteryCapacity()));
                         txtFieldPerformance.setText(String.valueOf(((EBike) tempBike).getPerformance()));
 
-                    } catch (Exception e) {
+                    } catch (Exception ignored) {
                     }
                 }
 
             });
+
+            // befüllt die Elemente der FXML mit dem übergebenen Bike Element
             fillBikesCombobox();
             txtFieldID.setText(String.valueOf(tempBike.getID()));
             txtFieldName.setText(tempBike.getName());
@@ -160,7 +125,52 @@ public class ChangeBikeWin {
             catch (Exception e){
 
             }
+        }
 
+        @FXML
+        public void btnBack(){
+            changeBikeWin.stage.close();
+        }
+        @FXML
+        public void btnSave(){
+
+            try{
+                // Prüft ob es sich um ein Objekt vom Typ Ebike handelt
+                if (Objects.equals(comboBoxDesignType.getValue(), "EBike")){
+                    Database.changeBikeDataFromDataBase(
+                            Integer.parseInt(txtFieldID.getText()),
+                            txtFieldName.getText(),
+                            comboBoxFrameSize.getValue(),
+                            comboBoxDesignType.getValue(),
+                            Double.parseDouble(txtFieldPricePerDay.getText()),
+                            comboBoxCondition.getValue(),
+                            txtAreaConditionComment.getText(),
+                            Integer.valueOf(txtFieldBatteryCap.getText()),
+                            Integer.valueOf(txtFieldPerformance.getText()));
+                }
+                // alle anderen Typen außer Ebike
+                else{
+                    Database.changeBikeDataFromDataBase(
+                            Integer.parseInt(txtFieldID.getText()),
+                            txtFieldName.getText(),
+                            comboBoxFrameSize.getValue(),
+                            comboBoxDesignType.getValue(),
+                            Double.parseDouble(txtFieldPricePerDay.getText()),
+                            comboBoxCondition.getValue(),
+                            txtAreaConditionComment.getText(),
+                            0,
+                            0);
+                }
+                // Neu einlesen der Daten von der Datenbank
+                Database.readBikesFromDatabase();
+                // TableView neu befüllen / refreshen
+                mainWin.controller.fillBikeTableView();
+                // Fenster schließen
+                changeBikeWin.stage.close();
+            }
+            catch (Exception e){
+                lblInfo.setText("Falsche Eingabe!");
+            }
         }
 
         /**
@@ -176,7 +186,5 @@ public class ChangeBikeWin {
             comboBoxFrameSize.getItems().addAll(frameSizeList);
 
         }
-
-
     }
 }

@@ -42,10 +42,12 @@ public class ChangeCustomerWin {
 
     public class ChangeCustomerController implements Initializable {
 
+        // Übergebene Objekte
         public MainWin mainWin;
         public Customer tempCustomer;
         public ChangeCustomerWin changeCustomerWin;
 
+        // Elemente der FXML
         public TextField txtFieldID;
         public TextField txtFieldFristName;
         public TextField txtFieldName;
@@ -55,8 +57,7 @@ public class ChangeCustomerWin {
         public TextField txtFieldPLZ;
         public TextField txtFieldTel;
         public TextField txtFieldAccountNumber;
-        public Button btnSave;
-        public Button btnBack;
+
         public Label lblInfo;
 
         // Konstruktor von ChangeBikeWinController
@@ -66,9 +67,11 @@ public class ChangeCustomerWin {
             this.tempCustomer = tempCustomer;
         }
 
+        // Methode die beim Start des neuen Fensters aufgerufen wird
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
+            // befüllt die Elemente der FXML mit dem übergebenen Objekt Customer
             txtFieldID.setText(String.valueOf(tempCustomer.getCustomerNumber()));
             txtFieldFristName.setText(tempCustomer.getFirstName());
             txtFieldName.setText(tempCustomer.getName());
@@ -86,6 +89,7 @@ public class ChangeCustomerWin {
         }
         @FXML
         public void btnSave(){
+            // versucht einen Customer aus dem Inhalt der FXML Elemente zu erstellen
             try{
                 Customer temp = new Customer(
                         txtFieldFristName.getText(),
@@ -98,8 +102,11 @@ public class ChangeCustomerWin {
                         txtFieldAccountNumber.getText(),
                         Integer.parseInt(txtFieldID.getText())
                 );
+                // Überschreibt die Daten des Customers in der Datenbank
                 Database.changeCustomerDataFromDataBase(temp);
+                // TableView neu befüllen / refreshen
                 mainWin.controller.fillCustomerTableView();
+                // Fenster schließen
                 changeCustomerWin.stage.close();
             }
 

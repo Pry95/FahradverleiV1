@@ -47,9 +47,12 @@ public class WorkingHourWin {
 
     public class WorkingHourController implements Initializable {
 
+        // Übergebene Objekte
         public MainWin mainWin;
         public Employee tempEmployee;
         public WorkingHourWin workingHourWin;
+
+        // Elemente der FXML
         public ComboBox<Time> comboStart;
         public ComboBox<Time> comboEnd;
         public ComboBox<Time> comboBreakStart;
@@ -57,6 +60,8 @@ public class WorkingHourWin {
         public DatePicker datepicker;
         public Label lblEmployee;
         public Label lblInfo;
+
+        // TableView WorkingHours
         public TableView<WorkingHours> tableViewWorkingHour;
         public TableColumn<WorkingHours, LocalDate> ColumnDate;
         public TableColumn<WorkingHours,Time> ColumnStart;
@@ -65,13 +70,14 @@ public class WorkingHourWin {
         public TableColumn<WorkingHours,Time> ColumnEnd;
         public TableColumn<WorkingHours,Double> ColumnHours;
 
-
-
+        // Konstruktor von ChangeBikeWinController
         public WorkingHourController(MainWin mainWin, Employee tempEmployee, WorkingHourWin workingHourWin) {
             this.mainWin = mainWin;
             this.tempEmployee = tempEmployee;
             this.workingHourWin = workingHourWin;
         }
+
+        // Methode die beim Start des neuen Fensters aufgerufen wird
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             lblEmployee.setText("ID: " + tempEmployee.getEmployeeNumber() + " \tName: " + tempEmployee.getFirstName() + " " + tempEmployee.getName());
@@ -90,13 +96,16 @@ public class WorkingHourWin {
             tableViewWorkingHour.setItems(Database.workingHoursList);
         }
 
+        // befüllt die Comboboxen für die Zeitauswahl
         public void fillComboBoxesTime(){
+            // erstellt eine Liste mit Time Objekten von 06:00 - 22:00 Uhr in 5 Minuten Schritten
             List<Time> times = new ArrayList<>();
             Time time = Time.valueOf(LocalTime.of(6,0));
             while (!time.equals(Time.valueOf(LocalTime.of(22,5)))) {
                 times.add(time);
                 time = Time.valueOf(time.toLocalTime().plusMinutes(5));
             }
+            // befüllt die Comboboxen mit der Liste und setzt jeweils eine Startzeit
             comboStart.getItems().addAll(times);
             comboStart.setValue(Time.valueOf(LocalTime.of(7,0)));
             comboEnd.getItems().addAll(times);
@@ -106,7 +115,8 @@ public class WorkingHourWin {
             comboBreakStart.getItems().addAll(times);
             comboBreakStart.setValue(Time.valueOf(LocalTime.of(12,0)));
             datepicker.setValue(LocalDate.now());
-            // lässt im Datepicker keine Auswahl von Tagen in der Zukunft oder Sonntagen zu
+
+            // lässt im Datepicker keine Auswahl von Tagen in der Zukunft, Sonntagen oder bereits gestempelten Tagen zu
             datepicker.setDayCellFactory(picker -> new DateCell() {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
@@ -124,27 +134,32 @@ public class WorkingHourWin {
                     }
                 }
             });
-
         }
         @FXML
         public void btnSave(){
 
+            // überprüft ob die Comboboxen Inhalte aufsteigend sind und ob bereits ein Datum in der WorkingHours List enthalten ist
             if (comboStart.getValue().getTime() < comboBreakStart.getValue().getTime() &&
                     comboBreakStart.getValue().getTime() < comboBreakEnd.getValue().getTime() &&
                     comboBreakEnd.getValue().getTime() < comboEnd.getValue().getTime() &&
                     proofIfDateExists(datepicker.getValue())){
                 try{
-                    long hours =  (comboEnd.getValue().getTime() -comboStart.getValue().getTime()) -
+                    // rechnet die Arbeitstunden für den Tag aus (Double)
+                    long hoursInMilliSeconds =  (comboEnd.getValue().getTime() -comboStart.getValue().getTime()) -
                             (comboBreakEnd.getValue().getTime()-comboBreakStart.getValue().getTime()) ;
-                    double hour = Math.round(((double)hours /1000/60/60) * 100.0) / 100.0;
+                    double hoursDouble = Math.round(((double)hoursInMilliSeconds /1000/60/60) * 100.0) / 100.0;
+
+                    // erstellt ein neues Objekt vom Typ WorkingHours
                     WorkingHours workingHour = new WorkingHours(
                             datepicker.getValue(),
                             comboStart.getValue(),
                             comboBreakStart.getValue(),
                             comboBreakEnd.getValue(),
-                            comboEnd.getValue(),hour
+                            comboEnd.getValue(),hoursDouble
                     );
+                    // schreibt das neue Objekt in die Datenbank
                     Database.writeWorkingHoursToDatabase(tempEmployee,workingHour);
+                    // refresht die TableView WorkingHour
                     fillTableViewWorkingHour();
                     lblInfo.setText("Eintrag wurde hinzugefügt!");
                 }
@@ -156,6 +171,10 @@ public class WorkingHourWin {
                 lblInfo.setText("Falsche Eingabe!");
             }
         }
+
+        /** Überprüft das Mitgegebene Datum ob es in der Liste workingHoursList vorhanden ist
+         * @param date Datum das überprüft wird
+         */
         public boolean proofIfDateExists(LocalDate date){
             int temp = 0;
             for(WorkingHours element : Database.workingHoursList){
