@@ -42,10 +42,12 @@ public class ChangeEmployeeWin {
 
     public class ChangeEmployeeController implements Initializable {
 
+        // Übergebene Objekte
         public MainWin mainWin;
         public Employee tempEmployee;
         public ChangeEmployeeWin changeEmployeeWin;
 
+        // Elemente der FXML
         public TextField txtFieldID;
         public TextField txtFieldFristName;
         public TextField txtFieldName;
@@ -57,8 +59,7 @@ public class ChangeEmployeeWin {
         public TextField txtFieldAccountNumber;
         public TextField txtFieldHourlyWage;
         public TextField txtFieldHoursPerMonth;
-        public Button btnSave;
-        public Button btnBack;
+
         public Label lblInfo;
 
         // Konstruktor von ChangeEmployeeWinController
@@ -68,9 +69,11 @@ public class ChangeEmployeeWin {
             this.tempEmployee = tempEmployee;
         }
 
+        // Methode die beim Start des neuen Fensters aufgerufen wird
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
+            // befüllt die Elemente der FXML mit dem übergebenen Objekt Customer
             txtFieldID.setText(String.valueOf(tempEmployee.getEmployeeNumber()));
             txtFieldFristName.setText(tempEmployee.getFirstName());
             txtFieldName.setText(tempEmployee.getName());
@@ -90,6 +93,8 @@ public class ChangeEmployeeWin {
         }
         @FXML
         public void btnSave(){
+
+            // versucht einen Employee aus dem Inhalt der FXML Elemente zu erstellen
             try{
                 Employee temp = new Employee(
                         txtFieldFristName.getText(),
@@ -104,8 +109,11 @@ public class ChangeEmployeeWin {
                         txtFieldAccountNumber.getText(),
                         Integer.parseInt(txtFieldID.getText())
                         );
+                // Überschreibt die Daten des Employee in der Datenbank
                 Database.changeEmployeeDataFromDataBase(temp);
+                // TableView neu befüllen / refreshen
                 mainWin.controller.fillEmployeeTableView();
+                // Fenster schließen
                 changeEmployeeWin.stage.close();
             }
 

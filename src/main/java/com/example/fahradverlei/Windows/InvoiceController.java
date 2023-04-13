@@ -32,8 +32,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class InvoiceController {
-    @FXML
-    private AnchorPane anchorPaneInvoice;
+
+    // FXML Elemente
+    public AnchorPane anchorPaneInvoice;
     public Label lblCustomer;
     public Label lblInvoiceNumber;
     public Label lblDeliverer;
@@ -44,58 +45,83 @@ public class InvoiceController {
     public Label lblEndPrice;
     public Label lblDuplikate;
     public Label lblPayed;
-
-
-
-    public PrinterJob printerJob;
-    public Printer printerPDF;
-
-    public Stage stage;
-    public Parent root;
     public Button btnPrint;
-    public final String firstPartOfPath = System.getProperty("user.home") + "/Desktop" + "\\Rechnungen\\";
-    public String endPartOfPath;
-    public String completePath;
 
+
+    // PrinterJob für das PDF File
+    private PrinterJob printerJob;
+
+    // Fenster Druckvorschau
+    private Stage stage;
+
+    // Vorlage für Druck
+    private Parent root;
+
+    // Pfad für den Speichervorgang des PDF
+    private final String firstPartOfPath = System.getProperty("user.home") + "/Desktop" + "\\Rechnungen\\";
+    private String completePath;
+
+
+    // Controller für den Druck der Rechnung
     public static InvoiceController loadFXML() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(InvoiceController.class.getResource("/com/example/fahradverlei/Invoice.fxml"));
         fxmlLoader.load();
         return fxmlLoader.getController();
     }
 
+    // Methode für den Druckvorgang + Skalieren der Rechnung
     public void printInvoice(Rental rental, Bike bike) {
+        // Erstellt den Ordner Rechnungen am Desktop falls es ihn noch nicht gibt
         File folder = new File(firstPartOfPath);
         folder.mkdir();
-        endPartOfPath = rental.getCustomerName().replace(" ","") + "_ReNr" + rental.getID()+ ".pdf";
+
+        // Erstellt den kompletten Pfad für den Speichervorgang des PDF (ORIGINAL)
+        String endPartOfPath = rental.getCustomerName().replace(" ", "") + "_ReNr" + rental.getID() + ".pdf";
         completePath = firstPartOfPath + endPartOfPath;
+
+        // ergänzt im Pfad "DU" (DUPLIKAT)
         if (Objects.equals(rental.isDuplikate(), "ja")){
             completePath = completePath.substring(0,completePath.length()-4) + "_Du.pdf";
         }
 
+        // Formatierungsvorlagen für Datum und Preis
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DecimalFormat decimalFormatter = new DecimalFormat("#,##0.00 €");
 
+        // Anchorpane Hintergrund auf Weiß
         anchorPaneInvoice.setStyle("-fx-background-color: white;");
+
+        // gibt den gesuchten Customer zurück
         Customer customer = getCustomerFromCustomerList(rental);
+
+        //befüllt die Label der Rechnung mit den übergebenen Daten
         lblCustomer.setText(customer.stringForInvoiceTitel());
         lblDeliverer.setText("Name:\t\tBikemaster GmbH\nAnschrift:\t\tUrheberverletzungsstraße 45\nPLZ:\t\t\t6969");
         lblInvoiceNumber.setText(String.valueOf(rental.getID()));
         lblDateDestination.setText(LocalDate.now().format(dateFormatter) + ", Puntigam Links");
         lblBike.setText(bike.stringForInvoice());
 
+        // Errechnet die Tage zwischen Startdatum und Enddatum
         Integer days = (int)ChronoUnit.DAYS.between(rental.getStartDate().toLocalDate(),rental.getEndDate().toLocalDate().plusDays(1));
+
+        //befüllt die Label der Rechnung mit den übergebenen Daten
         lblTime.setText("Start Datum:\t\t\t" + rental.getStartDate().toLocalDate().format(dateFormatter) +
                 "\nEnd Datum:\t\t\t" + rental.getEndDate().toLocalDate().format(dateFormatter) +
                 "\nTage ausgeliehen:\t\t" + days);
 
+        // Errechnet den gesamt Preis
         double price = days * bike.getPricePerDay();
 
+        // befüllt die Label der Rechnung mit den übergebenen Daten
         lblPrice.setText("(Tage)\t\t" + days + "\nx\n(Preis / Tag)\t" + decimalFormatter.format(bike.getPricePerDay()) +"\n=");
         lblEndPrice.setText("Summe:\t\t" + decimalFormatter.format(price));
 
+        // wenn das Rental Objekt Duplikat "ja" ist dann wird auf der Rechnung DUPLIKAT aufgedruckt
         if (Objects.equals(rental.isDuplikate(), "ja")){
             lblDuplikate.setText("Duplikat");
         }
+
+        // wenn das Rental Objekt PayDate nicht null ist dann wird auf der Rechnung "bezahlt am: ...." aufgedruckt
         if (rental.getPayDate() != null){
             lblPayed.setText("bezahlt am: " + rental.getPayDate().toLocalDate().format(dateFormatter));
         }
@@ -105,29 +131,29 @@ public class InvoiceController {
             if (printer.getName().equals("Microsoft Print to PDF")) {
                 printerJob = PrinterJob.createPrinterJob();
                 printerJob.setPrinter(printer);
-                printerPDF = printer;
                 break;
             }
         }
         //Druckjob
         if (printerJob != null) {
-            // Erstellen Sie das Druck-Layout
+            // Erstellt das Drucklayout
             PageLayout pageLayout = printerJob.getJobSettings().getPageLayout();
 
-            // Erstellen Sie den Root-Knoten, der gedruckt werden soll
-            root = anchorPaneInvoice; // Erstellen Sie Ihren Root-Knoten hier
+            // Erstellt den Root Knotend er gedruckt werden soll
+            root = anchorPaneInvoice;
 
-            // Erstellen Sie den Druckbereich
+            // Erstellt den Druckbereich und skaliert ihn
             double scaleX = (pageLayout.getPrintableWidth()) / root.getBoundsInParent().getWidth();
             double scaleY = pageLayout.getPrintableHeight() / root.getBoundsInParent().getHeight();
             double scale = Math.min(scaleX, scaleY);
             Scale scaleTransform = new Scale(scale, scale);
             root.getTransforms().add(scaleTransform);
         }
+        // Legt den Drucknamen und den Pfad für den Druck fest
         printerJob.getJobSettings().setJobName("output.pdf");
         printerJob.getJobSettings().setOutputFile( completePath);
 
-        // Druckvorschau, erstellt ein Fenster für die Druckvorschau
+        // erstellt ein Fenster für die Druckvorschau
         Scene scene = new Scene(anchorPaneInvoice,500,700);
         stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -138,35 +164,45 @@ public class InvoiceController {
     }
 
     public void btnPrint(ActionEvent actionEvent) throws IOException {
-        // Drucken Sie den Root-Knoten
+
+        // versteckt den Print Button und schließt danach die Druckvorschau
         btnPrint.setVisible(false);
         stage.close();
+
+        // legt ein Objekt vom Typ File an das später zum Öffnen des PDF's benötigt wird
         File temp = new File(completePath);
-            boolean printed = printerJob.printPage(root);
-            if (printed) {
+
+        // Druckvorgang
+        boolean printed = printerJob.printPage(root);
+        if (printed) {
                 printerJob.endJob();
-            }
+        }
+
+        // setzt eine Wartezeit von einer Sekunde fest
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event -> {
+            // Versucht das erstellte PDF File direkt zu öffnen
             try {
                 Desktop.getDesktop().open(temp);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
+        // Start des Wartezeit Methode
         delay.play();
     }
 
-    private Customer getCustomerFromCustomerList(Rental item) {
+    /** Durchsucht die CustomerList über die ID des Rental Objekts und gibt den gefundenen Customer zurück
+     * @param rental Enthält die CustomerID nach der gesucht werden soll
+     */
+    private Customer getCustomerFromCustomerList(Rental rental) {
         Customer temp = null;
         for (Customer element: Database.customerList) {
-            if(element.getCustomerNumber() == item.getCustomerNumber()){
+            if(element.getCustomerNumber() == rental.getCustomerNumber()){
                 temp = element;
                 break;
             }
         }
         return temp;
     }
-
-
 }

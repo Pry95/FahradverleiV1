@@ -47,16 +47,19 @@ public class RentalWin {
 
     public class RentalWinController implements Initializable {
 
+        // Übergebene Objekte
         public MainWin mainWin;
         public Bike tempBike;
         public RentalWin rentalWin;
 
+        // TableView für Objekt Customer
         public TableView<Customer> tabViewCustomer;
         public TableColumn<Customer, Integer> columnCustomerID;
         public TableColumn<Customer, String> columnCustomerName;
         public TableColumn<Customer, String> columnCustomerFirstName;
         public TableColumn<Customer, LocalDate> columnCustomerBirth;
 
+        // TableView für Objekt Rental
         public TableView<Rental> tableViewRental;
         public TableColumn<Rental,Integer>columnID;
         public TableColumn<Rental, Date> columnFrom;
@@ -70,40 +73,38 @@ public class RentalWin {
         public TableColumn<Rental, String> columnDuplikate;
         public TableColumn<Rental,Date> columnPayDate;
 
-
+        // Elemente der FXML
         public Label lblBike;
         public Label lblInfo;
         public Label lblRentalInfo;
         public DatePicker datePickerFrom;
         public DatePicker datePickerTo;
-
-        public Button btnSave;
-        public Button btnBack;
-        public Button btnDown;
-        public Button btnUp;
-        public Button btnRepair;
         public TextField txtFieldSearch;
         public TextField txtFieldSearchRental;
         public ComboBox<String> comboboxFilter;
 
-
+        // Konstruktor von ChangeBikeWinController
         public RentalWinController(MainWin mainWin, Bike tempBike, RentalWin rentalWin) {
             this.mainWin = mainWin;
             this.tempBike = tempBike;
             this.rentalWin = rentalWin;
         }
 
+        // Methode die beim Start des neuen Fensters aufgerufen wird
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
+            // beüllt die Fenster Elemente
             fillComboBoxFilter();
             fillCustomerTableView();
             fillRentalTableView();
-
             lblBike.setText("ID: " + tempBike.getID() + "\t\tBezeichnung: " + tempBike.getName() + "\t\tArt: " + tempBike.getDesignType());
 
 
-
+            /**Sperrt die folgenden Tage vom DatepickerFrom:
+             * alle Tage in der Vergangenheit
+             * alle Tage die bereits in der rentalList vergeben sind
+             */
             datePickerFrom.setDayCellFactory(picker -> new DateCell() {
                 @Override
                 public void updateItem(LocalDate date, boolean empty) {
@@ -119,8 +120,12 @@ public class RentalWin {
                 }
             });
 
-
-                datePickerFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
+            /** Setzt einen Listener auf das Element DatePickerFrom und führt die folgenden Schritte aus:
+             * aktuelle Auswahl wird auf DatepickerTo übertragen
+             * DatepickerTo: alle Werte die vor DatePickerFrom sind, sind gesperrt
+             * DatepickerTo: alle Werte die in der RenatlList bereits vergeben sind sind gesperrt
+            */
+            datePickerFrom.valueProperty().addListener((observable, oldValue, newValue) -> {
                 datePickerTo.setValue(newValue);
                 datePickerTo.setDayCellFactory(picker -> new DateCell() {
                     @Override
@@ -144,6 +149,8 @@ public class RentalWin {
             });
         }
 
+        /** befüllt die ComboboxFilter und löscht bei einer Auswahl den Inhalt vom txtFieldSearchRental:
+         */
         public void fillComboBoxFilter(){
             comboboxFilter.getItems().addAll("RechnungsNr","Art","KundenID","Kunde");
             comboboxFilter.setValue("RechnungsNr");
@@ -168,21 +175,26 @@ public class RentalWin {
             columnDuplikate.setCellValueFactory(new PropertyValueFactory<>("Duplikate"));
             columnPayDate.setCellValueFactory((new PropertyValueFactory<>("PayDate")));
 
+            // Filter für die TableviewRental, Filtertext ist in txtFieldSearchRental
             FilteredList<Rental> filteredData = new FilteredList<>(Database.rentalList, p -> true);
             txtFieldSearchRental.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(rental -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
+                    // Filtert nach Rechnungnummer
                     if (Objects.equals(comboboxFilter.getValue(), "RechnungsNr") && Objects.equals(rental.getID(), Integer.valueOf(newValue))) {
                         return true;
                     }
+                    // Filtert nach Art
                     else if (Objects.equals(comboboxFilter.getValue(), "Art") && rental.getType().toLowerCase().contains(newValue.toLowerCase())) {
                         return true;
                     }
+                    // Filtert nach KundenID
                     else if (Objects.equals(comboboxFilter.getValue(), "KundenID") && Objects.equals(rental.getCustomerNumber(), Integer.valueOf(newValue))) {
                         return true;
                     }
+                    // Filtert nach Kunde
                     else if (Objects.equals(comboboxFilter.getValue(), "Kunde") && rental.getCustomerName().toLowerCase().contains(newValue.toLowerCase())) {
                         return true;
                     }
@@ -203,6 +215,7 @@ public class RentalWin {
             columnCustomerFirstName.setCellValueFactory(new PropertyValueFactory<>("FirstName"));
             columnCustomerBirth.setCellValueFactory(new PropertyValueFactory<>("BirthDate"));
 
+            // Filter für die TableviewRental, Filtertext ist in txtFieldSearch
             FilteredList<Customer> filteredData = new FilteredList<>(Database.customerList, p -> true);
             txtFieldSearch.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(person -> {
@@ -213,9 +226,12 @@ public class RentalWin {
                     String name2 = person.getName() + " " + person.getFirstName();
                     String lowerCaseFilter = newValue.toLowerCase();
 
+                    // Filtert nach Namen
                     if (name.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
                         return true;
-                    } else if (name2.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
+                    }
+                    // Filtert nach Namen
+                    else if (name2.toLowerCase().contains(lowerCaseFilter.toLowerCase())) {
                         return true;
                     }
                     return false;
@@ -226,6 +242,7 @@ public class RentalWin {
             tabViewCustomer.setItems(sortedData);
         }
 
+        // Speichert eine Reservierung in die Datenbank
         @FXML
         public void btnSave() {
             if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0) {
@@ -244,6 +261,7 @@ public class RentalWin {
             }
         }
 
+        // Speichert eine Wartung in die Datenbank
         @FXML
         public void btnRepair() {
             if (datePickerFrom.getValue() != null && datePickerTo.getValue() != null) {
@@ -267,6 +285,7 @@ public class RentalWin {
             txtFieldSearch.clear();
         }
 
+        // Ändert den Datenbankeintrag des ausgewählten Elements auf Payed "ja" und PayDate "now"
         @FXML
         public void btnPay() {
             if (tableViewRental.getSelectionModel().getSelectedItems().size() > 0) {
@@ -284,6 +303,7 @@ public class RentalWin {
             }
         }
 
+        // Ändert den Datenbankeintrag des ausgewählten Elements auf ptinted "ja" und startet den Druckvorgang
         @FXML
         public void btnPrint() throws IOException {
 
@@ -297,12 +317,14 @@ public class RentalWin {
                         }
                         InvoiceController invoiceController = InvoiceController.loadFXML();
                         invoiceController.printInvoice(item,tempBike);
+
                     }
 
                     else{
                         lblRentalInfo.setText("Einträge vom Typ Wartung können nicht gedruckt werden!");
                     }
-            }   }
+                }
+            }
         }
     }
 
