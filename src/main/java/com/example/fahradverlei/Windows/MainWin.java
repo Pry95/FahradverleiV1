@@ -388,7 +388,8 @@ public class MainWin {
         public void btnDelBike(){
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
                 Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
-                int antwort = JOptionPane.showConfirmDialog(null, "Fahrrad wirklich löschen", "Fahrrad löschen", JOptionPane.YES_NO_OPTION);
+                ImageIcon icon = new ImageIcon("src/Images/IconDel.png");
+                int antwort = JOptionPane.showConfirmDialog(null, "Fahrrad wirklich löschen", "Fahrrad löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icon);
                 if(antwort == JOptionPane.YES_NO_OPTION){
                     Database.delBikeFromDatabase(tempBike);
                 }
