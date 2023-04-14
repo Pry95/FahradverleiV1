@@ -82,9 +82,6 @@ public class PayrollWindow {
 
 
 
-
-
-
         /** Estellt einen neuen Controller und erhölt Referenzen auf das Mainwin, den Übergebenen Mitarbeiter
          * und die Gehaltsabrechnung.
          */

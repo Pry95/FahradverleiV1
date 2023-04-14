@@ -76,7 +76,7 @@ public class PrintPayroll {
                 PageLayout pageLayout = printerJob.getJobSettings().getPageLayout();
 
                 // Erstellt den Root-Knoten, der gedruckt werden soll
-                Parent root = printPayrollAnchorpane; // Erstellen Sie Ihren Root-Knoten hier
+                Parent root = printPayrollAnchorpane;
 
                 // Setzt die werte in die Labels und in die Tabelview auf die Seite
                 printLabelFirstName.setText(myEmploy.getFirstName());
