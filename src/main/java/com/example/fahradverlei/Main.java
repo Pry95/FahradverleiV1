@@ -16,7 +16,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         StartWin startWin = new StartWin();
         MainWin mainWin = new MainWin();
-        PauseTransition delay = new PauseTransition(Duration.seconds(2));
+        PauseTransition delay = new PauseTransition(Duration.seconds(4));
         delay.setOnFinished(event -> {
             mainWin.stage.show();
             startWin.stage.close();
