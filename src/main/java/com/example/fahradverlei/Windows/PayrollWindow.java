@@ -295,13 +295,16 @@ public class PayrollWindow {
         /** Hier wird eine Gehaltsabrechnung aus Tabelle `Payroll´ gelöscht.
          */
         public void delPayrollBtn() {
+            ImageIcon delIcon = new ImageIcon("src/Images/IconDel.png");
             if (payrollTableView.getSelectionModel().getSelectedItems().size() > 0) {
                 Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
-                Database.delPayrollFromDatabase(myPayroll);
-                searchPayrollTextfield.clear();
-                fillPayrollTabelView();
-                monthWorkingHoursTableView.getItems().clear();
-
+                int antwort = JOptionPane.showConfirmDialog(null, "Kunde wirklich löschen", "Kunde löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,delIcon);
+                if(antwort == JOptionPane.YES_NO_OPTION){
+                    Database.delPayrollFromDatabase(myPayroll);
+                    searchPayrollTextfield.clear();
+                    fillPayrollTabelView();
+                    monthWorkingHoursTableView.getItems().clear();
+                }
             }
         }
         public  void payrollWinBackBtn(){

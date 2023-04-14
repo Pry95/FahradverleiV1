@@ -128,6 +128,7 @@ public class MainWin {
         public TextField txtFieldSearchBike;
         public TextField txtFieldSearchCustomer;
         public TextField txtFieldSearchEmployee;
+        public ImageIcon delIcon = new ImageIcon("src/Images/IconDel.png");
 
 
         /** Konstruktor von MainWinController.
@@ -388,8 +389,8 @@ public class MainWin {
         public void btnDelBike(){
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
                 Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
-                ImageIcon icon = new ImageIcon("src/Images/IconDel.png");
-                int antwort = JOptionPane.showConfirmDialog(null, "Fahrrad wirklich löschen", "Fahrrad löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icon);
+
+                int antwort = JOptionPane.showConfirmDialog(null, "Fahrrad wirklich löschen", "Fahrrad löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,delIcon);
                 if(antwort == JOptionPane.YES_NO_OPTION){
                     Database.delBikeFromDatabase(tempBike);
                     fillBikeTableView();
@@ -455,8 +456,12 @@ public class MainWin {
         public void btnDelCustomer(){
             if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
                 Customer tempCustomer = tabViewCustomer.getSelectionModel().getSelectedItem();
-                Database.delCustomerFromDatabase(tempCustomer);
-                fillCustomerTableView();
+                int antwort = JOptionPane.showConfirmDialog(null, "Kunde wirklich löschen", "Kunde löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,delIcon);
+                if(antwort == JOptionPane.YES_NO_OPTION){
+                    Database.delCustomerFromDatabase(tempCustomer);
+                    fillCustomerTableView();
+                }
+
             }
         }
 
@@ -476,8 +481,12 @@ public class MainWin {
         public void btnDelEmployee(){
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
                 Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
-                Database.delEmployeeFromDatabase(tempEmployee);
-                fillEmployeeTableView();
+                int antwort = JOptionPane.showConfirmDialog(null, "Mitarbeiter wirklich löschen", "Mitarbeiter löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,delIcon);
+                if(antwort == JOptionPane.YES_NO_OPTION){
+                    Database.delEmployeeFromDatabase(tempEmployee);
+                    fillEmployeeTableView();
+                }
+
             }
         }
 
