@@ -25,6 +25,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainWin {
@@ -309,8 +310,8 @@ public class MainWin {
          */
         @FXML
         public void btnInvestNewBike(){
-
             String typ = comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString();
+
             if(typ.equals("EBike")){
                 try{
                     // Ebike wird erstellt und in die Tabelle `Bike´geschrieben.
@@ -387,7 +388,11 @@ public class MainWin {
         public void btnDelBike(){
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
                 Bike tempBike = TableViewBike.getSelectionModel().getSelectedItem();
-                Database.delBikeFromDatabase(tempBike);
+                int antwort = JOptionPane.showConfirmDialog(null, "Fahrrad wirklich löschen", "Fahrrad löschen", JOptionPane.YES_NO_OPTION);
+                if(antwort == JOptionPane.YES_NO_OPTION){
+                    Database.delBikeFromDatabase(tempBike);
+                }
+
                 fillBikeTableView();
             }
         }

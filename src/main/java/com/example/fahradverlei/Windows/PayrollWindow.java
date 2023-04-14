@@ -82,6 +82,7 @@ public class PayrollWindow {
 
 
 
+
         /** Estellt einen neuen Controller und erhölt Referenzen auf das Mainwin, den Übergebenen Mitarbeiter
          * und die Gehaltsabrechnung.
          */
@@ -200,6 +201,7 @@ public class PayrollWindow {
         /** Zeigt dei Vorschau einer Gehaltsabrechnung.
          */
         public void showParollBtn() {
+
             int month = 0;
             int year = 0;
             try{
@@ -225,6 +227,7 @@ public class PayrollWindow {
                         "\nBrutto " + myPayroll.getGrossSalary() +
                         "\nNetto " + myPayroll.getNetSalary() +
                         "\nAbzüge " + myPayroll.getDeductions());
+
             }
         }
 
