@@ -122,7 +122,6 @@ public class MainWin {
         public Button btnChangeCustomer;
         public Button btnRepair;
 
-
         public Button btnChangeEmployee;
         public Button btnDelEmployee;
         public TextField txtFieldSearchBike;
@@ -130,11 +129,16 @@ public class MainWin {
         public TextField txtFieldSearchEmployee;
 
 
-        // Konstruktor von MainWinController
+        /** Konstruktor von MainWinController.
+         */
+
         public MainWinController(MainWin mainWin){
             this.mainWin = mainWin;
         }
 
+
+        /** Hier werden die Tabelviews am Start gefüllt.
+         */
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
             fillCustomerTableView();
@@ -143,6 +147,8 @@ public class MainWin {
             fillBikesCombobox();
         }
 
+        /** Befüllt die Mitarbeitertabelview mit Mitarbeitern aus der Tabelle `Employee´.
+         */
         public void fillEmployeeTableView(){
             Database.readEmployeeFromDatabase();
             ColumnEmployeeID.setCellValueFactory(new PropertyValueFactory<>("EmployeeNumber"));
@@ -157,6 +163,7 @@ public class MainWin {
             ColumnEmployeeHoursPerMonth.setCellValueFactory(new PropertyValueFactory<>("HoursPerMonth"));
             ColumnEmployeeAccountNumber.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
 
+            // Fügt dem Stundenlohn das € Zeichen hinzu.
             ColumnEmployeeHourlyWage.setCellFactory(column -> {
                 return new TableCell<Employee, Double>() {
                     @Override
@@ -171,6 +178,8 @@ public class MainWin {
                     }
                 };
             });
+            // Hier wird der Text aus einem Textfeld eingelesen und überprüft ob er mit den Name der Mitarbeiter übereinstimmt.
+            // Trifft das zu wird er in die Tableview geladen.
             FilteredList<Employee> filteredData = new FilteredList<>(Database.employeeList, p -> true);
             txtFieldSearchEmployee.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(person -> {
@@ -194,6 +203,9 @@ public class MainWin {
             tableViewEmployee.setItems(sortedData);
         }
 
+
+        /** Befüllt die Kundentabelview mit Kunden aus der Tabelle `Customer´
+         */
         public void fillCustomerTableView(){
             Database.readCustomerFromDatabase();
             columnCustomerID.setCellValueFactory(new PropertyValueFactory<>("CustomerNumber"));
@@ -205,7 +217,8 @@ public class MainWin {
             columnCustomerPlz.setCellValueFactory(new PropertyValueFactory<>("PostalCode"));
             columnCustomerTel.setCellValueFactory(new PropertyValueFactory<>("Tel"));
             columnCustomerAccount.setCellValueFactory(new PropertyValueFactory<>("AccountNumber"));
-
+            /** ???????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????ß
+             */
             ColumnEmployeeHourlyWage.setCellFactory(column -> {
                 return new TableCell<Employee, Double>() {
                     @Override
@@ -220,6 +233,8 @@ public class MainWin {
                     }
                 };
             });
+            // Hier wird der Text aus einem Textfeld eingelesen und überprüft ob er mit den Name der Kunden übereinstimmt.
+            // Trifft das zu wird er in die Tableview geladen.
             FilteredList<Customer> filteredData = new FilteredList<>(Database.customerList, p -> true);
             txtFieldSearchCustomer.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(person -> {
@@ -242,6 +257,9 @@ public class MainWin {
             sortedData.comparatorProperty().bind(tabViewCustomer.comparatorProperty());
             tabViewCustomer.setItems(sortedData);
         }
+
+        /** Befüllt die Mitarbeitertabelview mit Mitarbeitern aus der Tabelle `Employee´.
+         */
         public void fillBikeTableView(){
             Database.readBikesFromDatabase();
             ColumnBikeId.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -268,7 +286,8 @@ public class MainWin {
                     }
                 };
             });
-
+            // Hier wird der Text aus einem Textfeld eingelesen und überprüft ob er mit den Name der des Bikes übereinstimmt.
+            // Trifft das zu wird er in die Tableview geladen.
             FilteredList<Bike> filteredData = new FilteredList<>(Database.bikeList, p -> true);
             txtFieldSearchBike.textProperty().addListener((observable, oldValue, newValue) -> {
                 filteredData.setPredicate(person -> {
@@ -287,6 +306,9 @@ public class MainWin {
             sortedData.comparatorProperty().bind(TableViewBike.comparatorProperty());
             TableViewBike.setItems(sortedData);
         }
+
+        /** Befüllt Comboboxen mit Fahrradtypen und Ramengrößen
+         */
         public void fillBikesCombobox(){
             List<Integer> frameSizeList = new ArrayList<>();
             for(int i = 14;i <= 64;i++){
@@ -296,15 +318,17 @@ public class MainWin {
             comboBoxInvestBikeFrameSize.getItems().addAll(frameSizeList);
 
         }
+
+        /** Hier wird zuerst überprüft ob der Typ Ebike ausgewählt wurde und dann wird endtweder Ein object vom Typ Ebike
+         * oder Bike in die Tabelle `Bike´geschrieben.
+         */
         @FXML
         public void btnInvestNewBike(){
 
             String typ = comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString();
-            String name = textFieldBikeInvestName.getText();
-            double pricePerDay = Double.parseDouble(textFieldBikeInvestPricePerDay.getText());
-            int frameSize = Integer.parseInt(comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString());
             if(typ.equals("EBike")){
                 try{
+                    // Ebike wird erstellt und in die Tabelle `Bike´geschrieben.
                     Database.writeNewElectroBikeInDatabase(new EBike(1,textFieldBikeInvestName.getText(),comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString(),comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString(),
                             Double.parseDouble(textFieldBikeInvestPricePerDay.getText()),"Sehr Gut", "Passt soweit alles", Integer.parseInt(textFieldBikeInvestBatteryCapacity.getText()),Integer.parseInt(textFieldBikeInvestPerformance.getText())));
                     JOptionPane.showMessageDialog(null, "Ebike hinzugefügt");
@@ -316,6 +340,7 @@ public class MainWin {
 
             }else{
                 try{
+                    // Bike wird erstellt und in die Tabelle `Bike´geschrieben.
                     Database.writeNewBikeInDatabase(new Bike(1,textFieldBikeInvestName.getText(),comboBoxInvestBikeFrameSize.getSelectionModel().getSelectedItem().toString(),comboBoxInvestBikeType.getSelectionModel().getSelectedItem().toString(),
                             Double.parseDouble(textFieldBikeInvestPricePerDay.getText()),"Sehr Gut", "Passt soweit alles"));
                     JOptionPane.showMessageDialog(null, "Bike hinzugefügt");
@@ -328,6 +353,9 @@ public class MainWin {
             setBikeInsertWindow();
             fillBikeTableView();
         }
+
+        /** Schreibt einen neuen Kunden  in die Tabelle ´Customer´
+         */
         @FXML
         //schreibt einen neuen datensatz in die Tabelle customer
         public void btnCustomerIInsert(){
@@ -345,6 +373,9 @@ public class MainWin {
                 throw new RuntimeException(e);
             }
         }
+
+        /** Schreibt einen neuen Mitarbeiter  in die Tabelle ´Employee´
+         */
         @FXML
         public void btnEmployeeInsert(){
             try {
@@ -363,7 +394,10 @@ public class MainWin {
             }
         }
 
-        // Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
+
+        /** Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
+         */
+
         @FXML
         public void btnDelBike(){
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
@@ -372,7 +406,10 @@ public class MainWin {
                 fillBikeTableView();
             }
         }
-        // Erstellt ein neues Fenster wo die Daten für das ausgewählte Fahrrad geändert werden können
+
+
+        /** Erstellt ein neues Fenster wo die Daten für das ausgewählte Fahrrad geändert werden können
+         */
         @FXML
         public void btnChangeBike() throws IOException {
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
@@ -380,6 +417,9 @@ public class MainWin {
                 ChangeBikeWin changeBikeWin = new ChangeBikeWin(mainWin,tempBike);
             }
         }
+
+        /** Löscht den Inhalt der Textfelder und die Auswahl der Comboboxen im bereich Bike hinzufügen
+         */
         @FXML
         public void setBikeInsertWindow(){
             textFieldBikeInvestBatteryCapacity.clear();
@@ -389,6 +429,9 @@ public class MainWin {
             comboBoxInvestBikeFrameSize.getSelectionModel().clearSelection();
             comboBoxInvestBikeType.getSelectionModel().clearSelection();
         }
+
+        /** Löscht den Inhalt der Textfelder und die Auswahl des Datpickers im bereich Kunde hinzufügen
+         */
         public void setCustomerInsertWindow(){
             textFieldCustomerAccount.clear();
             textFieldCustomerFirstname.clear();
@@ -399,6 +442,9 @@ public class MainWin {
             textFieldCustomerName.clear();
             datePickerCustomer.setValue(null);
         }
+
+        /** Löscht den Inhalt der Textfelder und die Auswahl des Datpickers im bereich Mitarbeiter hinzufügen
+         */
         public void setEmployeeInsertWindow(){
 
             textFieldEmployeeName.clear();
@@ -413,6 +459,9 @@ public class MainWin {
             textFieldEmployeeAccount.clear();
         }
 
+
+        /** Löscht eine Datensatz aus der Tabelle ´Customer´
+         */
         @FXML
         public void btnDelCustomer(){
             if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
@@ -421,6 +470,9 @@ public class MainWin {
                 fillCustomerTableView();
             }
         }
+
+        /** Erzeug das Fenster Change Customer
+         */
         @FXML
         public void  btnChangeCustomer() throws IOException {
             if (tabViewCustomer.getSelectionModel().getSelectedItems().size() > 0){
@@ -428,6 +480,9 @@ public class MainWin {
                 ChangeCustomerWin changeCustomerWin = new ChangeCustomerWin(mainWin,tempCustomer);
             }
         }
+
+        /** Löscht eine Datensatz aus der Tabelle ´Emplpyee´
+         */
         @FXML
         public void btnDelEmployee(){
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
@@ -436,6 +491,9 @@ public class MainWin {
                 fillEmployeeTableView();
             }
         }
+
+        /** Erzeug das Fenster Change Employee
+         */
         @FXML
         public void btnChangeEmployee() throws IOException {
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
@@ -443,6 +501,9 @@ public class MainWin {
                 ChangeEmployeeWin changeEmployeeWin = new ChangeEmployeeWin(mainWin,tempEmployee);
             }
         }
+
+        /** Erzeug das Fenster WorkingHour
+         */
         @FXML
         public void btnEmployeeWorkingTime() throws IOException {
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0){
@@ -460,6 +521,9 @@ public class MainWin {
                 PayrollWindow payrollWindow = new PayrollWindow(mainWin, tempEmployee);
             }
         }
+
+        /** Erzeug das Fenster Rental
+         */
         @FXML
         public void btnRent() throws IOException {
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
@@ -468,6 +532,8 @@ public class MainWin {
             }
         }
 
+        /** Hier werden die Textfelder im Mainwindow die für die Suchfunktion zuständig sind zurückgesetz.
+         */
         @FXML
         public void btnDelFilterBike(){
             txtFieldSearchBike.clear();

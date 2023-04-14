@@ -298,8 +298,10 @@ public class PayrollWindow {
             if (payrollTableView.getSelectionModel().getSelectedItems().size() > 0) {
                 Payroll myPayroll = payrollTableView.getSelectionModel().getSelectedItem();
                 Database.delPayrollFromDatabase(myPayroll);
+                searchPayrollTextfield.clear();
                 fillPayrollTabelView();
                 monthWorkingHoursTableView.getItems().clear();
+
             }
         }
         public  void payrollWinBackBtn(){
