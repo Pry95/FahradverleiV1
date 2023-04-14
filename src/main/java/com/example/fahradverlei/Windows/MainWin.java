@@ -392,12 +392,10 @@ public class MainWin {
                 int antwort = JOptionPane.showConfirmDialog(null, "Fahrrad wirklich löschen", "Fahrrad löschen", JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,icon);
                 if(antwort == JOptionPane.YES_NO_OPTION){
                     Database.delBikeFromDatabase(tempBike);
+                    fillBikeTableView();
                 }
-
-                fillBikeTableView();
             }
         }
-
 
         /** Erstellt ein neues Fenster wo die Daten für das ausgewählte Fahrrad geändert werden können
          */
