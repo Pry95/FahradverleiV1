@@ -12,11 +12,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -25,7 +22,6 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class MainWin {
@@ -88,7 +84,6 @@ public class MainWin {
 
 
         // Bike invest
-        public ImageView imageViewBikeInvest;
         public ComboBox<String>comboBoxInvestBikeType;
         public ComboBox<Integer>comboBoxInvestBikeFrameSize;
         public TextField textFieldBikeInvestName;
@@ -104,7 +99,6 @@ public class MainWin {
         public TextField textFieldCustomerPostalCode;
         public TextField textFieldCustomerTel;
         public TextField textFieldCustomerAccount;
-        public TextField datePickerEmployeeInsert;
         public TextField textFieldEmployeeName;
         public TextField textFieldEmployeeFirstName;
         public DatePicker datePickerEmployee;
@@ -116,15 +110,6 @@ public class MainWin {
         public TextField textFieldEmployeeHoursPerMonth;
         public TextField textFieldEmployeeAccount;
         public MainWin mainWin;
-        public Button btnInvestNewBike;
-        public Button btnDelBike;
-        public Button btnChangeBike;
-        public Button btnDelCustomer;
-        public Button btnChangeCustomer;
-        public Button btnRepair;
-
-        public Button btnChangeEmployee;
-        public Button btnDelEmployee;
         public TextField txtFieldSearchBike;
         public TextField txtFieldSearchCustomer;
         public TextField txtFieldSearchEmployee;
