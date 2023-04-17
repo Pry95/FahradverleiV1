@@ -40,7 +40,7 @@ public class MainWin {
         fxmlLoader.setController(controller);
         this.scene = new Scene(fxmlLoader.load(), 1250, 807);
         this.stage = new Stage();
-        this.stage.setTitle("Fahrradverleih");
+        this.stage.setTitle("BikeMaster3000");
         this.stage.getIcons().add(new Image("file:src/Images/logo.png"));
         this.stage.setScene(scene);
         this.stage.setResizable(false);
@@ -384,7 +384,6 @@ public class MainWin {
 
         /** Löscht ein Bike aus der Datenbank und aktualisiert die TableViewBike
          */
-
         @FXML
         public void btnDelBike(){
             if (TableViewBike.getSelectionModel().getSelectedItems().size() > 0){
@@ -509,10 +508,10 @@ public class MainWin {
                 WorkingHourWin workingHourWin = new WorkingHourWin(mainWin,tempEmployee);
             }
         }
-        @FXML
-        /**
-         * Erzeigt das Fenster Payroll
+
+        /** Erzeigt das Fenster Payroll
          */
+        @FXML
         public void btnPayroll()throws IOException{
             if (tableViewEmployee.getSelectionModel().getSelectedItems().size() > 0) {
                 Employee tempEmployee = tableViewEmployee.getSelectionModel().getSelectedItem();
